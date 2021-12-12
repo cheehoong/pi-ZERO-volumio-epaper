@@ -59,6 +59,10 @@ arm_freq = 1300
 The CPU then throttles earlier under load or gets hot faster.
 Even without over_voltage, my Zero 2 runs stably at 1.2 GHz in a standard housing. Idle temps ~ 42 ° C
 
+<p align="center">
+<img src="https://vmstan.com/content/images/2021/02/gs-logo.svg" width="300" alt="Gravity Sync">
+</p>
+
 ## Power consumption
 Unfortunately, the higher performance also leads to higher power consumption, which is only relevant for battery operation.
 
