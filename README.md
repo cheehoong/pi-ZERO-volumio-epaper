@@ -40,24 +40,19 @@ python3
 ```
 
 ## Basic use:
-Since this project is a comprehensive project, you may need to read the following for use:
-You can view the test program in the examples\ directory.
-Please note which ink screen you purchased.
-Chestnut 1:
-    If you purchased 2.9inch Touch e-Paper HAT, then you should execute the command:
-        sudo python TP2in9_test.py
-    or
-        sudo python3 TP2in9_test.py
+
+```bash
+sudo python3 TP2in9_test.py
+```
 
 ## Overclocking
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.
 To do this, insert the following in /boot/config.txt and restart
 
-1
-over_voltage = 6
-2
-arm_freq = 1300
-The CPU then throttles earlier under load or gets hot faster.
+1. over_voltage = 6
+2. arm_freq = 1300
+
+3. The CPU then throttles earlier under load or gets hot faster.
 Even without over_voltage, my Zero 2 runs stably at 1.2 GHz in a standard housing. Idle temps ~ 42 ° C
 
 <p align="center">
