@@ -20,10 +20,10 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 
 </p>
 <p>
-- Change new SD-card
+- Change new SD-card (could be faulty SD-card)
 </p>
 <p>
-- Setup your new SD-card on raspberry pi 3/4, (basic setup + wifi) then move the SD-card to your Raspberry pi ZERO
+- Setup your SD-card on raspberry pi 3/4, (basic setup + wifi) then move the SD-card to your Raspberry pi ZERO
 </p>
 </details>
 
