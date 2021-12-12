@@ -1,6 +1,9 @@
 # pi-ZERO-volumio-epaper
-
 ###
+
+<p align="center">
+<img src="https://www.waveshare.com/img/devkit/LCD/2.13inch-Touch-e-Paper-HAT-with-case/2.13inch-Touch-e-Paper-HAT-with-case-details-1.jpg
+</p>
 
 ## Basic information:
 This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT module.
