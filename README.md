@@ -34,11 +34,11 @@ sudo nano /boot/config.txt
 ```
 Then add to last line
 ```bash
-dtparam=i2c=on,spi=on
+dtparam=spi=on
 ```
 or
 ```bash
-dtparam=spi=on
+dtparam=i2c=on,spi=on
 ```
 
 ## Installation library
