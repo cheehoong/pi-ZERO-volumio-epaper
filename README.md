@@ -12,8 +12,8 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 - [ABS Case](https://www.waveshare.com/2.13inch-Touch-e-Paper-HAT-with-case.htm)
 
 ## Install and config Volumio 3
-- [volumio](https://volumio.com/en/get-started)
-- 
+- [volumio](https://volumio.com/en/get-started) <-- Download and install volumio 3
+
 
 > If you not able to boot volumio 3 on Raspberry pi ZERO 2 W, You can try below
 >- Change new SD-card
