@@ -43,7 +43,8 @@ dtparam=i2c=on,spi=on
 
 ## Installation library
 
-python3
+### Step 1
+Install python3
 ```bash
     sudo apt-get update
     sudo apt-get install python3-pip
@@ -52,12 +53,23 @@ python3
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
 ```
-
-## Basic use:
+### Step 2
+Install pi-ZERO-volumio-epapper
 
 ```bash
-sudo python3 TP2in9_test.py
+git clone https://github.com/cheehoong/pi-ZERO-volumio-epapper.git
+chmod +x ~/pi-ZERO-volumio-epapper/pi-volumio-epapper.py
+sudo cp ~/pi-ZERO-volumio-epapper/pi-volumio-epapper.service /lib/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable pi-volumio-epapper.service
+reboot
+````
+## Installation steps (Update)
+```bash
+sudo systemctl disable oledui.service
+sudo rm -r pi-volumio-epapper:
 ```
+Then do Step 2:
 
 ## Overclocking
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.

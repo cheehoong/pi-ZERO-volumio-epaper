@@ -13,7 +13,6 @@ from TP_lib import epd2in13_V2
 import time
 import logging
 from PIL import Image,ImageDraw,ImageFont
-import traceback
 import threading
 
 logging.basicConfig(level=logging.DEBUG)
