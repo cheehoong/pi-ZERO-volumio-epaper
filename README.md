@@ -60,7 +60,7 @@ The CPU then throttles earlier under load or gets hot faster.
 Even without over_voltage, my Zero 2 runs stably at 1.2 GHz in a standard housing. Idle temps ~ 42 ° C
 
 <p align="center">
-<img src="https://vmstan.com/content/images/2021/02/gs-logo.svg" width="300" alt="Gravity Sync">
+<img src="https://assets.raspberrypi.com/static/51035ec4c2f8f630b3d26c32e90c93f1/2b8d7/zero2-hero.webp" alt width="603" height=""400"
 </p>
 
 ## Power consumption
