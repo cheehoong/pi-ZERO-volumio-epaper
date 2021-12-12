@@ -63,10 +63,11 @@ sudo python3 TP2in9_test.py
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.
 To do this, insert the following in /boot/config.txt and restart
 
-1. over_voltage = 6
-2. arm_freq = 1300
-
-3. The CPU then throttles earlier under load or gets hot faster.
+```bash
+over_voltage = 6
+arm_freq = 1300
+```
+The CPU then throttles earlier under load or gets hot faster.
 Even without over_voltage, my Zero 2 runs stably at 1.2 GHz in a standard housing. Idle temps ~ 42 ° C
 
 <p align="center">
