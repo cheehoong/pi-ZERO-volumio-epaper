@@ -11,7 +11,9 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 - [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w)
 - [ABS Case](https://www.waveshare.com/2.13inch-Touch-e-Paper-HAT-with-case.htm)
 
-
+## Install and config Volumio 3
+- [volumio](https://volumio.com/en/get-started)
+- 
 
 ## Installation library
 
