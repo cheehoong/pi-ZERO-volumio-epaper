@@ -16,10 +16,8 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 
 
 <details><summary>If you not able to boot volumio 3 on Raspberry pi ZERO 2 W, Click here</summary>
-<p>
 - Change new SD-card
 - Setup your new SD-card on raspberry pi 3/4, (basic setup + wifi) then move the SD-card to your Raspberry pi ZERO
-</p>
 </details>
 
 ## Installation library
