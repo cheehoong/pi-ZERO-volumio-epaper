@@ -1,8 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c41d1691-31c6-44c6-9929-f04f7326466c" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pi-volumio-epaper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pi-ZERO-volumio-epaper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pi-ZERO-volumio-epaper.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Menu.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_0.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_1.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_2.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_3.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_4.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_5.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_6.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_7.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_8.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_1_9.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_0.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_1.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_2.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_3.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_4.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_5.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_6.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_7.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_8.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/Photo_2_9.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/White_board.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/01d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/01n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/02d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/02n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/03d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/03n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/04d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/04n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/09d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/09n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/10d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/10n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/11d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/11n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/13d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/13n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/50d.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/icon/50n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/screen_output.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/pic/2in9/template.bmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +76,40 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pi-volumio-epaper.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="pi ZERO epaper" type="PythonConfigurationType" factoryName="Python">
+      <module name="pi-ZERO-volumio-epaper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pi-volumio-epaper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -224,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639276426262</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Initial commit">
+      <created>1639302295452</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1639302295452</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
