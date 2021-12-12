@@ -73,9 +73,10 @@ Even without over_voltage, my Zero 2 runs stably at 1.2 GHz in a standard housin
 ## Power consumption
 Unfortunately, the higher performance also leads to higher power consumption, which is only relevant for battery operation.
 
-|Zero 1 W|0.9 W|
-|Zero 2 W (1 core)|1.0 W|
-|Zero 2 W (4 cores)|2.2 W|
+| Zero 1 W            | 0.9 W       |
+|---------------------|-------------|
+| Zero 2 W (1 core)   | 1.0 W       |
+| Zero 2 W (4 cores)  | 2.2 W       |
 
 CPU stress test
 The idle power consumption of the Zero 2 is only slightly higher than that of the Zero 1 (0.5 W instead of 0.4 W).
