@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41d1691-31c6-44c6-9929-f04f7326466c" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/python/examples/scratch_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pi-ZERO-volumio-epaper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pi-ZERO-volumio-epaper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/examples/TP2in13_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/examples/TP2in13_test.py" afterDir="false" />
-    </list>
+    <list default="true" id="c41d1691-31c6-44c6-9929-f04f7326466c" name="Changes" comment="Initial commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,8 +36,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\python\examples" />
       <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper" />
+      <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\python\lib" />
+      <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\python\examples" />
     </key>
   </component>
   <component name="RunManager" selected="Python.scratch_1">
@@ -142,7 +138,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/examples/scratch_1.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\scratch_1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -393,7 +389,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639350934715</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Initial commit">
+      <created>1639403771991</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1639403771991</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Initial commit">
+      <created>1639403824065</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1639403824065</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

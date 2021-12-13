@@ -28,7 +28,6 @@ gt = gt1151.GT1151()
 GT_Dev = gt1151.GT_Development()
 GT_Old = gt1151.GT_Development()
 
-
 image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 
 draw = ImageDraw.Draw(image)
