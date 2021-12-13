@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c41d1691-31c6-44c6-9929-f04f7326466c" name="Changes" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
       <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\python\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.scratch_1">
+  <component name="RunManager" selected="Python.scratch">
     <configuration name="display" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,7 +130,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch_1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -140,7 +142,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\scratch_1.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -154,12 +156,12 @@
       <item itemvalue="Python.scratch" />
       <item itemvalue="Python.display" />
       <item itemvalue="Python.oledui" />
-      <item itemvalue="Python.scratch_1" />
+      <item itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.scratch_1" />
         <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.oledui" />
         <item itemvalue="Python.display" />
       </list>
@@ -412,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639404362925</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Initial commit">
+      <created>1639404455411</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1639404455411</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

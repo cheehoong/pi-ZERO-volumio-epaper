@@ -71,6 +71,14 @@ sudo rm -r pi-volumio-epapper:
 ```
 Then do Step 2:
 
+## Run
+
+```bash
+sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper
+sudo python3 pi-volumio-epapper.py
+sudo python3 test.py
+```
+
 ## Overclocking
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.
 To do this, insert the following in /boot/config.txt and restart
