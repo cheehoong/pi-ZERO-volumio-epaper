@@ -7,15 +7,14 @@ fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
-    
-from TP_lib import icnt86
-from TP_lib import epd2in9_V2
-from TP_lib import weather_2in9_V2
+
+import icnt86
+import epd2in9_V2
+import weather_2in9_V2
 
 import time 
 import logging
 from PIL import Image, ImageDraw, ImageFont
-import traceback
 import threading
 
 logging.basicConfig(level=logging.DEBUG)
