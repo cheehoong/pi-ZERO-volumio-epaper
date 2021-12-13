@@ -6,8 +6,8 @@ import sys
 import time
 import requests
 import logging
-from python.lib import gt1151
-from python.lib import epd2in13_V2
+import gt1151
+import epd2in13_V2
 from PIL import Image, ImageDraw, ImageFont
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic/2in13')
