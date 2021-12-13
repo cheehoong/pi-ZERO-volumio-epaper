@@ -51,15 +51,3 @@ draw.rectangle((16, 130, 56, 180), fill=0)
 draw.chord((90, 130, 150, 190), 0, 360, fill=0)
 epd.display(epd.getbuffer(image.rotate(90)))
 time.sleep(2)
-
-except IOError as e:
-logging.info(e)
-
-except KeyboardInterrupt:
-logging.info("ctrl + c:")
-flag_t = 0
-epd.sleep()
-time.sleep(2)
-t.join()
-epd.Dev_exit()
-exit()
