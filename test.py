@@ -2,20 +2,15 @@
 # -*- coding:utf-8 -*-
 
 import os
-import sys
 import time
 import requests
 import logging
+import gt1151
+import epd2in13_V2
+from PIL import Image, ImageDraw, ImageFont
 
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic/2in13')
-fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
-libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
-if os.path.exists(libdir):
-    sys.path.append(libdir)
-
-from python.lib import gt1151
-from python.lib import epd2in13_V2
-from PIL import Image, ImageDraw, ImageFont
+font = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
@@ -35,7 +30,6 @@ image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 
 logging.info("draw")
 draw = ImageDraw.Draw(image)
-font = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 draw.rectangle((0, 10, 200, 34), fill=0)
 draw.text((8, 12), r2['title'], font=font, fill=255)
 draw.text((8, 24), 'hello world', font=font, fill=255)
