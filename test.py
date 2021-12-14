@@ -24,7 +24,7 @@ image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 logging.info("draw")
 draw = ImageDraw.Draw(image)
 draw.rectangle((0, 10, 200, 34), fill=0)
-draw.line((16, 60, 56, 60), fill=0)
+draw.line((1, 60, 56, 60), fill=0)
 draw.line((56, 60, 56, 110), fill=0)
 draw.line((16, 110, 56, 110), fill=0)
 draw.line((16, 110, 16, 60), fill=0)
