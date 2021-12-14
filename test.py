@@ -2,18 +2,14 @@
 # -*- coding:utf-8 -*-
 
 import os
-import sys
 import time
 import requests
 import logging
 from PIL import Image, ImageDraw, ImageFont
-import lib.epd2in13_V2
-import lib.gt1151
+import epd2in13_V2
+import gt1151
+from TP2in13_test import picdir
 
-picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic/2in13')
-libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
-if os.path.exists(libdir):
-    sys.path.append(libdir)
 font = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
 logging.basicConfig(level=logging.DEBUG)
