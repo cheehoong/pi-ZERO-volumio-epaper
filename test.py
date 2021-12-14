@@ -2,10 +2,8 @@
 # -*- coding:utf-8 -*-
 
 import logging
-import os
 import time
 
-import requests
 from PIL import Image, ImageDraw, ImageFont
 
 from libz import epd2in13_V2
@@ -13,10 +11,6 @@ from libz import gt1151
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
-
-logging.info("1")
-response2 = requests.get("http://volumio0.local:3000/api/v1/getState")
-r2 = response2.json()
 
 logging.info("epd2in13_V2 Touch Demo")
 epd = epd2in13_V2.EPD_2IN13_V2()
