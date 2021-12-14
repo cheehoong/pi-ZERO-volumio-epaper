@@ -1,5 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
+__init__.py file
+
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import os
 import time

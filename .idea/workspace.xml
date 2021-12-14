@@ -24,6 +24,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="229Ib8BSqm86EMM4DTO835E4X4Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -49,8 +52,8 @@
       <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\python\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="display" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.test (1)">
+    <configuration name="epd2in13_V2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -58,11 +61,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Volumio-OledUI" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lib" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Volumio-OledUI/display.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lib/epd2in13_V2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -71,7 +74,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="oledui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="epdconfig" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -79,11 +82,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Volumio-OledUI" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lib" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Volumio-OledUI/oledui.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lib/epdconfig.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,6 +137,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pi-ZERO-volumio-epaper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,16 +182,18 @@
     <list>
       <item itemvalue="Python.pi ZERO epaper" />
       <item itemvalue="Python.scratch" />
-      <item itemvalue="Python.display" />
-      <item itemvalue="Python.oledui" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.epd2in13_V2" />
+      <item itemvalue="Python.epdconfig" />
+      <item itemvalue="Python.test (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python.epd2in13_V2" />
+        <item itemvalue="Python.epdconfig" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.scratch" />
-        <item itemvalue="Python.oledui" />
-        <item itemvalue="Python.display" />
       </list>
     </recent_temporary>
   </component>
@@ -179,27 +205,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639243446104</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Initial commit">
-      <created>1639275353903</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1639275353903</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Initial commit">
-      <created>1639275431342</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1639275431342</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Initial commit">
-      <created>1639275569932</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1639275569932</updated>
     </task>
     <task id="LOCAL-00021" summary="Initial commit">
       <created>1639275611543</created>
@@ -523,7 +528,28 @@
       <option name="project" value="LOCAL" />
       <updated>1639499974095</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Initial commit">
+      <created>1639500028215</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1639500028215</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Initial commit">
+      <created>1639500143840</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1639500143840</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Initial commit">
+      <created>1639500265510</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1639500265510</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
