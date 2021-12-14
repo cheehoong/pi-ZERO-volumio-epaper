@@ -81,7 +81,7 @@ sudo python3 pi-volumio-epapper.py
 sudo python3 test.py
 ```
 
-## Overclocking
+## Overclocking (Optional)
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.
 To do this, insert the following in /boot/config.txt and restart
 
