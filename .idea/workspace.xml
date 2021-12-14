@@ -40,7 +40,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/python/examples" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -179,34 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639243446104</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Initial commit">
-      <created>1639273821980</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1639273821980</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Initial commit">
-      <created>1639274446514</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1639274446514</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Initial commit">
-      <created>1639275074045</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1639275074045</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Initial commit">
-      <created>1639275155024</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1639275155024</updated>
     </task>
     <task id="LOCAL-00017" summary="Initial commit">
       <created>1639275269855</created>
@@ -523,7 +495,35 @@
       <option name="project" value="LOCAL" />
       <updated>1639499502417</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Initial commit">
+      <created>1639499591172</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1639499591172</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Initial commit">
+      <created>1639499723618</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1639499723618</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Initial commit">
+      <created>1639499787749</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1639499787749</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Initial commit">
+      <created>1639499882153</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1639499882153</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
