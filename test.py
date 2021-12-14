@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 import os
+import sys
 import time
 import requests
 import logging
@@ -12,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 import epd2in13_V2
 import gt1151
 from TP2in13_test import picdir
-
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 font = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 
 logging.basicConfig(level=logging.DEBUG)
