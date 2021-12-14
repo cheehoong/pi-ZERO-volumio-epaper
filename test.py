@@ -11,9 +11,6 @@ from PIL import Image, ImageDraw, ImageFont
 from libz import epd2in13_V2
 from libz import gt1151
 
-font = ImageFont.truetype("Font.ttc", 24)
-print(font)
-
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
 
@@ -33,9 +30,6 @@ image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 logging.info("draw")
 draw = ImageDraw.Draw(image)
 draw.rectangle((0, 10, 200, 34), fill=0)
-draw.text((8, 12), r2['title'], font=font, fill=255)
-draw.text((8, 24), 'hello world', font=font, fill=255)
-draw.text((8, 36), u'微雪电子', font=font, fill=0)
 draw.line((16, 60, 56, 60), fill=0)
 draw.line((56, 60, 56, 110), fill=0)
 draw.line((16, 110, 56, 110), fill=0)
