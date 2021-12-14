@@ -6,7 +6,7 @@ import time
 import requests
 import logging
 from PIL import Image, ImageDraw, ImageFont
-import epd2in13_V2
+import lib.epd2in13_V2
 import gt1151
 from TP2in13_test import picdir
 
