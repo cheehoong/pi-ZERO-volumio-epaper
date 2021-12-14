@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c41d1691-31c6-44c6-9929-f04f7326466c" name="Changes" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,41 +214,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639243446104</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Initial commit">
-      <created>1639409043134</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1639409043134</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Initial commit">
-      <created>1639409276201</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1639409276201</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Initial commit">
-      <created>1639409914848</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1639409914848</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Initial commit">
-      <created>1639410265219</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1639410265219</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Initial commit">
-      <created>1639410643582</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1639410643582</updated>
     </task>
     <task id="LOCAL-00043" summary="Initial commit">
       <created>1639410662575</created>
@@ -558,7 +523,42 @@
       <option name="project" value="LOCAL" />
       <updated>1639502894137</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Initial commit">
+      <created>1639503482216</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1639503482216</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Initial commit">
+      <created>1639503529270</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1639503529270</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Initial commit">
+      <created>1639503563052</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1639503563052</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Initial commit">
+      <created>1639503601930</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1639503601930</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Initial commit">
+      <created>1639503635516</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1639503635516</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
