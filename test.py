@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 from libz import epd2in13_V2
 from libz import gt1151
 
-font = ImageFont.truetype("~/fonts/Roboto-Black.ttc", 24)
+font = ImageFont.truetype("Font.ttc", 24)
 print(font)
 
 logging.basicConfig(level=logging.DEBUG)
