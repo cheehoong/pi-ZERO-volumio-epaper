@@ -1,4 +1,4 @@
-import epdconfig as config
+from libz import epdconfig as config
 
 
 class GT_Development:
