@@ -8,8 +8,8 @@ import time
 import requests
 from PIL import Image, ImageDraw, ImageFont
 
-from lib import epd2in13_V2
-from lib import gt1151
+from libz import epd2in13_V2
+from libz import gt1151
 from TP2in13_test import picdir
 
 font = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)

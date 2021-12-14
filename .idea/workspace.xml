@@ -5,12 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c41d1691-31c6-44c6-9929-f04f7326466c" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/libz/TP2in13_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/TP2in9_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/display.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/epd2in13_V2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/epd2in9_V2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/epdconfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/gt1151.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/icnt86.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/oledui.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/oledui.service" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libz/weather_2in9_V2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pi-ZERO-volumio-epaper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pi-ZERO-volumio-epaper.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/TP2in13_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/TP2in9_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/display.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/epdconfig.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/oledui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/weather_2in9_V2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,7 +82,7 @@
       <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\python\examples" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test (1)">
+  <component name="RunManager" selected="Python.test2">
     <configuration name="epd2in13_V2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -118,27 +146,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pi-ZERO-volumio-epaper" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,21 +188,42 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pi-ZERO-volumio-epaper" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.pi ZERO epaper" />
-      <item itemvalue="Python.scratch" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.epd2in13_V2" />
       <item itemvalue="Python.epdconfig" />
       <item itemvalue="Python.test (1)" />
+      <item itemvalue="Python.test2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test2" />
         <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.epd2in13_V2" />
         <item itemvalue="Python.epdconfig" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.scratch" />
       </list>
     </recent_temporary>
   </component>
@@ -207,13 +235,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639243446104</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Initial commit">
-      <created>1639403824065</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1639403824065</updated>
     </task>
     <task id="LOCAL-00034" summary="Initial commit">
       <created>1639404362925</created>
@@ -551,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639501842335</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Initial commit">
+      <created>1639501961370</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1639501961370</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
