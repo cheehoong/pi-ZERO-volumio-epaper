@@ -50,6 +50,6 @@ draw.text((8, 12), 'Hello world!', font=font15, fill=255)
 draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
 
 epd.displayPartBaseImage(epd.getbuffer(image11))
-epd.display(image11)
+DrawImage = ImageDraw.Draw(image11)
 
 time.sleep(2)
