@@ -37,8 +37,10 @@ image = Image.open(os.path.join(picdir, 'Menu.bmp'))
 epd.displayPartBaseImage(epd.getbuffer(image))
 DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
+time.sleep(2)
 
 logging.info("draw")
+epd.Clear(0xFF)
 image11 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 draw = ImageDraw.Draw(image11)
 draw.line((16, 60, 56, 60), fill=0)
@@ -47,11 +49,7 @@ draw.line((16, 110, 56, 110), fill=0)
 draw.text((8, 12), 'Hello world!', font=font15, fill=255)
 draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
 
-
-
-epd.Clear(0xFF)
-epd.displayPartBaseImage(epd.getbuffer(image))
-epd.display()
-
+epd.displayPartBaseImage(epd.getbuffer(image11))
+epd.display(image11)
 
 time.sleep(2)
