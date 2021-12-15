@@ -6,7 +6,7 @@ import logging
 import time
 from libz import epd2in13_V2
 from libz import gt1151
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image,ImageDraw,ImageFont
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
@@ -32,8 +32,8 @@ except IOError as e:
     print(e)
 
     # Drawing on the image
-    font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
-    font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
+    font15 = ImageFont.truetype(fontdir, 'Font.ttc'), 15)
+    font24 = ImageFont.truetype(fontdir, 'Font.ttc'), 24)
 
     image = Image.open(picdir, 'Menu.bmp')
     epd.displayPartBaseImage(epd.getbuffer(image))
