@@ -17,26 +17,26 @@ logging.info(picdir)
 
 logging.info("Start initial")
 
-    logging.info("epd2in13_V2 Touch Demo")
-    epd = epd2in13_V2.EPD_2IN13_V2()
-    gt = gt1151.GT1151()
-    GT_Dev = gt1151.GT_Development()
-    GT_Old = gt1151.GT_Development()
+logging.info("epd2in13_V2 Touch Demo")
+epd = epd2in13_V2.EPD_2IN13_V2()
+gt = gt1151.GT1151()
+GT_Dev = gt1151.GT_Development()
+GT_Old = gt1151.GT_Development()
 
-    logging.info("init and Clear")
-    epd.init(epd.FULL_UPDATE)
-    gt.GT_Init()
-    epd.Clear(0xFF)
+logging.info("init and Clear")
+epd.init(epd.FULL_UPDATE)
+gt.GT_Init()
+epd.Clear(0xFF)
 
-    # Drawing on the image
-    font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
-    font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
-    logging.info(font15)
+# Drawing on the image
+font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
+font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
+logging.info(font15)
 
-    image = Image.open(picdir, 'Menu.bmp')
-    epd.displayPartBaseImage(epd.getbuffer(image))
-    DrawImage = ImageDraw.Draw(image)
-    epd.init(epd.PART_UPDATE)
+image = Image.open(picdir, 'Menu.bmp')
+epd.displayPartBaseImage(epd.getbuffer(image))
+DrawImage = ImageDraw.Draw(image)
+epd.init(epd.PART_UPDATE)
 
 logging.info("draw")
 image11 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
