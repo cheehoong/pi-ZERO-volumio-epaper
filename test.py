@@ -41,5 +41,7 @@ except IOError as e:
     epd.init(epd.PART_UPDATE)
 
 logging.info("draw")
+DrawImage.text((0, 0), 'Quoth the Raven “Nevermore.”', font=font15, fill=0, align='left')
+
 
 time.sleep(2)
