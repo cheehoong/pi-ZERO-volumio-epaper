@@ -43,6 +43,8 @@ except IOError as e:
     epd.displayPartBaseImage(epd.getbuffer(image))
     DrawImage = ImageDraw.Draw(image)
     epd.init(epd.PART_UPDATE)
+    logging.info(image)
+    logging.info(DrawImage)
 
 logging.info("draw")
 DrawImage.text((0, 0), 'Quoth the Raven “Nevermore.”', font=font15, fill=0, align='left')
