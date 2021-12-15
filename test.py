@@ -41,7 +41,7 @@ except IOError as e:
     epd.init(epd.PART_UPDATE)
 
 logging.info("draw")
-image = Image.new('1', (epd.EPD_WIDTH, epd.EPD_HEIGHT), 255)  # 255: clear the frame
+image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 draw = ImageDraw.Draw(image)
 font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 24)
 draw.rectangle((0, 10, 200, 34), fill=0)
