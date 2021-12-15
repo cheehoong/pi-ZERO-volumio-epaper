@@ -9,7 +9,7 @@ from libz import gt1151
 from PIL import Image, ImageDraw, ImageFont
 
 picdir = 'images'  # Points to pic directory
-fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
+fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
