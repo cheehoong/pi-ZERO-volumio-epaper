@@ -234,9 +234,9 @@ button.when_pressed = lambda: togglebutton(display) # Note missing brackets, it'
 
 # Initialise some constants
 
-rabbit_icon = Image.open('images/rabbitsq.png').resize((300, 300)).convert("RGBA")
-pause_icons = Image.open('images/pause.png').resize((240, 240)).convert("RGBA")
-mute_icons = Image.open('images/mute.png').resize((240, 240)).convert("RGBA")
+rabbit_icon = Image.open('pic/rabbitsq.png').resize((300, 300)).convert("RGBA")
+pause_icons = Image.open('pic/pause.png').resize((240, 240)).convert("RGBA")
+mute_icons = Image.open('pic/mute.png').resize((240, 240)).convert("RGBA")
 
 coversize = config['display']['coversize']
 mutethresh = 1
