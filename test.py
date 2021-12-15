@@ -13,11 +13,6 @@ picdir = 'images'  # Points to pic directory
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
 
-logging.info("epd2in13_V2 Touch Demo")
-epd = epd2in13_V2.EPD_2IN13_V2()
-gt = gt1151.GT1151()
-
-
 logging.info("clear the frame")
 image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 
