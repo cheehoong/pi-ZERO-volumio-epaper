@@ -10,6 +10,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 picdir = 'images'  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
+logging.info(picdir)
+logging.info(fontdir)
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
