@@ -41,17 +41,16 @@ time.sleep(2)
 
 logging.info("draw")
 epd.Clear(0xFF)
-with Image.open(os.path.join(picdir, 'Empty.bmp')) as im:
-    draw = ImageDraw.Draw(im)
-    draw.rectangle((0, 10, 20, 34), fill=1)
-    draw.line((16, 60, 56, 60), fill=0)
-    draw.line((56, 60, 56, 110), fill=0)
-    draw.line((16, 110, 56, 110), fill=0)
-    logging.info("drawline")
-    draw.text((8, 12), 'Hello world!', font=font15, fill=1)
-    draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
 
-    epd.displayPartBaseImage(epd.getbuffer(im))
-    epd.init(epd.PART_UPDATE)
+im = Image.open(os.path.join(picdir, 'Empty.bmp'))
+epd.displayPartBaseImage(epd.getbuffer(im))
+draw = ImageDraw.Draw(im)
+draw.rectangle((0, 10, 20, 34), fill=1)
+draw.line((16, 60, 56, 60), fill=0)
+logging.info("drawline")
+draw.text((8, 12), 'Hello world!', font=font15, fill=1)
+draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
+
+epd.init(epd.PART_UPDATE)
 
 time.sleep(2)
