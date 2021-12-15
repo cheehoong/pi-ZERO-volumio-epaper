@@ -43,7 +43,7 @@ except IOError as e:
 logging.info("draw")
 image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 draw = ImageDraw.Draw(image)
-font = ImageFont.truetype(fontdir,'Font.ttf', 24)
+font = ImageFont.truetype(fontdir,'Font.ttf', 1)
 draw.rectangle((0, 10, 200, 34), fill=0)
 draw.text((8, 12), 'Hello world!', font=font, fill=255)
 draw.text((8, 36), 'e-Paper Demo', font=font, fill=0)
