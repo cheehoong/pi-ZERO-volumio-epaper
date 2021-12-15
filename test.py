@@ -35,7 +35,7 @@ except IOError as e:
     font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
     font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
 
-    image = Image.open(os.path.join(fontdir, 'Menu.bmp')
+    image = Image.open(os.path.join(picdir, 'Menu.bmp')
     epd.displayPartBaseImage(epd.getbuffer(image))
     DrawImage = ImageDraw.Draw(image)
     epd.init(epd.PART_UPDATE)
