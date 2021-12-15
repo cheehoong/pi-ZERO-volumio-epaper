@@ -1,13 +1,14 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
+import os
 import logging
 import time
-
-from PIL import Image, ImageDraw, ImageFont
-
 from libz import epd2in13_V2
 from libz import gt1151
+from PIL import Image, ImageDraw, ImageFont
+
+picdir = 'images'  # Points to pic directory
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
@@ -15,11 +16,27 @@ flag_t = 1
 logging.info("epd2in13_V2 Touch Demo")
 epd = epd2in13_V2.EPD_2IN13_V2()
 gt = gt1151.GT1151()
-GT_Dev = gt1151.GT_Development()
-GT_Old = gt1151.GT_Development()
+
 
 logging.info("clear the frame")
 image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
+
+logging.info("Start initial")
+try:
+    logging.info("epd2in13_V2 Touch Demo")
+
+    epd = epd2in13_V2.EPD_2IN13_V2()
+    gt = gt1151.GT1151()
+    GT_Dev = gt1151.GT_Development()
+    GT_Old = gt1151.GT_Development()
+
+    logging.info("init and Clear")
+    epd.init(epd.FULL_UPDATE)
+    gt.GT_Init()
+    epd.Clear(0xFF)
+
+except IOError as e:
+    print(e)
 
 logging.info("draw")
 draw = ImageDraw.Draw(image)
