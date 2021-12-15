@@ -41,8 +41,8 @@ except IOError as e:
     epd.init(epd.PART_UPDATE)
 
 logging.info("draw")
-image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
-draw = ImageDraw.Draw(image)
+image11 = Image.new(mode=‘1’, size=(epd.width, epd.height), color=255), 255)  # 255: clear the frame
+draw = ImageDraw.Draw(image11)
 draw.rectangle((0, 10, 200, 34), fill=0)
 draw.text((8, 12), 'Hello world!', font=font15, fill=255)
 draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
