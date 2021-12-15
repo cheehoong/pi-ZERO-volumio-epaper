@@ -13,7 +13,7 @@ flag_t = 1
 
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'images')  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
-
+logging.info(picdir)
 
 logging.info("Start initial")
 try:
