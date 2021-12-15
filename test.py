@@ -8,13 +8,15 @@ from libz import epd2in13_V2
 from libz import gt1151
 from PIL import Image, ImageDraw, ImageFont
 
+logging.basicConfig(level=logging.DEBUG)
+flag_t = 1
+
 picdir = 'images'  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 logging.info(picdir)
 logging.info(fontdir)
 
-logging.basicConfig(level=logging.DEBUG)
-flag_t = 1
+
 
 logging.info("Start initial")
 try:
