@@ -16,7 +16,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 logging.info(picdir)
 
 logging.info("Start initial")
-try:
+
     logging.info("epd2in13_V2 Touch Demo")
     epd = epd2in13_V2.EPD_2IN13_V2()
     gt = gt1151.GT1151()
@@ -27,9 +27,6 @@ try:
     epd.init(epd.FULL_UPDATE)
     gt.GT_Init()
     epd.Clear(0xFF)
-
-except IOError as e:
-    print(e)
 
     # Drawing on the image
     font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
