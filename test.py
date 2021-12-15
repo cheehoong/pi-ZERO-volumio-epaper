@@ -31,7 +31,6 @@ except IOError as e:
     print(e)
 
 logging.info("draw")
-draw = ImageDraw.Draw(image)
 draw.rectangle((0, 10, 200, 34), fill=1)
 draw.line((1, 60, 56, 60), fill=0)
 draw.line((56, 60, 56, 110), fill=0)
