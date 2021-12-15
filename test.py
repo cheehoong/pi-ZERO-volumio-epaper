@@ -51,9 +51,8 @@ draw.line((16, 60, 56, 60), fill=0)
 logging.info("drawline")
 draw.text((8, 12), 'Hello world!', font=font15, fill=1)
 draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
-
-epd.displayPartBaseImage(epd.getbuffer(im))
-im.rotate(90)
+im2 = im.rotate(90)
+epd.displayPartBaseImage(epd.getbuffer(im2))
 epd.init(epd.PART_UPDATE)
 
 time.sleep(2)
