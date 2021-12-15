@@ -32,7 +32,7 @@ except IOError as e:
     print(e)
 
     # Drawing on the image
-    font15 = ImageFont.truetype(fontdir, 'Font.ttc'), 15)
+    font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
     font24 = ImageFont.truetype(fontdir, 'Font.ttc'), 24)
 
     image = Image.open(picdir, 'Menu.bmp')
