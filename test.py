@@ -33,7 +33,7 @@ font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
 logging.info(font15)
 
-image = Image.open(picdir, 'Menu.bmp')
+image = Image.open(os.path.join(picdir, 'Menu.bmp'))
 epd.displayPartBaseImage(epd.getbuffer(image))
 DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
