@@ -41,7 +41,7 @@ time.sleep(2)
 
 logging.info("draw")
 epd.Clear(0xFF)
-image = Image.new('1', (epd.width, epd.height), 0)  # 255: clear the frame
+image = Image.new('1', (epd.width, epd.height))  # 255: clear the frame
 draw = ImageDraw.Draw(image)
 draw.rectangle((0, 10, 20, 34), fill = 1)
 draw.line((16, 60, 56, 60), fill=0)
