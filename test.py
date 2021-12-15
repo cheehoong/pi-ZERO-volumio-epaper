@@ -51,6 +51,7 @@ with Image.open(os.path.join(picdir, 'Empty.bmp')) as im:
     draw.text((8, 12), 'Hello world!', font=font15, fill=1)
     draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
 
-epd.displayPartBaseImage(epd.getbuffer(image))
-epd.init(epd.PART_UPDATE)
+    epd.displayPartBaseImage(epd.getbuffer(im))
+    epd.init(epd.PART_UPDATE)
+
 time.sleep(2)
