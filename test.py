@@ -43,7 +43,7 @@ except IOError as e:
 logging.info("draw")
 image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 draw = ImageDraw.Draw(image)
-font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 24)
+font = ImageFont.truetype(fonts,'FreeMonoBold.ttf', 24)
 draw.rectangle((0, 10, 200, 34), fill=0)
 draw.text((8, 12), 'Hello world!', font=font, fill=255)
 draw.text((8, 36), 'e-Paper Demo', font=font, fill=0)
@@ -57,9 +57,9 @@ draw.arc((90, 60, 150, 120), 0, 360, fill=0)
 draw.rectangle((16, 130, 56, 180), fill=0)
 draw.chord((90, 130, 150, 190), 0, 360, fill=0)
 
-epd.clear_frame_memory(0xFF)
-epd.set_frame_memory(image, 0, 0)
-epd.display_frame()
+epd.Clear(0xFF)
+epd.displayPartBaseImage(epd.getbuffer(image))
+epd.display()
 
 
 time.sleep(2)
