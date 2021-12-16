@@ -35,7 +35,7 @@ image = Image.open(os.path.join(picdir, 'Menu.bmp'))
 epd.displayPartBaseImage(epd.getbuffer(image))
 DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
-time.sleep(2)
+# time.sleep(2)
 
 logging.info("draw")
 im = Image.open(os.path.join(picdir, 'Empty2.bmp'))
