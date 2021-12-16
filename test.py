@@ -50,6 +50,7 @@ draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
 im2 = im.transpose(method=Image.ROTATE_90)
 image.paste(im2, (2, 2))
 epd.displayPartBaseImage(epd.getbuffer(im2))
+epd.displayPartial(epd.getbuffer(im2))
 epd.init(epd.PART_UPDATE)
 
 time.sleep(2)
