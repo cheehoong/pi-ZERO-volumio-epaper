@@ -31,7 +31,7 @@ epd.Clear(0xFF)
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
 
-image = Image.open(os.path.join(picdir, 'Menu.bmp'))
+image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
 epd.displayPartBaseImage(epd.getbuffer(image))
 DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
