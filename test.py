@@ -13,7 +13,6 @@ flag_t = 1
 
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
-logging.info(picdir)
 
 logging.info("Start initial")
 
@@ -31,7 +30,6 @@ epd.Clear(0xFF)
 # Drawing on the image
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
-logging.info(font15)
 
 # image = Image.open(os.path.join(picdir, 'Menu.bmp'))
 # epd.displayPartBaseImage(epd.getbuffer(image))
@@ -40,10 +38,7 @@ logging.info(font15)
 # time.sleep(2)
 
 logging.info("draw")
-epd.Clear(0xFF)
-
 im = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-# im2 = im.transpose(method=Image.ROTATE_90)
 draw = ImageDraw.Draw(im)
 draw.line((0, 0) + im.size, fill=0)
 draw.line((0, im.size[1], im.size[0], 0), fill=0)
