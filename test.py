@@ -39,7 +39,7 @@ epd.init(epd.PART_UPDATE)
 # time.sleep(2)
 
 
-server = "http://localhost/api/v1/getState"
+server = "http://localhost:3000/api/v1/getState"
 response = requests.get(server)
 info = response.json()
 print(info['title'])
