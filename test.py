@@ -7,6 +7,7 @@ import time
 from libz import epd2in13_V2
 from libz import gt1151
 from PIL import Image, ImageDraw, ImageFont
+import requests
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
@@ -37,15 +38,21 @@ DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
 # time.sleep(2)
 
+
+server = "http://volumio.local/api/v1/getState"
+response = requests.get(server)
+info = response.json()
+print(info['title'])
+
 logging.info("draw")
 im = Image.open(os.path.join(picdir, 'Empty2.bmp'))
 draw = ImageDraw.Draw(im)
-draw.line((0, 0) + im.size, fill=0)
-draw.line((0, im.size[1], im.size[0], 0), fill=0)
-draw.rectangle((0, 10, 20, 34), fill=0)
-draw.line((16, 60, 56, 60), fill=0)
+# draw.line((0, 0) + im.size, fill=0)
+# draw.line((0, im.size[1], im.size[0], 0), fill=0)
+# draw.rectangle((0, 10, 20, 34), fill=0)
+# draw.line((16, 60, 56, 60), fill=0)
 logging.info("drawline")
-draw.text((8, 12), 'Hello world!', font=font24, fill=0)
+draw.text((8, 12), info['title'], font=font24, fill=0)
 draw.text((8, 36), 'e-Paper Demo', font=font15, fill=0)
 im2 = im.transpose(method=Image.ROTATE_90)
 image.paste(im2, (2, 2))
@@ -53,3 +60,4 @@ epd.displayPartial(epd.getbuffer(im2))
 epd.init(epd.PART_UPDATE)
 
 time.sleep(2)
+
