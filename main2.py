@@ -1,12 +1,13 @@
 import logging
 import time
-import configparser
+from configparser import ConfigParser
 from socketIO_client import SocketIO
 
-config = configparser.ConfigParser()
-config.readfp(open(r'config.ini'))
-volumio_host = config.get('volumio', 'volumio_host')
-volumio_port = config.get('volumio', 'volumio_port')
+config = ConfigParser()
+config.read('config.ini')
+print(config.sections())
+volumio_host = config.get('section', 'volumio_host')
+volumio_port = config.getint(section='volumio', option='volumio_port')
 
 socketIO = SocketIO(volumio_host, volumio_port)
 lastpass = {
