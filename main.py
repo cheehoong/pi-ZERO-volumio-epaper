@@ -133,7 +133,7 @@ lastpass = {
   "volume": 60
 }
 logging.info(servername)
-
+logging.info(lastpass['title'] + '000')
 # Drawing on the image
 
 
