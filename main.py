@@ -4,6 +4,8 @@ import argparse
 import os
 import logging
 import time
+from importlib import reload
+
 import yaml
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
