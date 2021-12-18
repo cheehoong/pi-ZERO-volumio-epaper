@@ -4,7 +4,7 @@ import argparse
 import os
 import logging
 import time
-import yaml
+import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 import requests

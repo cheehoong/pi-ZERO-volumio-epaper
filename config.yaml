@@ -1,8 +1,0 @@
-display:
-  vcom: -2.61 
-  inverted: false
-  coversize: 450
-  indent: 180
-  font: Font
-server:
-  name: volumio0.local
