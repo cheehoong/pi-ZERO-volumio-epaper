@@ -137,31 +137,30 @@ logging.info(lastpass['title'] + '000')
 # Drawing on the image
 
 
-image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-epd.displayPartBaseImage(epd.getbuffer(image))
-DrawImage = ImageDraw.Draw(image)
-epd.init(epd.PART_UPDATE)
+# image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+# epd.displayPartBaseImage(epd.getbuffer(image))
+# DrawImage = ImageDraw.Draw(image)
+# epd.init(epd.PART_UPDATE)
 # time.sleep(2)
 
+# server = "http://localhost:3000/api/v1/getState"
+# response = requests.get(server)
+# info = response.json()
+# print(info['title'])
+# print(info['artist'])
 
-server = "http://localhost:3000/api/v1/getState"
-response = requests.get(server)
-info = response.json()
-print(info['title'])
-print(info['artist'])
-
-logging.info("draw")
-im = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-draw = ImageDraw.Draw(im)
+# logging.info("draw")
+# im = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+# draw = ImageDraw.Draw(im)
 # draw.line((0, 0) + im.size, fill=0)
 # draw.line((0, im.size[1], im.size[0], 0), fill=0)
 # draw.rectangle((0, 10, 20, 34), fill=0)
 # draw.line((16, 60, 56, 60), fill=0)
-logging.info("drawline")
-im2 = im.transpose(method=Image.ROTATE_90)
-image.paste(im2, (2, 2))
-epd.displayPartial(epd.getbuffer(im2))
-epd.init(epd.PART_UPDATE)
+# logging.info("drawline")
+# im2 = im.transpose(method=Image.ROTATE_90)
+# image.paste(im2, (2, 2))
+# epd.displayPartial(epd.getbuffer(im2))
+# epd.init(epd.PART_UPDATE)
 
 
 def main():
