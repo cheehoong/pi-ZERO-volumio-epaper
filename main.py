@@ -4,9 +4,7 @@ import argparse
 import os
 import logging
 import time
-
 import yaml
-
 from libz import epd2in13_V2
 from libz import gt1151
 from PIL import Image, ImageDraw, ImageFont
@@ -18,6 +16,8 @@ flag_t = 1
 
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
+font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
+font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
 
 logging.info("Start initial")
 epd = epd2in13_V2.EPD_2IN13_V2()
@@ -142,8 +142,7 @@ lastpass = {
 
 
 # Drawing on the image
-font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
-font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
+
 
 image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
 epd.displayPartBaseImage(epd.getbuffer(image))
