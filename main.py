@@ -71,7 +71,7 @@ def on_push_state(*args):
             logging.info('muted')
             draw.text((38, 70), 'muted', font=font15, fill=0)
         im2 = img.transpose(method=Image.ROTATE_90)
-        image.paste(im2, (2, 2))
+        img.paste(im2, (2, 2))
         epd.displayPartial(epd.getbuffer(im2))
     return
 
