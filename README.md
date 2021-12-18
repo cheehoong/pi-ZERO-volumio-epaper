@@ -86,6 +86,15 @@ sudo python3 pi-volumio-epapper.py
 sudo python3 main.py
 ```
 
+## Chinese Character display
+```bash
+sudo locale-gen zh_CN.UTF-8 UTF-8
+sudo update-locale zh_CN.UTF-8 UTF-8
+export LANGUAGE=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
+```
+
 ## Overclocking (Optional)
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.
 To do this, insert the following in /boot/config.txt and restart
