@@ -3,8 +3,11 @@ import time
 from configparser import ConfigParser
 from socketIO_client import SocketIO
 
+file = 'config.ini'
 config = ConfigParser()
-config.read('config.ini')
+config.read(file)
+config.add_section('ff')
+config.set('ff','aa','bb')
 print(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
 volumio_port = config.getint('volumio', 'volumio_port')

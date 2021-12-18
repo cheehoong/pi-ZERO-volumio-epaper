@@ -1,0 +1,7 @@
+[volumio]
+volumio_host= volumio0.local
+volumio_port= 3000
+
+[epaper]
+log_errors= False
+show_warnings= False
