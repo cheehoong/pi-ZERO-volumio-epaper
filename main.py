@@ -9,6 +9,9 @@ from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 import requests
 
+if os.environ.get('PYTHONIOENCODING', '').lower() not in {'utf-8', 'utf8'}:
+    raise EnvironmentError("Environment variable $PYTHONIOENCODING must be set to 'utf8'")
+
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
 
