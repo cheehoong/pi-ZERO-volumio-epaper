@@ -1,234 +1,195 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-import sys
+import argparse
 import os
-picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic/2in13')
-fontdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
-libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
-if os.path.exists(libdir):
-    sys.path.append(libdir)
-
-import gt1151
-import epd2in13_V2
-import time
 import logging
-from PIL import Image,ImageDraw,ImageFont
-import threading
+import time
+
+import yaml
+
+from libz import epd2in13_V2
+from libz import gt1151
+from PIL import Image, ImageDraw, ImageFont
+from socketIO_client import SocketIO
+import requests
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
 
-def pthread_irq() :
-    print("pthread running")
-    while flag_t == 1 :
-        if(gt.digital_read(gt.INT) == 0) :
-            GT_Dev.Touch = 1
-        else :
-            GT_Dev.Touch = 0
-    print("thread:exit")
+picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Points to pic directory
+fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
-def Show_Photo_Small(image, small):
-    for t in range(1, 5):
-        if(small*2+t > 6):
-            newimage = Image.open(os.path.join(picdir, PhotoPath_S[0]))
-            image.paste(newimage, ((t-1)//2*45+2, (t%2)*124+2))
-        else:
-            newimage = Image.open(os.path.join(picdir, PhotoPath_S[small*2+t]))
-            image.paste(newimage, ((t-1)//2*45+2, (t%2)*124+2))
+logging.info("Start initial")
+epd = epd2in13_V2.EPD_2IN13_V2()
+gt = gt1151.GT1151()
+GT_Dev = gt1151.GT_Development()
+GT_Old = gt1151.GT_Development()
 
-def Show_Photo_Large(image, large):
-    if(large > 6):
-        newimage = Image.open(os.path.join(picdir, PhotoPath_L[0]))
-        image.paste(newimage, (2, 2))
-    else:
-        newimage = Image.open(os.path.join(picdir, PhotoPath_L[large]))
-        image.paste(newimage, (2, 2))
+logging.info("init and Clear")
+epd.init(epd.FULL_UPDATE)
+gt.GT_Init()
 
-def Read_BMP(File, x, y):
-    newimage = Image.open(os.path.join(picdir, File))
-    image.paste(newimage, (x, y))
 
-try:
-    logging.info("epd2in13_V2 Touch Demo")
-    
-    epd = epd2in13_V2.EPD_2IN13_V2()
-    gt = gt1151.GT1151()
-    GT_Dev = gt1151.GT_Development()
-    GT_Old = gt1151.GT_Development()
-    
-    logging.info("init and Clear")
-    epd.init(epd.FULL_UPDATE)
-    gt.GT_Init()
-    epd.Clear(0xFF)
+def parse_args():
+    p = argparse.ArgumentParser(description='Test EPD functionality')
+    p.add_argument('-v', '--virtual', action='store_true',
+                   help='display using a Tkinter window instead of the '
+                        'actual e-paper device (for testing without a '
+                        'physical device)')
+    p.add_argument('-r', '--rotate', default=None, choices=['CW', 'CCW', 'flip'],
+                   help='run the tests with the display rotated by the specified value')
+    p.add_argument('-e', '--error', action='store_true',
+                   help='Brings up the error screen for formatting')
 
-    t = threading.Thread(target = pthread_irq)
-    t.setDaemon(True)
-    t.start()
+    return p.parse_args()
 
-    # Drawing on the image
-    font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
-    font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
-    
-    image = Image.open(os.path.join(picdir, 'Menu.bmp'))
-    epd.displayPartBaseImage(epd.getbuffer(image))
-    DrawImage = ImageDraw.Draw(image)
-    epd.init(epd.PART_UPDATE)
-    
-    i = j = k = ReFlag = SelfFlag = Page = Photo_L = Photo_S = 0
-    PhotoPath_S = [ "Photo_1_0.bmp",
-                    "Photo_1_1.bmp", "Photo_1_2.bmp", "Photo_1_3.bmp", "Photo_1_4.bmp",
-                    "Photo_1_5.bmp", "Photo_1_6.bmp",
-                    ]
-    PhotoPath_L = [ "Photo_2_0.bmp",
-                    "Photo_2_1.bmp", "Photo_2_2.bmp", "Photo_2_3.bmp", "Photo_2_4.bmp",
-                    "Photo_2_5.bmp", "Photo_2_6.bmp",
-                    ]
-    PagePath = ["Menu.bmp", "White_board.bmp", "Photo_1.bmp", "Photo_2.bmp"]
-    
-    while(1):
-        if(i > 12 or ReFlag == 1):
-            if(Page == 1 and SelfFlag == 0):
-                epd.displayPartial(epd.getbuffer(image))
-            else:
-                epd.displayPartial_Wait(epd.getbuffer(image))
-            i = 0
-            k = 0
-            j += 1
-            ReFlag = 0
-            print("*** Draw Refresh ***\r\n")
-        elif(k>50000 and i>0 and Page == 1):
-            epd.displayPartial(epd.getbuffer(image))
-            i = 0
-            k = 0
-            j += 1
-            print("*** Overtime Refresh ***\r\n")
-        elif(j > 50 or SelfFlag):
-            SelfFlag = 0
-            j = 0
-            epd.init(epd.FULL_UPDATE)
-            epd.displayPartBaseImage(epd.getbuffer(image))
-            epd.init(epd.PART_UPDATE)
-            print("--- Self Refresh ---\r\n")
-        else:
-            k += 1
-        # Read the touch input
-        gt.GT_Scan(GT_Dev, GT_Old)
-        if(GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]):
-            continue
-        
-        if(GT_Dev.TouchpointFlag):
-            i += 1
-            GT_Dev.TouchpointFlag = 0
 
-            if(Page == 0  and ReFlag == 0):     #main menu
-                if(GT_Dev.X[0] > 29 and GT_Dev.X[0] < 92 and GT_Dev.Y[0] > 56 and GT_Dev.Y[0] < 95):
-                    print("Photo ...\r\n")
-                    Page = 2
-                    Read_BMP(PagePath[Page], 0, 0)
-                    Show_Photo_Small(image, Photo_S)
-                    ReFlag = 1
-                elif(GT_Dev.X[0] > 29 and GT_Dev.X[0] < 92 and GT_Dev.Y[0] > 153 and GT_Dev.Y[0] < 193): 
-                    print("Draw ...\r\n")
-                    Page = 1
-                    Read_BMP(PagePath[Page], 0, 0)
-                    ReFlag = 1
-                
-            
-            if(Page == 1 and ReFlag == 0):   #white board
-                DrawImage.rectangle([(GT_Dev.X[0], GT_Dev.Y[0]), (GT_Dev.X[0] + GT_Dev.S[0]/8 + 1, GT_Dev.Y[0] + GT_Dev.S[0]/8 + 1)], fill=0)
-                if(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 118 and GT_Dev.Y[0] > 6 and GT_Dev.Y[0] < 30): 
-                    print("Home ...\r\n")
-                    Page = 1
-                    Read_BMP(PagePath[Page], 0, 0)
-                    ReFlag = 1
-                elif(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 118 and GT_Dev.Y[0] > 113 and GT_Dev.Y[0] < 136): 
-                    print("Clear ...\r\n")
-                    Page = 0
-                    Read_BMP(PagePath[Page], 0, 0)
-                    ReFlag = 1
-                elif(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 118 and GT_Dev.Y[0] > 220 and GT_Dev.Y[0] < 242): 
-                    print("Refresh ...\r\n")
-                    SelfFlag = 1
-                    ReFlag = 1
-                
-            
-            if(Page == 2  and ReFlag == 0):  #photo menu
-                if(GT_Dev.X[0] > 97 and GT_Dev.X[0] < 119 and GT_Dev.Y[0] > 113 and GT_Dev.Y[0] < 136): 
-                    print("Home ...\r\n")
-                    Page = 0
-                    Read_BMP(PagePath[Page], 0, 0)
-                    ReFlag = 1
-                elif(GT_Dev.X[0] > 97 and GT_Dev.X[0] < 119 and GT_Dev.Y[0] > 57 and GT_Dev.Y[0] < 78): 
-                    print("Next page ...\r\n")
-                    Photo_S += 1
-                    if(Photo_S > 2): # 6 photos is a maximum of three pages
-                        Photo_S=0
-                    ReFlag = 2
-                elif(GT_Dev.X[0] > 97 and GT_Dev.X[0] < 119 and GT_Dev.Y[0] > 169 and GT_Dev.Y[0] < 190): 
-                    print("Last page ...\r\n")
-                    if(Photo_S == 0):
-                        print("Top page ...\r\n")
-                    else:
-                        Photo_S -= 1
-                        ReFlag = 2
-                elif(GT_Dev.X[0] > 97 and GT_Dev.X[0] < 119 and GT_Dev.Y[0] > 220 and GT_Dev.Y[0] < 242): 
-                    print("Refresh ...\r\n")
-                    SelfFlag = 1
-                    ReFlag = 1
-                elif(GT_Dev.X[0] > 2 and GT_Dev.X[0] < 90 and GT_Dev.Y[0] > 2 and GT_Dev.Y[0] < 248 and ReFlag == 0):
-                    print("Select photo ...\r\n")
-                    Page = 3
-                    Read_BMP(PagePath[Page], 0, 0)
-                    Photo_L = int(GT_Dev.X[0]/46*2 + 2-GT_Dev.Y[0]/124 + Photo_S*2)
-                    Show_Photo_Large(image, Photo_L)
-                    ReFlag = 1
-                if(ReFlag == 2):  # Refresh small photo
-                    ReFlag = 1
-                    Read_BMP(PagePath[Page], 0, 0)
-                    Show_Photo_Small(image, Photo_S)   # show small photo
-                
-            
-            if(Page == 3  and ReFlag == 0):     #view the photo
-                if(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 117 and GT_Dev.Y[0] > 4 and GT_Dev.Y[0] < 25): 
-                    print("Photo menu ...\r\n")
-                    Page = 2
-                    Read_BMP(PagePath[Page], 0, 0)
-                    Show_Photo_Small(image, Photo_S)
-                    ReFlag = 1
-                elif(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 117 and GT_Dev.Y[0] > 57 and GT_Dev.Y[0] < 78): 
-                    print("Next photo ...\r\n")
-                    Photo_L += 1
-                    if(Photo_L > 6):
-                        Photo_L = 1
-                    ReFlag = 2
-                elif(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 117 and GT_Dev.Y[0] > 113 and GT_Dev.Y[0] < 136): 
-                    print("Home ...\r\n")
-                    Page = 0
-                    Read_BMP(PagePath[Page], 0, 0)
-                    ReFlag = 1
-                elif(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 117 and GT_Dev.Y[0] > 169 and GT_Dev.Y[0] < 190): 
-                    print("Last page ...\r\n")
-                    if(Photo_L == 1):
-                        print("Top photo ...\r\n")
-                    else: 
-                        Photo_L -= 1
-                        ReFlag = 2
-                elif(GT_Dev.X[0] > 96 and GT_Dev.X[0] < 117 and GT_Dev.Y[0] > 220 and GT_Dev.Y[0] < 242): 
-                    print("Refresh photo ...\r\n")
-                    SelfFlag = 1
-                    ReFlag = 1
-                if(ReFlag == 2):    # Refresh large photo
-                    ReFlag = 1
-                    Show_Photo_Large(image, Photo_L)
-                
-except IOError as e:
-    logging.info(e)
-    
-except KeyboardInterrupt:    
-    logging.info("ctrl + c:")
-    flag_t = 0
-    epd.sleep()
-    time.sleep(2)
-    t.join()
-    epd.Dev_exit()
-    exit()
+def on_connect():
+    logging.info('connect')
+    return 'connected'
+
+
+def on_push_state(*args):
+    global lastpass
+    # Only run screen update if the key arguments have changed since the last call. Key arguments are:
+    # status
+    # albumart
+    # artist, album, title
+    # Volume crosses mute threshold
+    print(args[0])
+    wasmuted = bool(lastpass['volume'] < mutethresh)
+    ismuted = bool(args[0]['volume'] < mutethresh)
+    wasplaying = bool(lastpass['status'] == 'play')
+    isplaying = bool(args[0]['status'] == 'play')
+    if ((args[0]['title'] != lastpass['title'] or (wasplaying != isplaying)) and args[0]['status'] != 'stop') or \
+            wasmuted != ismuted:
+        lastpass = args[0]
+        img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+        draw = ImageDraw.Draw(img)
+        if args[0]['status'] in ['pause', 'stop']:
+            draw.text((8, 70), 'pause', font=font15, fill=0)
+        if 'artist' in args[0]:
+            draw.text((8, 50), 'by : ' + info['artist'], font=font15, fill=0)
+        if 'album' in args[0] and args[0]['album'] is not None:
+            draw.text((8, 30), 'Album : ' + info['album'], font=font15, fill=0)
+        if 'title' in args[0] and args[0]['title'] is not None:
+            draw.text((8, 10), 'Song : ' + info['title'], font=font15, fill=0)
+
+        vol_x = int(float(args[0]['volume']))
+
+        if vol_x <= mutethresh:
+            logging.info('muted')
+            draw.text((38, 70), 'muted', font=font15, fill=0)
+        im2 = img.transpose(method=Image.ROTATE_90)
+        image.paste(im2, (2, 2))
+        epd.displayPartial(epd.getbuffer(im2))
+    return
+
+
+# get the path of the script
+script_path = os.path.dirname(os.path.abspath(__file__))
+dirname = os.path.dirname(__file__)
+configfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.yaml')
+
+# set script path as current directory
+os.chdir(script_path)
+
+# Read config and Initialise display
+args = parse_args()
+with open(configfile) as f:
+    config = yaml.load(f, Loader=yaml.FullLoader)
+logging.info("Read Config File")
+logging.info(config)
+if not args.virtual:
+    from IT8951.display import AutoEPDDisplay
+
+    logging.info('Initializing EPD...')
+
+    # here, spi_hz controls the rate of data transfer to the device, so a higher
+    # value means faster display refreshes. the documentation for the IT8951 device
+    # says the max is 24 MHz (24000000), but my device seems to still work as high as
+    # 80 MHz (80000000)
+    display = AutoEPDDisplay(vcom=config['display']['vcom'], rotate=args.rotate, spi_hz=60000000)
+
+else:
+    from IT8951.display import VirtualEPDDisplay
+    display = VirtualEPDDisplay(dims=(1448, 1072), rotate=args.rotate)
+
+# Initialise some constants
+
+rabbit_icon = Image.open('pic/rabbitsq.png').resize((300, 300)).convert("RGBA")
+pause_icons = Image.open('pic/pause.png').resize((240, 240)).convert("RGBA")
+mute_icons = Image.open('pic/mute.png').resize((240, 240)).convert("RGBA")
+
+coversize = config['display']['coversize']
+mutethresh = 1
+indent = config['display']['indent']
+servername = config['server']['name']
+fontstring = config['display']['font']
+
+# Derive some constants
+iconheight = display.width-240-indent
+socketIO = SocketIO(servername, 3000)
+socketIO.on('connect', on_connect)
+lastpass = {
+  "artist": "none",
+  "title": "none",
+  "album": "none",
+  "albumart": "none",
+  "status": "none",
+  "volume": 60
+}
+
+
+# Drawing on the image
+font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
+font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
+
+image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+epd.displayPartBaseImage(epd.getbuffer(image))
+DrawImage = ImageDraw.Draw(image)
+epd.init(epd.PART_UPDATE)
+# time.sleep(2)
+
+
+server = "http://localhost:3000/api/v1/getState"
+response = requests.get(server)
+info = response.json()
+print(info['title'])
+print(info['artist'])
+
+logging.info("draw")
+im = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+draw = ImageDraw.Draw(im)
+# draw.line((0, 0) + im.size, fill=0)
+# draw.line((0, im.size[1], im.size[0], 0), fill=0)
+# draw.rectangle((0, 10, 20, 34), fill=0)
+# draw.line((16, 60, 56, 60), fill=0)
+logging.info("drawline")
+im2 = im.transpose(method=Image.ROTATE_90)
+image.paste(im2, (2, 2))
+epd.displayPartial(epd.getbuffer(im2))
+epd.init(epd.PART_UPDATE)
+
+
+def main():
+    while True:
+        # connecting to socket
+        socketIO.on('pushState', on_push_state)
+        # get initial state
+        socketIO.emit('getState', '', on_push_state)
+        # now wait
+        socketIO.wait()
+        logging.info('Reconnection needed')
+        time.sleep(1)
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        socketIO.disconnect()
+        img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+        img.paste(rabbit_icon, (80, 80), rabbit_icon)
+        epd.displayPartial(epd.getbuffer(img))
+        pass
