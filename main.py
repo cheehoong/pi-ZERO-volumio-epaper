@@ -4,17 +4,10 @@ import argparse
 import os
 import logging
 import time
-from importlib import reload
-
 import yaml
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 import requests
-
-import sys
-# sys.setdefaultencoding() does not exist, here!
-reload(sys)  # Reload does the trick!
-sys.setdefaultencoding('UTF8')
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
