@@ -53,11 +53,12 @@ Install python3
     sudo apt-get update
     sudo apt-get install python3-pip
     sudo apt-get install python3-pil
-    sudo apt-get install python3-numpy
-    sudo apt-get install python3-yaml
+    sudo apt-get install python3-numpy 
     sudo apt-get install python3-socketio-client
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
+    sudo pip3 install -U PyYAML
+
 ```
 ### Step 2
 Install pi-ZERO-volumio-epapper

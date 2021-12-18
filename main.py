@@ -98,7 +98,7 @@ os.chdir(script_path)
 # Read config and Initialise display
 args = parse_args()
 with open(configfile) as f:
-    config = yaml.load(f, Loader=yaml.FullLoader)
+    config = yaml.safe_load(f, Loader=yaml.FullLoader)
 logging.info("Read Config File")
 logging.info(config)
 if not args.virtual:
