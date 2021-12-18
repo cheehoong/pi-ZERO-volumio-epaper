@@ -80,7 +80,7 @@ Then do Step 2:
 ```bash
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper
 sudo python3 pi-volumio-epapper.py
-sudo python3 test.py
+sudo python3 main.py
 ```
 
 ## Overclocking (Optional)
