@@ -5,8 +5,6 @@ import os
 import logging
 import time
 import yaml
-from libz import epd2in13_V2
-from libz import gt1151
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 import requests
@@ -19,15 +17,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
 
-logging.info("Start initial")
-epd = epd2in13_V2.EPD_2IN13_V2()
-gt = gt1151.GT1151()
-GT_Dev = gt1151.GT_Development()
-GT_Old = gt1151.GT_Development()
 
-logging.info("init and Clear")
-epd.init(epd.FULL_UPDATE)
-gt.GT_Init()
 
 
 def parse_args():
@@ -102,15 +92,18 @@ with open(configfile) as f:
 logging.info("Read Config File")
 logging.info(config)
 if not args.virtual:
-    from IT8951.display import AutoEPDDisplay
+    from libz import epd2in13_V2
+    from libz import gt1151
 
     logging.info('Initializing EPD...')
+    epd = epd2in13_V2.EPD_2IN13_V2()
+    gt = gt1151.GT1151()
+    GT_Dev = gt1151.GT_Development()
+    GT_Old = gt1151.GT_Development()
 
-    # here, spi_hz controls the rate of data transfer to the device, so a higher
-    # value means faster display refreshes. the documentation for the IT8951 device
-    # says the max is 24 MHz (24000000), but my device seems to still work as high as
-    # 80 MHz (80000000)
-    display = AutoEPDDisplay(vcom=config['display']['vcom'], rotate=args.rotate, spi_hz=60000000)
+    logging.info("init and Clear")
+    epd.init(epd.FULL_UPDATE)
+    gt.GT_Init()
 
 else:
     from IT8951.display import VirtualEPDDisplay
