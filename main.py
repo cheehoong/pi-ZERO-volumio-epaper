@@ -122,7 +122,6 @@ servername = config['server']['name']
 fontstring = config['display']['font']
 
 # Derive some constants
-iconheight = display.width-240-indent
 socketIO = SocketIO(servername, 3000)
 socketIO.on('connect', on_connect)
 lastpass = {
