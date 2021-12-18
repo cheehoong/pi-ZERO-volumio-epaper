@@ -90,6 +90,7 @@ def on_push_state(*args):
 script_path = os.path.dirname(os.path.abspath(__file__))
 dirname = os.path.dirname(__file__)
 configfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.yaml')
+logging.info(configfile)
 
 # set script path as current directory
 os.chdir(script_path)
