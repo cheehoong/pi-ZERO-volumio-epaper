@@ -132,7 +132,7 @@ lastpass = {
   "status": "none",
   "volume": 60
 }
-
+logging.info(servername)
 
 # Drawing on the image
 
