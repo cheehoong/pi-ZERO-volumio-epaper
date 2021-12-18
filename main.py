@@ -9,8 +9,10 @@ from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 import requests
 
-if os.environ.get('PYTHONIOENCODING', '').lower() not in {'utf-8', 'utf8'}:
-    raise EnvironmentError("Environment variable $PYTHONIOENCODING must be set to 'utf8'")
+import sys
+# sys.setdefaultencoding() does not exist, here!
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
@@ -19,8 +21,6 @@ picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Poi
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
-
-
 
 
 def parse_args():
