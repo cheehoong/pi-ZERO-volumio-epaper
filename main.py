@@ -1,21 +1,56 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import argparse
-import os
 import logging
+import os
 import time
-import ConfigParser
+from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
-import requests
+from libz import epd2in13_V2
+from libz import gt1151
 
 logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
 
+# get the path of the script
+file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.ini')
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
+
+# Initialise some constants
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
+rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((30, 30)).convert(0)
+
+# Read config setting
+config = ConfigParser()
+config.read(file)
+print(config.sections())
+volumio_host = config.get('volumio', 'volumio_host')
+volumio_port = config.getint('volumio', 'volumio_port')
+
+# Read config and Initialise display
+logging.info('Initializing EPD...')
+epd = epd2in13_V2.EPD_2IN13_V2()
+gt = gt1151.GT1151()
+GT_Dev = gt1151.GT_Development()
+GT_Old = gt1151.GT_Development()
+
+logging.info("init and Clear")
+epd.init(epd.FULL_UPDATE)
+gt.GT_Init()
+
+
+# Derive some constants
+socketIO = SocketIO(volumio_host, volumio_port)
+lastpass = {
+    "artist": "none",
+    "title": "none",
+    "album": "none",
+    "status": "none",
+    "volume": 60
+}
 
 
 def parse_args():
@@ -28,7 +63,6 @@ def parse_args():
                    help='run the tests with the display rotated by the specified value')
     p.add_argument('-e', '--error', action='store_true',
                    help='Brings up the error screen for formatting')
-
     return p.parse_args()
 
 
@@ -45,94 +79,35 @@ def on_push_state(*args):
     # artist, album, title
     # Volume crosses mute threshold
     print(args[0])
-    wasmuted = bool(lastpass['volume'] < mutethresh)
-    ismuted = bool(args[0]['volume'] < mutethresh)
-    wasplaying = bool(lastpass['status'] == 'play')
-    isplaying = bool(args[0]['status'] == 'play')
-    if ((args[0]['title'] != lastpass['title'] or (wasplaying != isplaying)) and args[0]['status'] != 'stop') or \
-            wasmuted != ismuted:
-        lastpass = args[0]
-        img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-        draw = ImageDraw.Draw(img)
-        if args[0]['status'] in ['pause', 'stop']:
-            draw.text((8, 70), 'pause', font=font15, fill=0)
-        if 'artist' in args[0]:
-            draw.text((8, 50), 'by : ' + lastpass['artist'], font=font15, fill=0)
-        if 'album' in args[0] and args[0]['album'] is not None:
-            draw.text((8, 30), 'Album : ' + lastpass['album'], font=font15, fill=0)
-        if 'title' in args[0] and args[0]['title'] is not None:
-            draw.text((8, 10), 'Song : ' + lastpass['title'], font=font15, fill=0)
+    artist = str(args[0]['artist'])
+    title = str(args[0]['title'])
+    album = str(args[0]['album'])
+    status = str(args[0]['status'])
+    print(artist)
+    print(title)
+    print(album)
+    print(status)
+    lastpass = args[0]
+    img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+    draw = ImageDraw.Draw(img)
+    if args[0]['status'] in ['pause', 'stop']:
+        draw.text((8, 70), 'pause', font=font15, fill=0)
+    if 'artist' in args[0]:
+        draw.text((8, 50), 'by : ' + lastpass['artist'], font=font15, fill=0)
+    if 'album' in args[0] and args[0]['album'] is not None:
+        draw.text((8, 30), 'Album : ' + lastpass['album'], font=font15, fill=0)
+    if 'title' in args[0] and args[0]['title'] is not None:
+        draw.text((8, 10), 'Song : ' + lastpass['title'], font=font15, fill=0)
 
-        vol_x = int(float(args[0]['volume']))
+    vol_x = int(float(args[0]['volume']))
 
-        if vol_x <= mutethresh:
-            logging.info('muted')
-            draw.text((38, 70), 'muted', font=font15, fill=0)
-        im2 = img.transpose(method=Image.ROTATE_90)
-        img.paste(im2, (2, 2))
-        epd.displayPartial(epd.getbuffer(im2))
+    if vol_x <= 1:
+        logging.info('muted')
+        draw.text((38, 70), 'muted', font=font15, fill=0)
+    im2 = img.transpose(method=Image.ROTATE_90)
+    img.paste(im2, (2, 2))
+    epd.displayPartial(epd.getbuffer(im2))
     return
-
-
-# get the path of the script
-script_path = os.path.dirname(os.path.abspath(__file__))
-dirname = os.path.dirname(__file__)
-configfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.yaml')
-logging.info(configfile)
-
-# set script path as current directory
-os.chdir(script_path)
-
-# Read config and Initialise display
-args = parse_args()
-with open(configfile) as f:
-    config = yaml.load(f, Loader=yaml.Loader)
-logging.info("Read Config File")
-logging.info(config)
-if not args.virtual:
-    from libz import epd2in13_V2
-    from libz import gt1151
-
-    logging.info('Initializing EPD...')
-    epd = epd2in13_V2.EPD_2IN13_V2()
-    gt = gt1151.GT1151()
-    GT_Dev = gt1151.GT_Development()
-    GT_Old = gt1151.GT_Development()
-
-    logging.info("init and Clear")
-    epd.init(epd.FULL_UPDATE)
-    gt.GT_Init()
-
-else:
-    from IT8951.display import VirtualEPDDisplay
-    display = VirtualEPDDisplay(dims=(1448, 1072), rotate=args.rotate)
-
-# Initialise some constants
-
-rabbit_icon = Image.open('pic/rabbitsq.png').resize((300, 300)).convert("RGBA")
-pause_icons = Image.open('pic/pause.png').resize((240, 240)).convert("RGBA")
-mute_icons = Image.open('pic/mute.png').resize((240, 240)).convert("RGBA")
-
-coversize = config['display']['coversize']
-mutethresh = 1
-indent = config['display']['indent']
-servername = config['server']['name']
-fontstring = config['display']['font']
-
-# Derive some constants
-socketIO = SocketIO(servername, 3000)
-socketIO.on('connect', on_connect)
-lastpass = {
-  "artist": "none",
-  "title": "none",
-  "album": "none",
-  "albumart": "none",
-  "status": "none",
-  "volume": 60
-}
-logging.info(servername)
-logging.info(lastpass['title'] + '000')
-# Drawing on the image
 
 
 # image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
