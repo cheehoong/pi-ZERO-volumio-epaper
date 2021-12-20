@@ -107,7 +107,7 @@ def on_push_state(*args):
     if vol_x <= 1:
         logging.info('muted')
         draw.text((38, 70), 'muted', font=font20, fill=0)
-    im2 = img.transpose(method=Image.ROTATE_90)
+    im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (2, 2))
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
