@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/IT8951/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT8951/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT8951/img_manip.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT8951/img_manip.pyx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT8951/interface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT8951/spi.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IT8951/spi.pyx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/main2.py" afterDir="false" />
-    </list>
+    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,8 +56,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper" />
       <recent name="C:\Users\lechh\AppData\Roaming\JetBrains\PyCharmCE2021.3\scratches" />
+      <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
@@ -148,7 +136,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper\scratch.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\lechh\AppData\Roaming\JetBrains\PyCharmCE2021.3\scratches\scratch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -195,27 +183,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639582265248</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Initial commit">
-      <created>1639616141321</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1639616141321</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Initial commit">
-      <created>1639616270515</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1639616270515</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Initial commit">
-      <created>1639616616292</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1639616616292</updated>
     </task>
     <task id="LOCAL-00058" summary="Initial commit">
       <created>1639616754402</created>
@@ -539,7 +506,28 @@
       <option name="project" value="LOCAL" />
       <updated>1639851422396</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Initial commit">
+      <created>1640012531645</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1640012531646</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Initial commit">
+      <created>1640013217496</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1640013217496</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Initial commit">
+      <created>1640013439284</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1640013439284</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

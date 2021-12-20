@@ -20,7 +20,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
 # Initialise some constants
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
-font24 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 24)
+font20 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 20)
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((30, 30)).convert(0)
 
 # Read config setting
@@ -93,16 +93,16 @@ def on_push_state(*args):
     img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
     draw = ImageDraw.Draw(img)
     if args[0]['status'] in ['pause', 'stop']:
-        draw.text((8, 70), 'pause', font=font15, fill=0)
+        draw.text((8, 70), 'pause', font=font20, fill=0)
     if 'artist' in args[0]:
-        draw.text((8, 50), 'by : ' + lastpass['artist'], font=font15, fill=0)
+        draw.text((8, 50), 'by : ' + lastpass['artist'], font=font20, fill=0)
     if 'album' in args[0] and args[0]['album'] is not None:
-        draw.text((8, 30), 'Album : ' + lastpass['album'], font=font15, fill=0)
+        draw.text((8, 30), 'Album : ' + lastpass['album'], font=font20, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
-        draw.text((8, 10), 'Song : ' + lastpass['title'], font=font15, fill=0)
+        draw.text((8, 10), 'Song : ' + lastpass['title'], font=font20, fill=0)
     if vol_x <= 1:
         logging.info('muted')
-        draw.text((38, 70), 'muted', font=font15, fill=0)
+        draw.text((38, 70), 'muted', font=font20, fill=0)
     im2 = img.transpose(method=Image.ROTATE_90)
     img.paste(im2, (2, 2))
     epd.displayPartial(epd.getbuffer(im2))
