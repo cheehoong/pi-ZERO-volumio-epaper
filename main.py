@@ -94,6 +94,7 @@ def on_push_state(*args):
     draw = ImageDraw.Draw(img)
     if args[0]['status'] in ['pause', 'stop']:
         draw.text((8, 70), 'pause', font=font20, fill=0)
+        draw.text((8, 90), status, font=font20, fill=0)
     if 'artist' in args[0]:
         draw.text((8, 50), 'by : ' + lastpass['artist'], font=font20, fill=0)
     if 'album' in args[0] and args[0]['album'] is not None:
