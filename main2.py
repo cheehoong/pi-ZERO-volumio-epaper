@@ -1,8 +1,8 @@
 import logging
 import os
 import time
-import cv2
-import numpy as np
+# import cv2
+# import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from configparser import ConfigParser
 from socketIO_client import SocketIO
@@ -34,7 +34,7 @@ lastpass = {
 
 def on_push_state(*args):
     global lastpass
-    cv2.destroyAllWindows()
+#    cv2.destroyAllWindows()
     print(args[0])
     artist = str(args[0]['artist'])
     title = str(args[0]['title'])
@@ -44,16 +44,16 @@ def on_push_state(*args):
     print(title)
     print(album)
     print(status)
-    imgC = cv2.imread(baseimage, 0)
-    imgD = Image.fromarray(imgC)
-    draw = ImageDraw.Draw(imgD)
-    draw.text((8, 30), 'by : ' + title, font=font15, fill=0)
-    draw.text((8, 50), 'by : ' + artist, font=font15, fill=0)
+#    imgC = cv2.imread(baseimage, 0)
+#    imgD = Image.fromarray(imgC)
+#    draw = ImageDraw.Draw(imgD)
+#    draw.text((8, 30), 'by : ' + title, font=font15, fill=0)
+#    draw.text((8, 50), 'by : ' + artist, font=font15, fill=0)
     vol_x = int(float(args[0]['volume']))
     if vol_x <= 1:
         logging.info('muted')
-    imgC = np.array(imgD)
-    cv2.imshow(volumio_host, imgC)
+#    imgC = np.array(imgD)
+#    cv2.imshow(volumio_host, imgC)
 #    cv2.waitKey(0)
     return
 
