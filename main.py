@@ -10,7 +10,7 @@ from socketIO_client import SocketIO
 from libz import epd2in13_V2
 from libz import gt1151
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 flag_t = 1
 
 # get the path of the script
@@ -27,7 +27,7 @@ baseimage = os.path.join(picdir, 'Empty2.bmp')
 # Read config setting
 config = ConfigParser()
 config.read(file)
-print(config.sections())
+logging.info(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
 volumio_port = config.getint('volumio', 'volumio_port')
 
@@ -88,8 +88,8 @@ def on_push_state(*args):
     album = str(args[0]['album'])
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))
-    print('Artist = ' + artist)
-    print('Status = ' + status)
+    logging.info('Artist = ' + artist)
+    logging.info('Status = ' + status)
     lastpass = args[0]
     img_d = Image.open(baseimage)
 #    img_c = cv2.imread(baseimage, 0)
