@@ -41,6 +41,10 @@ logging.info("init and Clear")
 epd.init(epd.FULL_UPDATE)
 gt.GT_Init()
 
+image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
+epd.displayPartBaseImage(epd.getbuffer(image))
+DrawImage = ImageDraw.Draw(image)
+epd.init(epd.PART_UPDATE)
 
 # Derive some constants
 socketIO = SocketIO(volumio_host, volumio_port)
