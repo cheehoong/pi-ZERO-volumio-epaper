@@ -87,13 +87,50 @@ sudo python3 main.py
 ```
 
 ## Chinese Character display
+
+问题
+当接收到中文消息时出现下方错误，简单说就是编码问题。
 ```bash
-sudo locale-gen zh_CN.UTF-8 UTF-8
-sudo update-locale zh_CN.UTF-8 UTF-8
-export LANGUAGE=zh_CN.UTF-8
-export LANG=zh_CN.UTF-8
-export LC_ALL=zh_CN.UTF-8
+Traceback (most recent call last):
+  File "sub.py", line 24, in <module>
+    socketIO.wait()
+  File "/usr/local/lib/python3.5/site-packages/socketIO_client/__init__.py", line 232, in wait
+    self._process_packets()
+  File "/usr/local/lib/python3.5/site-packages/socketIO_client/__init__.py", line 254, in _process_packets
+    for engineIO_packet in self._transport.recv_packet():
+  File "/usr/local/lib/python3.5/site-packages/socketIO_client/transports.py", line 155, in recv_packet
+    six.b(packet_text))
+  File "/usr/local/lib/python3.5/site-packages/six.py", line 620, in b
+    return s.encode("latin-1")
+UnicodeEncodeError: 'latin-1' codec can't encode characters in position 21-27: ordinal not in range(256)
 ```
+解决方法
+找到socketIO_client的安装路径，例中跟six.py在同一目录下，路径是/usr/local/lib/python3.5/site-packages/socketIO_client/.
+或者是(/usr/local/lib/python3/dist-packages/socketIO_client/)
+找到socketIO_client文件夹下的transports.py文件
+
+用编辑器打开transports.py，在144行左右的位置找到recv_packet函数
+```bash
+
+def recv_packet(self):
+    try:
+        packet_text = self._connection.recv()
+    except websocket.WebSocketTimeoutException as e:
+        raise TimeoutError('recv timed out (%s)' % e)
+    except websocket.SSLError as e:
+        raise ConnectionError('recv disconnected by SSL (%s)' % e)
+    except websocket.WebSocketConnectionClosedException as e:
+        raise ConnectionError('recv disconnected (%s)' % e)
+    except socket.error as e:
+        raise ConnectionError('recv disconnected (%s)' % e)
+    engineIO_packet_type, engineIO_packet_data = parse_packet_text(
+        six.b(packet_text))
+    yield engineIO_packet_type, engineIO_packet_data
+```
+修改倒数第二行six.b(packet_text))为six.u(packet_text))，修改后保存.
+
+再次运行代码接收中文消息，代码正常运行.
+
 
 ## Overclocking (Optional)
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.
