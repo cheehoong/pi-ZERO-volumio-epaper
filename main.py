@@ -10,7 +10,7 @@ from socketIO_client import SocketIO
 from libz import epd2in13_V2
 from libz import gt1151
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 flag_t = 1
 
 # get the path of the script
