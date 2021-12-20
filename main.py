@@ -78,15 +78,13 @@ def on_push_state(*args):
     # albumart
     # artist, album, title
     # Volume crosses mute threshold
-    print(args[0])
     artist = str(args[0]['artist'])
     title = str(args[0]['title'])
     album = str(args[0]['album'])
     status = str(args[0]['status'])
-    print(artist)
-    print(title)
-    print(album)
-    print(status)
+    vol_x = int(float(args[0]['volume']))
+    print('Artist = ' + artist)
+    print('Status = ' + status)
     lastpass = args[0]
     img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
     draw = ImageDraw.Draw(img)
@@ -98,42 +96,19 @@ def on_push_state(*args):
         draw.text((8, 30), 'Album : ' + lastpass['album'], font=font15, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
         draw.text((8, 10), 'Song : ' + lastpass['title'], font=font15, fill=0)
-
-    vol_x = int(float(args[0]['volume']))
-
     if vol_x <= 1:
         logging.info('muted')
         draw.text((38, 70), 'muted', font=font15, fill=0)
     im2 = img.transpose(method=Image.ROTATE_90)
     img.paste(im2, (2, 2))
     epd.displayPartial(epd.getbuffer(im2))
+    epd.init(epd.PART_UPDATE)
     return
 
 
-# image = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-# epd.displayPartBaseImage(epd.getbuffer(image))
-# DrawImage = ImageDraw.Draw(image)
-# epd.init(epd.PART_UPDATE)
-# time.sleep(2)
 
-# server = "http://localhost:3000/api/v1/getState"
-# response = requests.get(server)
-# info = response.json()
-# print(info['title'])
-# print(info['artist'])
 
-# logging.info("draw")
-# im = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-# draw = ImageDraw.Draw(im)
-# draw.line((0, 0) + im.size, fill=0)
-# draw.line((0, im.size[1], im.size[0], 0), fill=0)
-# draw.rectangle((0, 10, 20, 34), fill=0)
-# draw.line((16, 60, 56, 60), fill=0)
-# logging.info("drawline")
-# im2 = im.transpose(method=Image.ROTATE_90)
-# image.paste(im2, (2, 2))
-# epd.displayPartial(epd.getbuffer(im2))
-# epd.init(epd.PART_UPDATE)
+
 
 
 def main():
