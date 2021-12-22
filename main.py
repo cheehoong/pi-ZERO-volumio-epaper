@@ -91,14 +91,14 @@ def on_push_state(*args):
         draw.text((8, 70), 'pause', font=font20, fill=0)
         draw.text((8, 90), status, font=font20, fill=0)
     if 'artist' in args[0]:
-        draw.text((2, 50), icon_artist, font=font0w, fill=0)
-        draw.text((8, 50), 'by : ' + lastpass['artist'], font=font20, fill=0)
+        draw.text((8, 50), icon_artist, font=font0w, fill=0)
+        draw.text((18, 50), lastpass['artist'], font=font20, fill=0)
     if 'album' in args[0] and args[0]['album'] is not None:
-        draw.text((2, 30), icon_album, font=font0w, fill=0)
-        draw.text((8, 30), 'Album : ' + lastpass['album'], font=font20, fill=0)
+        draw.text((8, 30), icon_album, font=font0w, fill=0)
+        draw.text((18, 30), lastpass['album'], font=font20, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
-        draw.text((2, 10), icon_song, font=font0w, fill=0)
-        draw.text((8, 10), 'Song : ' + lastpass['title'], font=font20, fill=0)
+        draw.text((8, 10), icon_song, font=font0w, fill=0)
+        draw.text((18, 10), lastpass['title'], font=font20, fill=0)
     if vol_x <= 1:
         logging.info('muted')
         draw.text((38, 70), 'muted', font=font20, fill=0)
