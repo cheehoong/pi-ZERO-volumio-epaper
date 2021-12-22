@@ -18,7 +18,7 @@ picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Poi
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
 # Initialise some constants
-font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
+font18 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 18)
 font20 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 20)
 font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttf'), 20, encoding="symb")
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((30, 30)).convert(0)
@@ -60,6 +60,11 @@ lastpass = {
 icon_song = unichr(0xF000 + 0xAF)
 icon_artist = unichr(0xF000 + 0xB1)
 icon_album = unichr(0xF000 + 0xB3)
+icon_play = unichr(0xF000 + 0x34)
+icon_pause = unichr(0xF000 + 0x3B)
+icon_stop = unichr(0xF000 + 0x3C)
+icon_sound = unichr(0xF000 + 0x58)
+
 
 
 def on_connect():
@@ -87,20 +92,20 @@ def on_push_state(*args):
 #    img_d = Image.fromarray(img_c)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
-        draw.text((8, 70), 'pause', font=font20, fill=0)
-        draw.text((8, 90), status, font=font20, fill=0)
+        draw.text((8, 70), 'pause', font=font18, fill=0)
+        draw.text((8, 90), status, font=font18, fill=0)
     if 'artist' in args[0]:
         draw.text((8, 50), icon_artist, font=font0w, fill=0)
-        draw.text((28, 50), lastpass['artist'], font=font20, fill=0)
+        draw.text((28, 50), lastpass['artist'], font=font18, fill=0)
     if 'album' in args[0] and args[0]['album'] is not None:
         draw.text((8, 30), icon_album, font=font0w, fill=0)
-        draw.text((28, 30), lastpass['album'], font=font20, fill=0)
+        draw.text((28, 30), lastpass['album'], font=font18, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
         draw.text((8, 10), icon_song, font=font0w, fill=0)
-        draw.text((28, 10), lastpass['title'], font=font20, fill=0)
+        draw.text((28, 10), lastpass['title'], font=font18, fill=0)
     if vol_x <= 1:
         logging.info('muted')
-        draw.text((38, 70), 'muted', font=font20, fill=0)
+        draw.text((38, 70), 'muted', font=font18, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (2, 2))
     epd.displayPartial(epd.getbuffer(im2))
