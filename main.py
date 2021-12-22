@@ -59,8 +59,8 @@ lastpass = {
 }
 
 icon_song = unichr(0xF000 + 0xAF)
-icon_artist = unichr(0xB1)
-icon_album = unichr(0xB3)
+icon_artist = unichr(0xF000 + 0xB1)
+icon_album = unichr(0xF000 + 0xB3)
 
 
 def on_connect():
