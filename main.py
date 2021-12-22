@@ -21,7 +21,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 # Initialise some constants
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font20 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 20)
-font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttf'), 20, encoding="symb")
+font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttf'), 20, encoding="unic")
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((30, 30)).convert(0)
 baseimage = os.path.join(picdir, 'Empty2.bmp')
 
@@ -92,13 +92,13 @@ def on_push_state(*args):
         draw.text((8, 90), status, font=font20, fill=0)
     if 'artist' in args[0]:
         draw.text((8, 50), icon_artist, font=font0w, fill=0)
-        draw.text((18, 50), lastpass['artist'], font=font20, fill=0)
+        draw.text((28, 50), lastpass['artist'], font=font20, fill=0)
     if 'album' in args[0] and args[0]['album'] is not None:
         draw.text((8, 30), icon_album, font=font0w, fill=0)
-        draw.text((18, 30), lastpass['album'], font=font20, fill=0)
+        draw.text((28, 30), lastpass['album'], font=font20, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
         draw.text((8, 10), icon_song, font=font0w, fill=0)
-        draw.text((18, 10), lastpass['title'], font=font20, fill=0)
+        draw.text((28, 10), lastpass['title'], font=font20, fill=0)
     if vol_x <= 1:
         logging.info('muted')
         draw.text((38, 70), 'muted', font=font20, fill=0)
