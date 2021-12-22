@@ -18,8 +18,8 @@ picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Poi
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
 # Initialise some constants
-font18 = ImageFont.truetype(os.path.join(fontdir, 'simsun.ttc'), 18)
-font20 = ImageFont.truetype(os.path.join(fontdir, 'simsun.ttc'), 20)
+font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttc'), 18)
+font20 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttc'), 20)
 font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttf'), 20, encoding="symb")
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((30, 30)).convert(0)
 baseimage = os.path.join(picdir, 'Empty2.bmp')
