@@ -3,6 +3,8 @@ import os
 import time
 # import cv2
 # import numpy as np
+import tkinter as tk
+from tkinter import Tk, Text
 from PIL import Image, ImageDraw, ImageFont
 from configparser import ConfigParser
 from socketIO_client import SocketIO
@@ -55,7 +57,20 @@ def on_push_state(*args):
 #    imgC = np.array(imgD)
 #    cv2.imshow(volumio_host, imgC)
 #    cv2.waitKey(0)
+    tkshow(title)
     return
+
+
+def tkshow(ttt):
+    root = Tk()
+    root.resizable(False, False)
+    root.title("Text Widget Example")
+    text = Text(root, height=8)
+    text.pack()
+    text.insert('1.0', ttt)
+#    root.mainloop()
+    root.update()
+
 
 def main():
     while True:

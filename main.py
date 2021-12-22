@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-import argparse
 import logging
 import os
 import time
 from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
+from six import unichr
 from socketIO_client import SocketIO
 from libz import epd2in13_V2
 from libz import gt1151
@@ -21,6 +21,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 # Initialise some constants
 font15 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 15)
 font20 = ImageFont.truetype(os.path.join(fontdir, 'Font.ttc'), 20)
+font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttc'), 20)
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((30, 30)).convert(0)
 baseimage = os.path.join(picdir, 'Empty2.bmp')
 
@@ -57,18 +58,9 @@ lastpass = {
     "volume": 60
 }
 
-
-def parse_args():
-    p = argparse.ArgumentParser(description='Test EPD functionality')
-    p.add_argument('-v', '--virtual', action='store_true',
-                   help='display using a Tkinter window instead of the '
-                        'actual e-paper device (for testing without a '
-                        'physical device)')
-    p.add_argument('-r', '--rotate', default=None, choices=['CW', 'CCW', 'flip'],
-                   help='run the tests with the display rotated by the specified value')
-    p.add_argument('-e', '--error', action='store_true',
-                   help='Brings up the error screen for formatting')
-    return p.parse_args()
+icon_song = unichr(0xAF)
+icon_artist = unichr(0xB1)
+icon_album = unichr(0xB3)
 
 
 def on_connect():
@@ -99,10 +91,13 @@ def on_push_state(*args):
         draw.text((8, 70), 'pause', font=font20, fill=0)
         draw.text((8, 90), status, font=font20, fill=0)
     if 'artist' in args[0]:
+        draw.text((2, 50), icon_artist, font=font0w, fill=0)
         draw.text((8, 50), 'by : ' + lastpass['artist'], font=font20, fill=0)
     if 'album' in args[0] and args[0]['album'] is not None:
+        draw.text((2, 30), icon_album, font=font0w, fill=0)
         draw.text((8, 30), 'Album : ' + lastpass['album'], font=font20, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
+        draw.text((2, 10), icon_song, font=font0w, fill=0)
         draw.text((8, 10), 'Song : ' + lastpass['title'], font=font20, fill=0)
     if vol_x <= 1:
         logging.info('muted')
