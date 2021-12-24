@@ -133,7 +133,7 @@ def main():
             continue
         if (GT_Dev.X[0] > 100 and GT_Dev.X[0] < 140 and GT_Dev.Y[0] > 80 and GT_Dev.Y[0] < 120):
             print("Photo ...\r\n")
-
+        print(GT_Dev.X[0])
         logging.info('Reconnection needed')
         time.sleep(1)
 
