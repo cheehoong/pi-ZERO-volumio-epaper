@@ -97,8 +97,8 @@ def on_push_state(*args):
         if status == 'stop':
             icon_status = icon_stop
     else:
-            icon_status = icon_play
-    draw.text((120, 90), icon_status, font=font0w, fill=0)
+        icon_status = icon_play
+    draw.text((120, 100), icon_status, font=font0w, fill=0)
     if 'artist' in args[0]:
         draw.text((8, 50), icon_artist, font=font0w, fill=0)
         draw.text((28, 50), lastpass['artist'], font=font18, fill=0)
@@ -126,6 +126,14 @@ def main():
         socketIO.emit('getState', '', on_push_state)
         # now wait
         socketIO.wait()
+
+        # Read the touch input
+        gt.GT_Scan(GT_Dev, GT_Old)
+        if (GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]):
+            continue
+        if (GT_Dev.X[0] > 100 and GT_Dev.X[0] < 140 and GT_Dev.Y[0] > 80 and GT_Dev.Y[0] < 120):
+            print("Photo ...\r\n")
+
         logging.info('Reconnection needed')
         time.sleep(1)
 
