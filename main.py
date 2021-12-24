@@ -123,6 +123,11 @@ def on_push_state(*args):
     if (GT_Dev.X[0] > 100 and GT_Dev.X[0] < 140 and GT_Dev.Y[0] > 80 and GT_Dev.Y[0] < 120):
         print("Photo ...\r\n")
     print(GT_Dev.X[0])
+    print(GT_Dev.Y[0])
+    print(GT_Old.X[0])
+    print(GT_Old.X[0])
+    print(GT_Dev.S[0])
+    print(GT_Old.S[0])
     return
 
 
