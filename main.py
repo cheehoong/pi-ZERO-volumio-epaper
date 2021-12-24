@@ -115,11 +115,16 @@ def on_push_state(*args):
     img_d.paste(im2, (2, 2))
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
+
     # Read the touch input
     gt.GT_Scan(GT_Dev, GT_Old)
-
     if (GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]):
         print("Po ...\r\n")
+
+    if (GT_Dev.TouchpointFlag):
+        i += 1
+        GT_Dev.TouchpointFlag = 0
+    print(GT_Dev.TouchpointFlag)
     if (GT_Dev.X[0] > 100 and GT_Dev.X[0] < 140 and GT_Dev.Y[0] > 80 and GT_Dev.Y[0] < 120):
         print("Photo ...\r\n")
     print(GT_Dev.X[0])
