@@ -66,7 +66,6 @@ icon_stop = unichr(0xF000 + 0x3C)
 icon_sound = unichr(0xF000 + 0x58)
 
 
-
 def on_connect():
     logging.info('connect')
     return 'connected'
@@ -74,6 +73,7 @@ def on_connect():
 
 def on_push_state(*args):
     global lastpass
+    icon_status = icon_stop
     # Only run screen update if the key arguments have changed since the last call. Key arguments are:
     # status
     # albumart
@@ -88,12 +88,15 @@ def on_push_state(*args):
     logging.info('Status = ' + status)
     lastpass = args[0]
     img_d = Image.open(baseimage)
-#    img_c = cv2.imread(baseimage, 0)
-#    img_d = Image.fromarray(img_c)
+    #    img_c = cv2.imread(baseimage, 0)
+    #    img_d = Image.fromarray(img_c)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
-        draw.text((8, 70), 'pause', font=font18, fill=0)
-        draw.text((8, 90), status, font=font18, fill=0)
+        if status == 'pause':
+            icon_status = icon_pause
+        if status == 'stop':
+            icon_status = icon_stop
+        draw.text((80, 90), icon_status, font=font0w, fill=0)
     if 'artist' in args[0]:
         draw.text((8, 50), icon_artist, font=font0w, fill=0)
         draw.text((28, 50), lastpass['artist'], font=font18, fill=0)
