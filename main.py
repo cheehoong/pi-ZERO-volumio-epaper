@@ -96,7 +96,9 @@ def on_push_state(*args):
             icon_status = icon_pause
         if status == 'stop':
             icon_status = icon_stop
-        draw.text((80, 90), icon_status, font=font0w, fill=0)
+        else:
+            icon_status = icon_play
+        draw.text((120, 90), icon_status, font=font0w, fill=0)
     if 'artist' in args[0]:
         draw.text((8, 50), icon_artist, font=font0w, fill=0)
         draw.text((28, 50), lastpass['artist'], font=font18, fill=0)
