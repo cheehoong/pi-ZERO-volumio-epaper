@@ -158,6 +158,7 @@ def main():
         # connecting to socket
         socketIO.on('pushState', on_push_state)
         # get initial state
+        touch()
         socketIO.emit('getState', '', on_push_state)
         # now wait
         touch()
