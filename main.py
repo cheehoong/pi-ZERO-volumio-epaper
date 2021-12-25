@@ -152,7 +152,7 @@ def touch():
     print(GT_Old.X[0])
     print(GT_Old.Y[0])
     print(GT_Old.S[0])
-
+    socketIO.wait()
 
 def main():
     while True:
