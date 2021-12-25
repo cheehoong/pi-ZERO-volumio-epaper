@@ -86,11 +86,16 @@ def touch():
     print(GT_Old.S[0])
 
 
+def on_connect():
+    logging.info('connect')
+    return 'connected'
+
+
 class TwoWayClient(object):
     def on_event(self, event):
         print('event')
 
-    def on_push_state(*args):
+    def on_push_state(self, *args):
         global lastpass
         icon_status = icon_stop
         # Only run screen update if the key arguments have changed since the last call. Key arguments are:
@@ -106,10 +111,10 @@ class TwoWayClient(object):
         logging.info('Artist = ' + artist)
         logging.info('Status = ' + status)
         lastpass = args[0]
-        img_d = Image.open(baseimage)
+        self.img_d = Image.open(baseimage)
         #    img_c = cv2.imread(baseimage, 0)
         #    img_d = Image.fromarray(img_c)
-        draw = ImageDraw.Draw(img_d)
+        self.draw = ImageDraw.Draw(self.img_d)
         if args[0]['status'] in ['pause', 'stop']:
             if status == 'pause':
                 icon_status = icon_pause
@@ -117,31 +122,30 @@ class TwoWayClient(object):
                 icon_status = icon_stop
         else:
             icon_status = icon_play
-        draw.text((120, 100), icon_status, font=font0w, fill=0)
+        self.draw.text((120, 100), icon_status, font=font0w, fill=0)
         if 'artist' in args[0]:
-            draw.text((8, 50), icon_artist, font=font0w, fill=0)
-            draw.text((28, 50), lastpass['artist'], font=font18, fill=0)
+            self.draw.text((8, 50), icon_artist, font=font0w, fill=0)
+            self.draw.text((28, 50), lastpass['artist'], font=font18, fill=0)
         if 'album' in args[0] and args[0]['album'] is not None:
-            draw.text((8, 30), icon_album, font=font0w, fill=0)
-            draw.text((28, 30), lastpass['album'], font=font18, fill=0)
+            self.draw.text((8, 30), icon_album, font=font0w, fill=0)
+            self.draw.text((28, 30), lastpass['album'], font=font18, fill=0)
         if 'title' in args[0] and args[0]['title'] is not None:
-            draw.text((8, 10), icon_song, font=font0w, fill=0)
-            draw.text((28, 10), lastpass['title'], font=font18, fill=0)
+            self.draw.text((8, 10), icon_song, font=font0w, fill=0)
+            self.draw.text((28, 10), lastpass['title'], font=font18, fill=0)
         if vol_x <= 1:
             logging.info('muted')
-            draw.text((38, 70), 'muted', font=font18, fill=0)
-        im2 = img_d.transpose(method=Image.ROTATE_90)
-        img_d.paste(im2, (2, 2))
-        epd.displayPartial(epd.getbuffer(im2))
+            self.draw.text((38, 70), 'muted', font=font18, fill=0)
+        self.im2 = self.img_d.transpose(method=Image.ROTATE_90)
+        self.img_d.paste(self.im2, (2, 2))
+        epd.displayPartial(epd.getbuffer(self.im2))
         epd.init(epd.PART_UPDATE)
         return
 
-    def on_connect(self):
-        logging.info('connect')
-        return 'connected'
-
     def __init__(self):
         # connecting to socket
+        self.im2 = None
+        self.draw = None
+        self.img_d = None
         self.socketIO = SocketIO(volumio_host, volumio_port)
         self.socketIO.on('pushState', self.on_push_state)
 
