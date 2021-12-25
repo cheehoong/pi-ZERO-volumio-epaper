@@ -167,6 +167,13 @@ class TwoWayClient(object):
             time.sleep(1)  # endless loop
 
     def _receive_events_thread(self):
+        print("pthread running")
+        while flag_t == 1:
+            if gt.digital_read(gt.INT) == 0:
+                GT_Dev.Touch = 1
+            else:
+                GT_Dev.Touch = 0
+        print("thread:exit")
         self.socketIO.wait()
 
 
