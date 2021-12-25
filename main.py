@@ -3,6 +3,8 @@
 import logging
 import os
 import threading
+import time
+
 from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
 from six import unichr
@@ -162,6 +164,7 @@ class TwoWayClient(object):
             touch()
             # get initial state
             self.socketIO.emit('getState', '', self.on_push_state)
+            time.sleep(1)  # endless loop
 
     def _receive_events_thread(self):
         self.socketIO.wait()
