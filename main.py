@@ -27,7 +27,8 @@ baseimage = os.path.join(picdir, 'Empty2.bmp')
 # Read config setting
 config = ConfigParser()
 config.read(file)
-logging.info(('Read config setting = ' + config.sections()))
+logging.info('Read config setting')
+logging.info(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
 volumio_port = config.getint('volumio', 'volumio_port')
 
