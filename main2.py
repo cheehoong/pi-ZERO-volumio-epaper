@@ -21,7 +21,7 @@ baseimage = os.path.join(picdir, 'Empty2.bmp')
 config = ConfigParser()
 config.read(file)
 print(config.sections())
-volumio_host = config.get('volumio', 'volumio_host')
+volumio_host = 'volumio.local'
 volumio_port = config.getint('volumio', 'volumio_port')
 
 socketIO = SocketIO(volumio_host, volumio_port)

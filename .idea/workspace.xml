@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/main3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/main2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +60,15 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper" />
       <recent name="C:\Users\lechh\AppData\Roaming\JetBrains\PyCharmCE2021.3\scratches" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.oledui">
+  <component name="RunManager" selected="Python.main2">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -192,8 +197,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.oledui" />
         <item itemvalue="Python.main2" />
+        <item itemvalue="Python.oledui" />
         <item itemvalue="Python.scratch" />
         <item itemvalue="Python.socketio_fix" />
         <item itemvalue="Python.main" />
@@ -208,13 +213,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639582265248</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Initial commit">
-      <created>1640014786839</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1640014786839</updated>
     </task>
     <task id="LOCAL-00111" summary="Initial commit">
       <created>1640015159195</created>
@@ -552,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640422402751</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="Initial commit">
+      <created>1640429240046</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1640429240046</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
