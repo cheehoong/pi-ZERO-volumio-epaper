@@ -59,6 +59,7 @@ def pthread_irq():
         else:
             GT_Dev.Touch = 0
     print("thread:exit")
+    socketIO.wait()
 
 
 t = threading.Thread(target=pthread_irq)
