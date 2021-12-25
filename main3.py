@@ -161,6 +161,7 @@ def main():
         # now wait
         touch()
 #        socketIO.wait()
+        socketIO.wait(seconds=1)
         logging.info('Reconnection needed')
         time.sleep(1)
 

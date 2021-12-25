@@ -152,20 +152,16 @@ def touch():
     print(GT_Old.Y[0])
     print(GT_Old.S[0])
 
-
-def my_background_task():
-    socketIO.on('pushState', on_push_state)
-    socketIO.emit('getState', '', on_push_state)
-    socketIO.wait()
-    pass
-
-
-task = socketIO.start_background_task(target=my_background_task)
-
-
 def main():
     while True:
+        # connecting to socket
+        socketIO.on('pushState', on_push_state)
+        # get initial state
+        socketIO.emit('getState', '', on_push_state)
+        # now wait
         touch()
+#        socketIO.wait()
+        socketIO.wait(seconds=1)
         logging.info('Reconnection needed')
         time.sleep(1)
 
