@@ -22,7 +22,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 18)
 font20 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 20)
 font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttf'), 20, encoding="symb")
-rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((30, 30)).convert(0)
+rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert(0)
 baseimage = os.path.join(picdir, 'Empty2.bmp')
 
 # Read config setting
@@ -165,6 +165,6 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-        img.paste(rabbit_icon, (80, 80))
+        img.paste(rabbit_icon, (50, 100))
         epd.displayPartial(epd.getbuffer(img))
         pass
