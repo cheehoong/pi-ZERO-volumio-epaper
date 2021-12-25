@@ -160,7 +160,7 @@ def my_background_task():
     pass
 
 
-task = socketIO.start_background_task(target=my_background_task)
+task = socketIO.ststart_background_task(target=my_background_task)
 
 
 def main():
