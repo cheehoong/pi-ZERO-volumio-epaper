@@ -165,7 +165,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-        imge = img.transpose(method=Image.ROTATE_180)
+        imge = img.transpose(method=Image.ROTATE_0)
         imge.paste(rabbit_icon, (30, 100))
         epd.displayPartial(epd.getbuffer(imge))
         pass
