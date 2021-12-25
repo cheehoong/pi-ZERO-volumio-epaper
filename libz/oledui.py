@@ -3,21 +3,37 @@
 from __future__ import unicode_literals
 
 """
+Volumio User Interface: OLED 256x64 + 2x rotary encoder with pushbutton
+DiehardSK 2020
 Inspired by Volumio HandsOn script
 """
 
-import easygui
+import requests
+import os
+import sys
 import json
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
 
 from time import time, sleep
 from threading import Thread
 from socketIO_client import SocketIO
 
+# Imports for OLED display
+from luma.core.interface.serial import spi
+from luma.oled.device import ssd1322
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
+
+from modules.pushbutton import PushButton
+from modules.rotaryencoder import RotaryEncoder
 from modules.display import *
 
-volumio_host = 'volumio0.local'
+volumio_host = 'localhost'
 volumio_port = 3000
-VOLUME_DT = 5    #volume adjustment step
+VOLUME_DT = 5  # volume adjustment step
 
 volumioIO = SocketIO(volumio_host, volumio_port)
 
@@ -30,10 +46,10 @@ STATE_SHOW_INFO = 4
 STATE_LIBRARY_MENU = 5
 
 UPDATE_INTERVAL = 0.034
-PIXEL_SHIFT_TIME = 120    #time between picture position shifts in sec.
+PIXEL_SHIFT_TIME = 120  # time between picture position shifts in sec.
 
 interface = spi(device=0, port=0)
-oled = easygui
+oled = ssd1322(interface)
 
 oled.WIDTH = 256
 oled.HEIGHT = 64
@@ -52,7 +68,10 @@ oled.libraryNames = []
 oled.volumeControlDisabled = False
 oled.volume = 100
 
-image = Image.new('RGB', (oled.WIDTH + 4, oled.HEIGHT + 4))  #enlarged for pixelshift
+emit_volume = False
+emit_track = False
+
+image = Image.new('RGB', (oled.WIDTH + 4, oled.HEIGHT + 4))  # enlarged for pixelshift
 oled.clear()
 
 font = load_font('Roboto-Regular.ttf', 24)
@@ -66,7 +85,7 @@ def display_update_service():
     while UPDATE_INTERVAL > 0:
         dt = time() - prevTime
         prevTime = time()
-        if prevTime-lastshift > PIXEL_SHIFT_TIME: #it's time for pixel shift
+        if prevTime - lastshift > PIXEL_SHIFT_TIME:  # it's time for pixel shift
             lastshift = prevTime
             if pixshift[0] == 4 and pixshift[1] < 4:
                 pixshift[1] += 1
@@ -88,10 +107,11 @@ def display_update_service():
         try:
             oled.modal.DrawOn(image)
         except AttributeError:
-            print ("render error")
-        cimg = image.crop((pixshift[0], pixshift[1], pixshift[0] + oled.WIDTH, pixshift[1] + oled.HEIGHT)) 
+            print("render error")
+        cimg = image.crop((pixshift[0], pixshift[1], pixshift[0] + oled.WIDTH, pixshift[1] + oled.HEIGHT))
         oled.display(cimg)
         sleep(UPDATE_INTERVAL)
+
 
 def SetState(status):
     oled.state = status
@@ -101,51 +121,56 @@ def SetState(status):
     elif oled.state == STATE_VOLUME:
         oled.modal = VolumeScreen(oled.HEIGHT, oled.WIDTH, oled.volume, font, font2)
     elif oled.state == STATE_PLAYLIST_MENU:
-        oled.modal = MenuScreen(oled.HEIGHT, oled.WIDTH, font2, oled.playlistoptions, rows=3, label='------ Select Playlist ------')
+        oled.modal = MenuScreen(oled.HEIGHT, oled.WIDTH, font2, oled.playlistoptions, rows=3,
+                                label='------ Select Playlist ------')
     elif oled.state == STATE_QUEUE_MENU:
-        oled.modal = MenuScreen(oled.HEIGHT, oled.WIDTH, font2, oled.queue, rows=4, selected=oled.playPosition, showIndex=True)
+        oled.modal = MenuScreen(oled.HEIGHT, oled.WIDTH, font2, oled.queue, rows=4, selected=oled.playPosition,
+                                showIndex=True)
     elif oled.state == STATE_LIBRARY_MENU:
-        oled.modal = MenuScreen(oled.HEIGHT, oled.WIDTH, font2, oled.libraryNames, rows=3, label='------ Music Library ------')
+        oled.modal = MenuScreen(oled.HEIGHT, oled.WIDTH, font2, oled.libraryNames, rows=3,
+                                label='------ Music Library ------')
+
 
 def LoadPlaylist(playlistname):
-    print ("loading playlist: ", playlistname.encode('ascii', 'ignore'))
+    print("loading playlist: ", playlistname.encode('ascii', 'ignore'))
     oled.playPosition = 0
-    volumioIO.emit('playPlaylist', {'name':playlistname})
+    volumioIO.emit('playPlaylist', {'name': playlistname})
     SetState(STATE_PLAYER)
 
+
 def onPushState(data):
-    #print(data)
+    # print(data)
     if 'title' in data:
         newSong = data['title']
     else:
         newSong = ''
     if newSong is None:
         newSong = ''
-        
+
     if 'artist' in data:
         newArtist = data['artist']
     else:
         newArtist = ''
-    if newArtist is None:   #volumio can push NoneType
+    if newArtist is None:  # volumio can push NoneType
         newArtist = ''
-        
-    if 'position' in data:                      # current position in queue
-        oled.playPosition = data['position']    # didn't work well with volumio ver. < 2.5
-        
+
+    if 'position' in data:  # current position in queue
+        oled.playPosition = data['position']  # didn't work well with volumio ver. < 2.5
+
     if 'status' in data:
         newStatus = data['status']
-        
-    if oled.state != STATE_VOLUME:            #get volume on startup and remote control
-        try:                                  #it is either number or unicode text
+
+    if oled.state != STATE_VOLUME:  # get volume on startup and remote control
+        try:  # it is either number or unicode text
             oled.volume = int(data['volume'])
         except (KeyError, ValueError):
             pass
-    
+
     if 'disableVolumeControl' in data:
         oled.volumeControlDisabled = data['disableVolumeControl']
 
     print(newSong.encode('ascii', 'ignore'))
-    if (newSong != oled.activeSong):    # new song
+    if (newSong != oled.activeSong):  # new song
         oled.activeSong = newSong
         oled.activeArtist = newArtist
         if oled.state == STATE_PLAYER:
@@ -160,21 +185,25 @@ def onPushState(data):
                 iconTime = 80
             oled.modal.SetPlayingIcon(oled.playState, iconTime)
 
+
 def onPushQueue(data):
     oled.queue = [track['name'] if 'name' in track else 'no track' for track in data]
     print('Queue length is ' + str(len(oled.queue)))
 
+
 def onPushBrowseSources(data):
-#    print('Browse sources:')
-#    for item in data:
-#        print(item['uri']) 
+    #    print('Browse sources:')
+    #    for item in data:
+    #        print(item['uri'])
     pass
+
 
 def onLibraryBrowse(data):
     oled.libraryFull = data
     itemList = oled.libraryFull['navigation']['lists'][0]['items']
     oled.libraryNames = [item['title'] if 'title' in item else 'empty' for item in itemList]
     SetState(STATE_LIBRARY_MENU)
+
 
 def EnterLibraryItem(itemNo):
     try:
@@ -184,34 +213,37 @@ def EnterLibraryItem(itemNo):
     else:
         print("Entering library item: ", oled.libraryNames[itemNo].encode('ascii', 'ignore'))
         if selectedItem['type'][-8:] == 'category' or selectedItem['type'] == 'folder':
-            volumioIO.emit('browseLibrary',{'uri':selectedItem['uri']})
+            volumioIO.emit('browseLibrary', {'uri': selectedItem['uri']})
         else:
             print("Sending new Queue")
-            volumioIO.emit('clearQueue')        #clear queue and add whole list of items
+            volumioIO.emit('clearQueue')  # clear queue and add whole list of items
             oled.queue = []
             volumioIO.emit('addToQueue', oled.libraryFull['navigation']['lists'][0]['items'])
-            oled.stateTimeout = 5.0       #maximum time to load new queue
+            oled.stateTimeout = 5.0  # maximum time to load new queue
             while len(oled.queue) == 0 and oled.stateTimeout > 0.1:
-                sleep(0.1) 
+                sleep(0.1)
             oled.stateTimeout = 0.2
             print("Play position = " + str(itemNo))
-            volumioIO.emit('play', {'value':itemNo})
+            volumioIO.emit('play', {'value': itemNo})
 
-def LibraryReturn():        #go to parent category
+
+def LibraryReturn():  # go to parent category
     if not 'prev' in oled.libraryFull['navigation']:
         SetState(STATE_PLAYER)
     else:
         parentCategory = oled.libraryFull['navigation']['prev']['uri']
-        print ("Navigating to parent category in library: ", parentCategory.encode('ascii', 'ignore'))
-        if parentCategory != '' and parentCategory != '/': 
-            volumioIO.emit('browseLibrary',{'uri':parentCategory})
+        print("Navigating to parent category in library: ", parentCategory.encode('ascii', 'ignore'))
+        if parentCategory != '' and parentCategory != '/':
+            volumioIO.emit('browseLibrary', {'uri': parentCategory})
         else:
             SetState(STATE_PLAYER)
+
 
 def onPushListPlaylist(data):
     global oled
     if len(data) > 0:
         oled.playlistoptions = data
+
 
 class NowPlayingScreen():
     def __init__(self, height, width, row1, row2, font, fontaw):
@@ -221,7 +253,7 @@ class NowPlayingScreen():
         self.fontaw = fontaw
         self.playingText1 = StaticText(self.height, self.width, row1, font, center=True)
         self.playingText2 = ScrollText(self.height, self.width, row2, font)
-        self.icon = {'play':'\uf04b', 'pause':'\uf04c', 'stop':'\uf04d'}
+        self.icon = {'play': '\uf04b', 'pause': '\uf04c', 'stop': '\uf04d'}
         self.playingIcon = self.icon['play']
         self.iconcountdown = 0
         self.text1Pos = (3, 6)
@@ -240,7 +272,7 @@ class NowPlayingScreen():
             compositeimage = Image.composite(self.alfaimage, image.convert('RGBA'), self.alfaimage)
             image.paste(compositeimage.convert('RGB'), (0, 0))
             self.iconcountdown -= 1
-            
+
     def SetPlayingIcon(self, state, time=0):
         if state in self.icon:
             self.playingIcon = self.icon[state]
@@ -250,6 +282,7 @@ class NowPlayingScreen():
         left = (self.width - iconwidth) / 2
         drawalfa.text((left, 4), self.playingIcon, font=self.fontaw, fill=(255, 255, 255, 96))
         self.iconcountdown = time
+
 
 class VolumeScreen():
     def __init__(self, height, width, volume, font, font2):
@@ -279,6 +312,7 @@ class VolumeScreen():
         self.volumeNumber.DrawOn(image, self.numberPos)
         self.volumeBar.DrawOn(image, self.barPos)
 
+
 class MenuScreen():
     def __init__(self, height, width, font2, menuList, selected=0, rows=3, label='', showIndex=False):
         self.height = height
@@ -303,7 +337,7 @@ class MenuScreen():
 
     def MenuUpdate(self):
         self.firstrowindex = min(self.firstrowindex, self.selectedOption)
-        self.firstrowindex = max(self.firstrowindex, self.selectedOption - (self.menurows-1))
+        self.firstrowindex = max(self.firstrowindex, self.selectedOption - (self.menurows - 1))
         for row in range(self.onscreenoptions):
             if (self.firstrowindex + row) == self.selectedOption:
                 color = "black"
@@ -311,14 +345,16 @@ class MenuScreen():
             else:
                 color = "white"
                 bgcolor = "black"
-            optionText = self.menuList[row+self.firstrowindex]
+            optionText = self.menuList[row + self.firstrowindex]
             if self.showIndex:
-                width = 1 + len(str(self.totaloptions))      # more digits needs more space
+                width = 1 + len(str(self.totaloptions))  # more digits needs more space
                 optionText = '{0:{width}d} {1}'.format(row + self.firstrowindex + 1, optionText, width=width)
-            self.menuText[row] = StaticText(self.height, self.width, optionText, self.font2, fill=color, bgcolor=bgcolor)
+            self.menuText[row] = StaticText(self.height, self.width, optionText, self.font2, fill=color,
+                                            bgcolor=bgcolor)
         if self.totaloptions == 0:
-            self.menuText[0] = StaticText(self.height, self.width, 'no items..', self.font2, fill="white", bgcolor="black")
-            
+            self.menuText[0] = StaticText(self.height, self.width, 'no items..', self.font2, fill="white",
+                                          bgcolor="black")
+
     def NextOption(self):
         self.selectedOption = min(self.selectedOption + 1, self.totaloptions - 1)
         self.MenuUpdate()
@@ -329,9 +365,10 @@ class MenuScreen():
 
     def SelectedOption(self):
         return self.selectedOption
-        
+
     def UpdatePlayingInfo(self, row1, row2):
         pass
+
     def SetPlayingIcon(self, state, time=0):
         pass
 
@@ -339,20 +376,123 @@ class MenuScreen():
         if self.hasLabel:
             self.menuLabel.DrawOn(image, self.labelPos)
         for row in range(self.onscreenoptions):
-            self.menuText[row].DrawOn(image, (5, self.menuYPos + row*16))
+            self.menuText[row].DrawOn(image, (5, self.menuYPos + row * 16))
         if self.totaloptions == 0:
             self.menuText[0].DrawOn(image, (15, self.menuYPos))
 
 
+def LeftKnob_RotaryEvent(dir):
+    global emit_volume
+    if not oled.volumeControlDisabled and oled.state != STATE_PLAYLIST_MENU:
+        if dir == RotaryEncoder.LEFT:
+            oled.volume -= VOLUME_DT
+            oled.volume = max(oled.volume, 0)
+        elif dir == RotaryEncoder.RIGHT:
+            oled.volume += VOLUME_DT
+            oled.volume = min(oled.volume, 100)
+        oled.stateTimeout = 2.0
+        if oled.state != STATE_VOLUME:
+            SetState(STATE_VOLUME)
+        else:
+            oled.modal.DisplayVolume(oled.volume)
+        emit_volume = True
 
+
+def LeftKnob_PushEvent(hold_time):
+    global UPDATE_INTERVAL
+    if hold_time < 3:
+        print('LeftKnob_PushEvent SHORT')
+        if oled.state == STATE_PLAYER:
+            if oled.playState == 'play':
+                volumioIO.emit('stop')
+            else:
+                volumioIO.emit('play')
+        if oled.state == STATE_PLAYLIST_MENU:
+            SetState(STATE_PLAYER)
+        if oled.state == STATE_LIBRARY_MENU:
+            LibraryReturn()
+    else:
+        print('LeftKnob_PushEvent LONG -> trying to shutdown')
+        UPDATE_INTERVAL = 10  # stop updating screen
+        sleep(0.1)
+        show_logo("shutdown.ppm", oled)
+        try:
+            with open('oledconfig.json', 'w') as f:  # save current track number
+                json.dump({"track": oled.playPosition}, f)
+        except IOError:
+            print('Cannot save config file to current working directory')
+        sleep(1.5)
+        oled.cleanup()  # put display into low power mode
+        volumioIO.emit('shutdown')
+        sleep(60)
+
+
+def RightKnob_RotaryEvent(dir):
+    global emit_track
+    if oled.state == STATE_PLAYLIST_MENU or oled.state == STATE_LIBRARY_MENU:
+        oled.stateTimeout = 20.0
+        if dir == RotaryEncoder.LEFT:
+            oled.modal.PrevOption()
+        elif dir == RotaryEncoder.RIGHT:
+            oled.modal.NextOption()
+
+    else:
+        oled.stateTimeout = 6.0
+        if oled.state != STATE_QUEUE_MENU:
+            SetState(STATE_QUEUE_MENU)
+        if dir == RotaryEncoder.LEFT:
+            oled.modal.PrevOption()
+        elif dir == RotaryEncoder.RIGHT:
+            oled.modal.NextOption()
+        oled.playPosition = oled.modal.SelectedOption()
+        emit_track = True
+
+
+def RightKnob_PushEvent(hold_time):
+    if hold_time < 1:
+        print('RightKnob_PushEvent SHORT')
+        if oled.state == STATE_QUEUE_MENU:
+            oled.stateTimeout = 0  # return to player mode
+        elif oled.state != STATE_PLAYLIST_MENU and oled.state != STATE_LIBRARY_MENU:
+            volumioIO.emit('listPlaylist')
+            oled.stateTimeout = 20.0
+            SetState(STATE_PLAYLIST_MENU)
+            print('Entering playlist menu')
+        else:
+            if oled.state == STATE_PLAYLIST_MENU:
+                LoadPlaylist(oled.playlistoptions[oled.modal.SelectedOption()])
+            if oled.state == STATE_LIBRARY_MENU:
+                oled.stateTimeout = 20.0
+                EnterLibraryItem(oled.modal.SelectedOption())
+    else:
+        print('RightKnob_PushEvent LONG -> Music library browse')
+        oled.stateTimeout = 20.0
+        volumioIO.emit('browseLibrary', {'uri': 'music-library'})
+
+
+LeftKnob_Push = PushButton(3, max_time=3)
+LeftKnob_Push.setCallback(LeftKnob_PushEvent)
+LeftKnob_Rotation = RotaryEncoder(5, 6, pulses_per_cycle=4)
+LeftKnob_Rotation.setCallback(LeftKnob_RotaryEvent)
+
+RightKnob_Push = PushButton(27, max_time=1)
+RightKnob_Push.setCallback(RightKnob_PushEvent)
+RightKnob_Rotation = RotaryEncoder(22, 23, pulses_per_cycle=4)
+RightKnob_Rotation.setCallback(RightKnob_RotaryEvent)
+# IR receiver is connected to port 13
+
+show_logo("volumio_logo.ppm", oled)
+sleep(2)
 SetState(STATE_PLAYER)
 
 updateThread = Thread(target=display_update_service)
 updateThread.daemon = True
 updateThread.start()
 
+
 def _receive_thread():
     volumioIO.wait()
+
 
 receive_thread = Thread(target=_receive_thread)
 receive_thread.daemon = True
@@ -368,16 +508,30 @@ volumioIO.on('pushBrowseLibrary', onLibraryBrowse)
 volumioIO.emit('listPlaylist')
 volumioIO.emit('getState')
 volumioIO.emit('getQueue')
-#volumioIO.emit('getBrowseSources')
+# volumioIO.emit('getBrowseSources')
 sleep(0.1)
 try:
-    with open('oledconfig.json', 'r') as f:   #load last playing track number
+    with open('oledconfig.json', 'r') as f:  # load last playing track number
         config = json.load(f)
 except IOError:
     pass
 else:
     oled.playPosition = config['track']
-    
-if oled.playState != 'play':
-    volumioIO.emit('play', {'value':oled.playPosition})
 
+if oled.playState != 'play':
+    volumioIO.emit('play', {'value': oled.playPosition})
+
+while True:
+    if emit_volume:
+        emit_volume = False
+        print("volume: " + str(oled.volume))
+        volumioIO.emit('volume', oled.volume)
+    if emit_track and oled.stateTimeout < 4.5:
+        emit_track = False
+        try:
+            print('Track selected: ' + str(oled.playPosition + 1) + '/' + str(len(oled.queue)) + ' ',
+                  oled.queue[oled.playPosition].encode('ascii', 'ignore'))
+        except IndexError:
+            pass
+        volumioIO.emit('play', {'value': oled.playPosition})
+    sleep(0.1)
