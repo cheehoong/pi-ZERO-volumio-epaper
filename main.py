@@ -3,6 +3,7 @@
 import logging
 import os
 import time
+import threading
 from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
 from six import unichr
@@ -46,6 +47,20 @@ image = Image.open(baseimage)
 epd.displayPartBaseImage(epd.getbuffer(image))
 DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
+
+flag_t = 1
+def pthread_irq() :
+    print("pthread running")
+    while flag_t == 1 :
+        if(gt.digital_read(gt.INT) == 0) :
+            GT_Dev.Touch = 1
+        else :
+            GT_Dev.Touch = 0
+    print("thread:exit")
+
+t = threading.Thread(target = pthread_irq)
+t.setDaemon(True)
+t.start()
 
 # Derive some constants
 socketIO = SocketIO(volumio_host, volumio_port)
@@ -121,10 +136,6 @@ def on_push_state(*args):
     if (GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]):
         print("Po ...\r\n")
 
-    if (GT_Dev.TouchpointFlag):
-        i += 1
-        GT_Dev.TouchpointFlag = 0
-    print(GT_Dev.TouchpointFlag)
     if (GT_Dev.X[0] > 100 and GT_Dev.X[0] < 140 and GT_Dev.Y[0] > 80 and GT_Dev.Y[0] < 120):
         print("Photo ...\r\n")
     print(GT_Dev.X[0])
