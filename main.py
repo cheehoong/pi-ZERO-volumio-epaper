@@ -162,7 +162,7 @@ def main():
         socketIO.emit('getState', '', on_push_state)
         # now wait
         touch()
-        socketIO.wait()
+#        socketIO.wait()
         logging.info('Reconnection needed')
         time.sleep(1)
 
