@@ -153,7 +153,7 @@ class TwoWayClient(object):
             touch()
             # get initial state
             self.socketIO.emit('getState', '', self.on_push_state)
-            time.sleep(1)  # endless loop
+#            time.sleep(1)  # endless loop
 
     def _receive_events_thread(self):
         print("pthread running")
