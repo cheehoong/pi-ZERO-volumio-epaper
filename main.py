@@ -165,6 +165,6 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
-        img.paste(rabbit_icon, (50, 100))
+        img.paste(rabbit_icon, (30, 100))
         epd.displayPartial(epd.getbuffer(img))
         pass
