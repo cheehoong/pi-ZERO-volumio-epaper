@@ -82,6 +82,8 @@ t3 = touch_area("touch_volume_add", [100, 100])
 t4 = touch_area("touch_volume_minus", [100, 100])
 t5 = touch_area("touch_next", [100, 100])
 t6 = touch_area("touch_previous", [100, 100])
+t7 = touch_area("touch_off", [100, 100])
+
 icon_song = unichr(0xF000 + 0xAF)
 icon_artist = unichr(0xF000 + 0xB1)
 icon_album = unichr(0xF000 + 0xB3)
