@@ -5,7 +5,6 @@
 # https://volumio.github.io/docs/API/WebSocket_APIs.html
 import logging
 import os
-# import time
 import threading
 from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
@@ -202,9 +201,11 @@ def main():
 if __name__ == '__main__':
     main()
     try:
-        for x in [0, 1, 2, 3]:
-            setup_touch(x)
-        socketIO.wait(seconds=1)
+        while True:
+            # socketIO.sleep(0.5)
+            for x in [0, 1, 2, 3]:
+                setup_touch(x)
+            socketIO.wait(seconds=1)
     except KeyboardInterrupt:
         socketIO.disconnect()
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
