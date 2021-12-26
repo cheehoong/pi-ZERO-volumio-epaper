@@ -83,6 +83,7 @@ icon_play = unichr(0xF000 + 0x34)
 icon_pause = unichr(0xF000 + 0x3B)
 icon_stop = unichr(0xF000 + 0x3C)
 icon_sound = unichr(0xF000 + 0x58)
+icon_random = unichr(0xF000 + 0x60)
 
 
 def on_connect():
@@ -98,7 +99,8 @@ def on_push_state(*args):
     # status # albumart # artist, album, title # Volume crosses mute threshold
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))
-    logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass['artist'] + ' # Status = ' + lastpass['status'])
+    logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
+        'artist'] + ' # Status = ' + lastpass['status'])
     img_d = Image.open(baseimage)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
@@ -152,17 +154,19 @@ def button_pressed(channel):
             # socketIO.emit('play')
     else:
         print("unknown button", channel)
-    gt.GT_Init()
 
 
 touch_area = namedtuple('touch_area', ['name', 'X_min', 'X_max', 'Y_min', 'Y_max'])
-t1 = touch_area('touch_play', 80, 120, 100, 140)
-t2 = touch_area('touch_volume', 100, 100, 20, 20)
-t3 = touch_area('touch_volume_add', 100, 100, 20, 20)
-t4 = touch_area('touch_volume_minus', 100, 100, 20, 20)
-t5 = touch_area('touch_next', 100, 100, 20, 20)
-t6 = touch_area('touch_previous', 100, 100, 20, 20)
-t7 = touch_area('touch_off', 100, 100, 20, 20)
+t0 = touch_area('touch_nothing', 0, 0, 0, 0)
+t1 = touch_area('touch_next', 30, 40, 40, 50)
+t2 = touch_area('touch_random', 20, 30, 20, 30)
+t3 = touch_area('touch_play', 80, 120, 100, 140)
+t4 = touch_area('touch_volume_add', 20, 30, 30, 40)
+t5 = touch_area('touch_volume_minus', 10, 20, 20, 30)
+t6 = touch_area('touch_volume', 40, 60, 100, 140)
+t7 = touch_area('touch_previous', 30, 40, 30, 40)
+t8 = touch_area('touch_off', 20, 30, 20, 30)
+tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 
 
 def check_touch():
@@ -173,17 +177,12 @@ def check_touch():
             pass
             # print("Channel 0 ...\r\n")
         else:
-            if t1[1] < GT_Dev.X[0] < t1[2] and t1[3] < GT_Dev.Y[0] < t1[4]:
-                print("Channel 1 ...\r\n")
-                button_pressed(1)
-            if t2[1] < GT_Dev.X[0] < t2[2] and t2[3] < GT_Dev.Y[0] < t2[4]:
-                print("Channel 2 ...\r\n")
-                button_pressed(2)
-            if t3[1] < GT_Dev.X[0] < t3[2] and t3[3] < GT_Dev.Y[0] < t3[4]:
-                print("Channel 2 ...\r\n")
-                button_pressed(2)
-            print("Dev X="+str(GT_Dev.X[0]), ", Y="+str(GT_Dev.Y[0]), ", S="+str(GT_Dev.S[0]))
-            print("Old X="+str(GT_Old.X[0]), ", Y="+str(GT_Old.Y[0]), ", S="+str(GT_Old.S[0]))
+            for k in range(len(tt)):
+                if tt[k][1] < GT_Dev.X[0] < tt[k][2] and tt[k][3] < GT_Dev.Y[0] < tt[k][4]:
+                    print("Channel 1 ...\r\n")
+                    button_pressed(k)
+            print("Dev X=" + str(GT_Dev.X[0]), ", Y=" + str(GT_Dev.Y[0]), ", S=" + str(GT_Dev.S[0]))
+            print("Old X=" + str(GT_Old.X[0]), ", Y=" + str(GT_Old.Y[0]), ", S=" + str(GT_Old.S[0]))
     except (ValueError, RuntimeError) as e:
         print('ERROR:', e)
 
