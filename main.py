@@ -165,18 +165,17 @@ def button_pressed(channel):
         print("unknown button", channel)
 
 
-def setup_touch(touch_area):
-    print("touch area" + str(touch_area))
+def check_touch():
     try:
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
         if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]:
             print("Channel 0 ...\r\n")
             button_pressed(0)
-        if 10 < GT_Dev.X[0] < 40 and 80 < GT_Dev.Y[0] < 120:
+        elif 10 < GT_Dev.X[0] < 40 and 80 < GT_Dev.Y[0] < 120:
             print("Channel 1 ...\r\n")
             button_pressed(1)
-        if 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
+        elif 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
             print("Channel 2 ...\r\n")
             button_pressed(2)
         print(GT_Dev.X[0])
@@ -202,9 +201,8 @@ if __name__ == '__main__':
     main()
     try:
         while True:
-            for x in [0, 1, 2, 3]:
-                setup_touch(x)
-            socketIO.wait(seconds=0.1)
+            check_touch()
+            socketIO.wait(seconds=0.01)
     except KeyboardInterrupt:
         socketIO.disconnect()
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
