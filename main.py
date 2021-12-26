@@ -152,10 +152,11 @@ def button_pressed(channel):
             # socketIO.emit('play')
     else:
         print("unknown button", channel)
+    gt.GT_Init()
 
 
 touch_area = namedtuple('touch_area', ['name', 'X_min', 'X_max', 'Y_min', 'Y_max'])
-t1 = touch_area('touch_play', 80, 120, 80, 120)
+t1 = touch_area('touch_play', 80, 120, 100, 140)
 t2 = touch_area('touch_volume', 100, 100, 20, 20)
 t3 = touch_area('touch_volume_add', 100, 100, 20, 20)
 t4 = touch_area('touch_volume_minus', 100, 100, 20, 20)
@@ -176,6 +177,9 @@ def check_touch():
                 print("Channel 1 ...\r\n")
                 button_pressed(1)
             if t2[1] < GT_Dev.X[0] < t2[2] and t2[3] < GT_Dev.Y[0] < t2[4]:
+                print("Channel 2 ...\r\n")
+                button_pressed(2)
+            if t3[1] < GT_Dev.X[0] < t3[2] and t3[3] < GT_Dev.Y[0] < t3[4]:
                 print("Channel 2 ...\r\n")
                 button_pressed(2)
             print("Dev X="+str(GT_Dev.X[0]), ", Y="+str(GT_Dev.Y[0]), ", S="+str(GT_Dev.S[0]))
