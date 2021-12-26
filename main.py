@@ -143,7 +143,7 @@ def button_pressed(channel):
         # socketIO.emit('replaceAndPlay', {"uri":"live_playlists_random_50", "title":"50 random tracks", "service":"live_playlists"})
     elif channel == 3:
         print('state', status)
-        if status == 'pause':
+        if status == 'play':
             print('pause')
             socketIO.emit('pause')
         else:
