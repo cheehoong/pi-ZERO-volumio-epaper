@@ -168,7 +168,7 @@ def button_pressed(channel):
 
 def setup_touch(touch_area):
     if touch_area == 0:
-        print("touch area" + touch_area)
+        print("touch area" + str(touch_area))
     try:
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
