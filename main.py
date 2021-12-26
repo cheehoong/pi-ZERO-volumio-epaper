@@ -204,7 +204,7 @@ if __name__ == '__main__':
     try:
         for x in [0, 1, 2, 3]:
             setup_touch(x)
-        socketIO.wait()
+        socketIO.wait(seconds=0.1)
     except KeyboardInterrupt:
         socketIO.disconnect()
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
