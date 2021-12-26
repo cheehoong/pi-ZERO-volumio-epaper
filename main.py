@@ -3,6 +3,7 @@
 # https://volumio.org/forum/gpio-pins-control-volume-t2219.html
 # https://pypi.python.org/pypi/socketIO-client
 # https://volumio.github.io/docs/API/WebSocket_APIs.html
+import collections
 import logging
 import os
 import threading
@@ -74,14 +75,13 @@ lastpass = {
     "status": "none",
     "volume": 60
 }
-touch_area = {
-    "touch_play": (100, 100),
-    "touch_volume": (100, 100),
-    "touch_volume_add": (100, 100),
-    "touch_volume_minus": (100, 100),
-    "touch_next": (100, 100),
-    "touch_previous": (100, 100),
-}
+touch_area = collections.namedtuple('student', ['X', 'Y'])
+t1 = touch_area("touch_play", [100, 100])
+t2 = touch_area("touch_volume", [100, 100])
+t3 = touch_area("touch_volume_add", [100, 100])
+t4 = touch_area("touch_volume_minus", [100, 100])
+t5 = touch_area("touch_next", [100, 100])
+t6 = touch_area("touch_previous", [100, 100])
 icon_song = unichr(0xF000 + 0xAF)
 icon_artist = unichr(0xF000 + 0xB1)
 icon_album = unichr(0xF000 + 0xB3)
