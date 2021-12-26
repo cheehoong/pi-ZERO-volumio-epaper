@@ -166,7 +166,9 @@ def button_pressed(channel):
         print("unknown button", channel)
 
 
-def setup_touch():
+def setup_touch(touch_area):
+    if touch_area == 0:
+        print("touch area" + touch_area)
     try:
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
@@ -189,18 +191,21 @@ def setup_touch():
         print('ERROR:', e)
 
 
+for x in [0, 1, 2, 3]:
+    setup_touch(x)
+
+
 def main():
+    #    while True:
+    # connecting to socket
+    socketIO.on('pushState', on_push_state)
+    # get initial state
+    socketIO.emit('getState', '', on_push_state)
+    logging.info('Reconnection needed')
 
-    while True:
-        # connecting to socket
-        socketIO.on('pushState', on_push_state)
-        # get initial state
-        socketIO.emit('getState', '', on_push_state)
-        logging.info('Reconnection needed')
 
-    main()
 if __name__ == '__main__':
-    setup_touch()
+    main()
     try:
         socketIO.wait()
     except KeyboardInterrupt:
