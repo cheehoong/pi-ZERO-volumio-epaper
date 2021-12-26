@@ -190,7 +190,7 @@ def setup_touch():
 
 
 def main():
-    setup_touch()
+
     while True:
         # connecting to socket
         socketIO.on('pushState', on_push_state)
@@ -200,7 +200,7 @@ def main():
 
     main()
 if __name__ == '__main__':
-
+    setup_touch()
     try:
         socketIO.wait()
     except KeyboardInterrupt:
