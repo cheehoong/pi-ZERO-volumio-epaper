@@ -148,10 +148,10 @@ def button_pressed(channel):
         print('state', statust)
         if statust == 'play':
             print('pause')
-            # socketIO.emit('pause')
+            socketIO.emit('pause')
         else:
             print('play')
-            # socketIO.emit('play')
+            socketIO.emit('play')
     else:
         print("unknown button", channel)
 
