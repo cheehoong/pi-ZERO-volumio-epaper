@@ -165,7 +165,8 @@ def check_touch():
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
         if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]:
-            print("Channel 0 ...\r\n")
+            pass
+            # print("Channel 0 ...\r\n")
         else:
             if 10 < GT_Dev.X[0] < 40 and 80 < GT_Dev.Y[0] < 120:
                 print("Channel 1 ...\r\n")
