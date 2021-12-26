@@ -167,8 +167,7 @@ def button_pressed(channel):
 
 
 def setup_touch(touch_area):
-    if touch_area == 0:
-        print("touch area" + str(touch_area))
+    print("touch area" + str(touch_area))
     try:
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
@@ -191,10 +190,6 @@ def setup_touch(touch_area):
         print('ERROR:', e)
 
 
-for x in [0, 1, 2, 3]:
-    setup_touch(x)
-
-
 def main():
     #    while True:
     # connecting to socket
@@ -207,6 +202,8 @@ def main():
 if __name__ == '__main__':
     main()
     try:
+        for x in [0, 1, 2, 3]:
+            setup_touch(x)
         socketIO.wait()
     except KeyboardInterrupt:
         socketIO.disconnect()
