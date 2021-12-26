@@ -75,7 +75,7 @@ lastpass = {
     "status": "none",
     "volume": 60
 }
-
+status = 'pause'
 icon_song = unichr(0xF000 + 0xAF)
 icon_artist = unichr(0xF000 + 0xB1)
 icon_album = unichr(0xF000 + 0xB3)
@@ -92,7 +92,7 @@ def on_connect():
 
 
 def on_push_state(*args):
-    global lastpass
+    global lastpass, status
     icon_status = icon_stop
     lastpass = args[0]
     # Only run screen update if the key arguments have changed since the last call. Key arguments are:
@@ -130,10 +130,8 @@ def on_push_state(*args):
     return
 
 
-statust = 'pause'
-
-
 def button_pressed(channel):
+    global status
     if channel == 0:
         print('nothing')
         # socketIO.emit('next')
@@ -144,9 +142,8 @@ def button_pressed(channel):
         print('random')
         # socketIO.emit('replaceAndPlay', {"uri":"live_playlists_random_50", "title":"50 random tracks", "service":"live_playlists"})
     elif channel == 3:
-        print('play/pause')
-        print('state', statust)
-        if statust == 'play':
+        print('state', status)
+        if status == 'pause':
             print('pause')
             socketIO.emit('pause')
         else:
@@ -179,7 +176,7 @@ def check_touch():
         else:
             for k in range(len(tt)):
                 if tt[k][1] < GT_Dev.X[0] < tt[k][2] and tt[k][3] < GT_Dev.Y[0] < tt[k][4]:
-                    print("Channel 1 ...\r\n")
+                    print("Channel "+str(k)+" ...\r\n")
                     button_pressed(k)
             print("Dev X=" + str(GT_Dev.X[0]), ", Y=" + str(GT_Dev.Y[0]), ", S=" + str(GT_Dev.S[0]))
             print("Old X=" + str(GT_Old.X[0]), ", Y=" + str(GT_Old.Y[0]), ", S=" + str(GT_Old.S[0]))
