@@ -198,9 +198,9 @@ def main():
         socketIO.emit('getState', '', on_push_state)
         logging.info('Reconnection needed')
 
-
-if __name__ == '__main__':
     main()
+if __name__ == '__main__':
+
     try:
         socketIO.wait()
     except KeyboardInterrupt:
