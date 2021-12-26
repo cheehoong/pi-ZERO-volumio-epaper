@@ -22,7 +22,6 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
 # Initialise some constants
 font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 18)
-font20 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 20)
 font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttf'), 20, encoding="symb")
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert(0)
 baseimage = os.path.join(picdir, 'Empty2.bmp')
@@ -64,7 +63,6 @@ def pthread_irq():
 
 
 t = threading.Thread(target=pthread_irq)
-# t.setDaemon(True)
 t.daemon = True
 t.start()
 
@@ -201,8 +199,12 @@ if __name__ == '__main__':
             socketIO.wait(seconds=0.01)
     except KeyboardInterrupt:
         socketIO.disconnect()
+        flag_t = 0
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
         img.paste(rabbit_icon, (80, 10))
         imge = img.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
+        epd.sleep()
+        t.join()
+        epd.Dev_exit()
         pass
