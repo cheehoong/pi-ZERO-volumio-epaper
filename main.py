@@ -48,7 +48,6 @@ image = Image.open(baseimage)
 epd.displayPartBaseImage(epd.getbuffer(image))
 DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
-
 flag_t = 1
 
 
@@ -75,7 +74,14 @@ lastpass = {
     "status": "none",
     "volume": 60
 }
-
+touch_area = {
+    "touch_play": (100, 100),
+    "touch_volume": (100, 100),
+    "touch_volume_add": (100, 100),
+    "touch_volume_minus": (100, 100),
+    "touch_next": (100, 100),
+    "touch_previous": (100, 100),
+}
 icon_song = unichr(0xF000 + 0xAF)
 icon_artist = unichr(0xF000 + 0xB1)
 icon_album = unichr(0xF000 + 0xB3)
@@ -160,14 +166,13 @@ def check_touch():
         gt.GT_Scan(GT_Dev, GT_Old)
         if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]:
             print("Channel 0 ...\r\n")
-            button_pressed(0)
-        elif 10 < GT_Dev.X[0] < 40 and 80 < GT_Dev.Y[0] < 120:
-            print("Channel 1 ...\r\n")
-            button_pressed(1)
-        elif 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
-            print("Channel 2 ...\r\n")
-            button_pressed(2)
-        if not GT_Dev == GT_Old:
+        else:
+            if 10 < GT_Dev.X[0] < 40 and 80 < GT_Dev.Y[0] < 120:
+                print("Channel 1 ...\r\n")
+                button_pressed(1)
+            if 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
+                print("Channel 2 ...\r\n")
+                button_pressed(2)
             print("Dev X="+str(GT_Dev.X[0]), ", Y="+str(GT_Dev.Y[0]), ", S="+str(GT_Dev.S[0]))
             print("Old X="+str(GT_Old.X[0]), ", Y="+str(GT_Old.Y[0]), ", S="+str(GT_Old.S[0]))
     except (ValueError, RuntimeError) as e:
