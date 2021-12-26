@@ -96,12 +96,9 @@ def on_push_state(*args):
     lastpass = args[0]
     # Only run screen update if the key arguments have changed since the last call. Key arguments are:
     # status # albumart # artist, album, title # Volume crosses mute threshold
-    artist = str(args[0]['artist'])
-    title = str(args[0]['title'])
-    album = str(args[0]['album'])
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))
-    logging.info('Title = ' + title + ' # Album = ' + album + ' # Artist = ' + lastpass['artist'] + ' # Status = ' + status)
+    logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass['artist'] + ' # Status = ' + lastpass['status'])
     img_d = Image.open(baseimage)
     #    img_c = cv2.imread(baseimage, 0)
     #    img_d = Image.fromarray(img_c)
