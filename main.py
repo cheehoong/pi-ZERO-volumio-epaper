@@ -23,7 +23,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
 # Initialise some constants
 font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 18)
-font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 20, encoding="symb")
+font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 20)
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert(0)
 baseimage = os.path.join(picdir, 'Empty2.bmp')
 
