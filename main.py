@@ -174,6 +174,7 @@ def check_touch():
             pass
             # print("Channel 0 ...\r\n")
         else:
+            GT_Dev.TouchpointFlag = 0
             for k in range(len(tt)):
                 if tt[k][1] < GT_Dev.X[0] < tt[k][2] and tt[k][3] < GT_Dev.Y[0] < tt[k][4]:
                     print("Channel "+str(k)+" ...\r\n")
@@ -202,6 +203,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         flag_t = 0
+        epd.Clear(0xFF)
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
         img.paste(rabbit_icon, (80, 10))
         imge = img.transpose(method=Image.ROTATE_90)
