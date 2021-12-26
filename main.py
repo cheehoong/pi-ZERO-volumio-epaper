@@ -100,8 +100,6 @@ def on_push_state(*args):
     vol_x = int(float(args[0]['volume']))
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass['artist'] + ' # Status = ' + lastpass['status'])
     img_d = Image.open(baseimage)
-    #    img_c = cv2.imread(baseimage, 0)
-    #    img_d = Image.fromarray(img_c)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
         if status == 'pause':
@@ -169,8 +167,9 @@ def check_touch():
         elif 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
             print("Channel 2 ...\r\n")
             button_pressed(2)
-        print("Dev X="+str(GT_Dev.X[0]), ", Y="+str(GT_Dev.Y[0]), ", S="+str(GT_Dev.S[0]))
-        print("Old X="+str(GT_Old.X[0]), ", Y="+str(GT_Old.Y[0]), ", S="+str(GT_Old.S[0]))
+        if not GT_Dev == GT_Old:
+            print("Dev X="+str(GT_Dev.X[0]), ", Y="+str(GT_Dev.Y[0]), ", S="+str(GT_Dev.S[0]))
+            print("Old X="+str(GT_Old.X[0]), ", Y="+str(GT_Old.Y[0]), ", S="+str(GT_Old.S[0]))
     except (ValueError, RuntimeError) as e:
         print('ERROR:', e)
 
