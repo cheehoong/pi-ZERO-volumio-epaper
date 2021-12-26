@@ -1,8 +1,11 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
+# https://volumio.org/forum/gpio-pins-control-volume-t2219.html
+# https://pypi.python.org/pypi/socketIO-client
+# https://volumio.github.io/docs/API/WebSocket_APIs.html
 import logging
 import os
-import time
+# import time
 import threading
 from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
@@ -137,38 +140,69 @@ def on_push_state(*args):
     return
 
 
-def touch():
-    # Read the touch input
-    gt.GT_Scan(GT_Dev, GT_Old)
-    if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]:
-        print("Po ...\r\n")
+statust = 'pause'
 
-    if 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
-        print("Photo ...\r\n")
-    print(GT_Dev.X[0])
-    print(GT_Dev.Y[0])
-    print(GT_Dev.S[0])
-    print(GT_Old.X[0])
-    print(GT_Old.Y[0])
-    print(GT_Old.S[0])
+
+def button_pressed(channel):
+    if channel == 0:
+        print('nothing')
+        # socketIO.emit('next')
+    elif channel == 1:
+        print('next')
+        socketIO.emit('next')
+    elif channel == 2:
+        print('random')
+        # socketIO.emit('replaceAndPlay', {"uri":"live_playlists_random_50", "title":"50 random tracks", "service":"live_playlists"})
+    elif channel == 3:
+        print('play/pause')
+        print('state', statust)
+        if statust == 'play':
+            print('pause')
+            # socketIO.emit('pause')
+        else:
+            print('play')
+            # socketIO.emit('play')
+    else:
+        print("unknown button", channel)
+
+
+def setup_touch():
+    try:
+        # Read the touch input
+        gt.GT_Scan(GT_Dev, GT_Old)
+        if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]:
+            print("Channel 0 ...\r\n")
+            button_pressed(0)
+        if 10 < GT_Dev.X[0] < 40 and 80 < GT_Dev.Y[0] < 120:
+            print("Channel 1 ...\r\n")
+            button_pressed(1)
+        if 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
+            print("Channel 2 ...\r\n")
+            button_pressed(2)
+        print(GT_Dev.X[0])
+        print(GT_Dev.Y[0])
+        print(GT_Dev.S[0])
+        print(GT_Old.X[0])
+        print(GT_Old.Y[0])
+        print(GT_Old.S[0])
+    except (ValueError, RuntimeError) as e:
+        print('ERROR:', e)
+
 
 def main():
+    setup_touch()
     while True:
         # connecting to socket
         socketIO.on('pushState', on_push_state)
         # get initial state
         socketIO.emit('getState', '', on_push_state)
-        # now wait
-        touch()
-#        socketIO.wait()
-        socketIO.wait(seconds=1)
         logging.info('Reconnection needed')
-        time.sleep(1)
 
 
 if __name__ == '__main__':
+    main()
     try:
-        main()
+        socketIO.wait()
     except KeyboardInterrupt:
         socketIO.disconnect()
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
