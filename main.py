@@ -3,7 +3,7 @@
 # https://volumio.org/forum/gpio-pins-control-volume-t2219.html
 # https://pypi.python.org/pypi/socketIO-client
 # https://volumio.github.io/docs/API/WebSocket_APIs.html
-import collections
+from collections import namedtuple
 import logging
 import os
 import threading
@@ -75,14 +75,6 @@ lastpass = {
     "status": "none",
     "volume": 60
 }
-touch_area = collections.namedtuple('student', ['X', 'Y'])
-t1 = touch_area("touch_play", [100, 100])
-t2 = touch_area("touch_volume", [100, 100])
-t3 = touch_area("touch_volume_add", [100, 100])
-t4 = touch_area("touch_volume_minus", [100, 100])
-t5 = touch_area("touch_next", [100, 100])
-t6 = touch_area("touch_previous", [100, 100])
-t7 = touch_area("touch_off", [100, 100])
 
 icon_song = unichr(0xF000 + 0xAF)
 icon_artist = unichr(0xF000 + 0xB1)
@@ -162,6 +154,16 @@ def button_pressed(channel):
         print("unknown button", channel)
 
 
+touch_area = namedtuple('touch_area', ['name', 'X_min', 'X_max', 'Y_min', 'Y_max'])
+t1 = touch_area('touch_play', 80, 120, 80, 120)
+t2 = touch_area('touch_volume', 100, 100, 20, 20)
+t3 = touch_area('touch_volume_add', 100, 100, 20, 20)
+t4 = touch_area('touch_volume_minus', 100, 100, 20, 20)
+t5 = touch_area('touch_next', 100, 100, 20, 20)
+t6 = touch_area('touch_previous', 100, 100, 20, 20)
+t7 = touch_area('touch_off', 100, 100, 20, 20)
+
+
 def check_touch():
     try:
         # Read the touch input
@@ -170,10 +172,10 @@ def check_touch():
             pass
             # print("Channel 0 ...\r\n")
         else:
-            if 10 < GT_Dev.X[0] < 40 and 80 < GT_Dev.Y[0] < 120:
+            if t1[1] < GT_Dev.X[0] < t1[2] and t1[3] < GT_Dev.Y[0] < t1[4]:
                 print("Channel 1 ...\r\n")
                 button_pressed(1)
-            if 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
+            if t2[1] < GT_Dev.X[0] < t2[2] and t2[3] < GT_Dev.Y[0] < t2[4]:
                 print("Channel 2 ...\r\n")
                 button_pressed(2)
             print("Dev X="+str(GT_Dev.X[0]), ", Y="+str(GT_Dev.Y[0]), ", S="+str(GT_Dev.S[0]))
