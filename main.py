@@ -103,8 +103,7 @@ def on_push_state(*args):
     album = str(args[0]['album'])
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))
-    logging.info('Artist = ' + artist)
-    logging.info('Status = ' + status)
+    logging.info('Title = ' + title + ' Album = ' + album + ' Artist = ' + lastpass['artist'] + ' Status = ' + status)
     lastpass = args[0]
     img_d = Image.open(baseimage)
     #    img_c = cv2.imread(baseimage, 0)
