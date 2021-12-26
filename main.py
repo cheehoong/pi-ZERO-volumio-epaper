@@ -178,8 +178,8 @@ def check_touch():
         elif 100 < GT_Dev.X[0] < 140 and 80 < GT_Dev.Y[0] < 120:
             print("Channel 2 ...\r\n")
             button_pressed(2)
-        print("DX"+GT_Dev.X[0], "DY"+GT_Dev.Y[0], "DS"+GT_Dev.S[0])
-        print("OX"+GT_Old.X[0], "OY"+GT_Old.Y[0], "OS"+GT_Old.S[0])
+        print("DX"+str(GT_Dev.X[0]), "DY"+str(GT_Dev.Y[0]), "DS"+str(GT_Dev.S[0]))
+        print("OX"+str(GT_Old.X[0]), "OY"+str(GT_Old.Y[0]), "OS"+str(GT_Old.S[0]))
     except (ValueError, RuntimeError) as e:
         print('ERROR:', e)
 
