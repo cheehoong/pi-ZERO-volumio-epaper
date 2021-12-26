@@ -23,7 +23,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
 # Initialise some constants
 font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 18)
-font0w = ImageFont.truetype(os.path.join(fontdir, 'webdings.ttf'), 20, encoding="symb")
+font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 20, encoding="symb")
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert(0)
 baseimage = os.path.join(picdir, 'Empty2.bmp')
 
@@ -76,17 +76,18 @@ lastpass = {
     "volume": 60
 }
 status = 'pause'
-icon_song = unichr(0xF000 + 0xAF)
-icon_artist = unichr(0xF000 + 0xB1)
-icon_album = unichr(0xF000 + 0xB3)
-icon_play = unichr(0xF000 + 0x34)
-icon_pause = unichr(0xF000 + 0x3B)
-icon_stop = unichr(0xF000 + 0x3C)
-icon_sound = unichr(0xF000 + 0x58)
-icon_random = unichr(0xF000 + 0x60)
-icon_home = unichr(0xF000 + 0x61)
-icon_next = unichr(0xF000 + 0x61)
-icon_previous = unichr(0xF000 + 0x61)
+icon_song = u"\uE030"
+icon_artist = u"\uE029"
+icon_album = u"\uE02F"
+icon_play = u"\uE039"
+icon_pause = u"\uE036"
+icon_stop = u"\uE047"
+icon_sound = u"\uE04d"
+icon_random = u"\uE043"
+icon_home = u"\uE58C"
+icon_next = u"\uE044"
+icon_previous = u"\uE045"
+
 
 def on_connect():
     logging.info('connect')
@@ -167,11 +168,12 @@ t9 = touch_area('touch_home', 20, 30)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 20
 
+
 def check_touch():
     try:
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
-        if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0]: # and GT_Old.S[0] == GT_Dev.S[0]:
+        if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0]:  # and GT_Old.S[0] == GT_Dev.S[0]:
             pass
             # print("Channel 0 ...\r\n")
         else:
