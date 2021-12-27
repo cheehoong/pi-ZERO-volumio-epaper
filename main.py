@@ -69,6 +69,7 @@ t.start()
 
 # Derive some constants
 socketIO = SocketIO(volumio_host, volumio_port)
+status = 'pause'
 lastpass = {
     "artist": "none",
     "title": "none",
@@ -76,7 +77,6 @@ lastpass = {
     "status": "none",
     "volume": 60
 }
-status = 'pause'
 icon_song = u"\uE405"
 icon_artist = u"\uE416"
 icon_album = u"\uE03D"
@@ -101,12 +101,12 @@ def on_connect():
 
 def bar(img_b, volume):
     position = (30, 30)
-    bar_height = position[0] + 20
-    bar_width = position[1] + 200
+    bar_height = 20
+    bar_width = 200
     draw = ImageDraw.Draw(img_b)
     filled_pixels = int(bar_width * volume / 100)
-    draw.rectangle((position[0], position[1], bar_width - 1, bar_height - 1), outline=0, fill=1)
-    draw.rectangle((position[0] + 4, position[1] + 4, filled_pixels - 4, bar_height - 5), fill=0)
+    draw.rectangle((position[0], position[1], position[1] + bar_width, position[0] + bar_height), outline=0, fill=1)
+    draw.rectangle((position[0] + 4, position[1] + 4, position[1] + filled_pixels - 4, bar_height - 4), fill=0)
     draw.text((77, 100), icon_home, font=font0w, fill=0)
     draw.text((230, 100), icon_plus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
