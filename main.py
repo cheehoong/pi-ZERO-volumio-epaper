@@ -103,13 +103,14 @@ def bar(img_b, volume):
     bar_width = 190
     draw = ImageDraw.Draw(img_b)
     filled_pixels = int(bar_width * volume / 100)
-    draw.rectangle((position[0], position[1], position[1]+bar_width, position[0]+bar_height), outline=0, fill=1)
-    draw.rectangle((position[0]+4, position[1]+4, position[1]+filled_pixels-4, position[0]+bar_height-4), fill=0)
+    draw.rectangle((position[0], position[1], position[1] + bar_width, position[0] + bar_height), outline=0, fill=1)
+    draw.rectangle((position[0] + 4, position[1] + 4, position[1] + filled_pixels - 4, position[0] + bar_height - 4),
+                   fill=0)
     draw.text((77, 100), icon_home, font=font0w, fill=0)
-    draw.text((position[0]+bar_width+10, position[1]), icon_plus, font=font0w, fill=0)
-    draw.text((position[0]-30, position[1]), icon_minus, font=font0w, fill=0)
-    draw.text((position[0]+30, position[1]-20), icon_sound, font=font0w, fill=0)
-    draw.text((position[0]+130, position[1]-20), str(volume)+' %', font=font18, fill=0)
+    draw.text((position[0] + bar_width + 10, position[1]), icon_plus, font=font0w, fill=0)
+    draw.text((position[0] - 30, position[1]), icon_minus, font=font0w, fill=0)
+    draw.text((position[0] + 30, position[1] - 20), icon_sound, font=font0w, fill=0)
+    draw.text((position[0] + 130, position[1] - 20), str(volume) + ' %', font=font18, fill=0)
     image.paste(img_b, position)
     print('end bar')
     return
@@ -147,8 +148,10 @@ def main_screen(*args):
     if 'title' in args[0] and args[0]['title'] is not None:
         draw.text((8, 10), icon_song, font=font0w, fill=0)
         draw.text((28, 10), lastpass['title'], font=font18, fill=0)
-    if vol_x <= 1:
+    if vol_x <= 1 or args[0]['mute'] == 'true':
         draw.text((100, 100), icon_muted, font=font0w, fill=0)
+    print(vol_x)
+    print(args[0]['mute'])
     draw.text((0, 100), icon_previous, font=font0w, fill=0)
     draw.text((77, 100), icon_setting, font=font0w, fill=0)
     draw.text((155, 100), icon_status, font=font0w, fill=0)
@@ -157,7 +160,6 @@ def main_screen(*args):
     img_d.paste(im2, (0, 0))
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
-
 
 
 def on_push_state(*args):
