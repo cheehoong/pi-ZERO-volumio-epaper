@@ -35,6 +35,9 @@ volumio_port = config.getint('volumio', 'volumio_port')
 
 # Read config and Initialise display
 logging.info('Initializing EPD...')
+# Display resolution
+EPD_WIDTH = 122
+EPD_HEIGHT = 250
 epd = epd2in13_V2.EPD_2IN13_V2()
 gt = gt1151.GT1151()
 GT_Dev = gt1151.GT_Development()
@@ -44,9 +47,9 @@ logging.info("init and Clear")
 epd.init(epd.FULL_UPDATE)
 gt.GT_Init()
 
-image = Image.open(baseimage)
+# image = Image.open(baseimage)
+image = Image.new(0, (EPD_WIDTH, EPD_HEIGHT), 1)
 epd.displayPartBaseImage(epd.getbuffer(image))
-# DrawImage = ImageDraw.Draw(image)
 epd.init(epd.PART_UPDATE)
 flag_t = 1
 
@@ -99,12 +102,12 @@ def on_connect():
 
 def bar(img_b, volume):
     position = (30, 30)
-    bar_height = position[0]+20
-    bar_width = position[1]+200
+    bar_height = position[0] + 20
+    bar_width = position[1] + 200
     draw = ImageDraw.Draw(img_b)
-    filled_pixels = int(bar_width*volume/100)
-    draw.rectangle((position[0], position[1], bar_width-1, bar_height-1), outline=0, fill=1)
-    draw.rectangle((position[0]+4, position[1]+4, filled_pixels-4, bar_height-5), fill=0)
+    filled_pixels = int(bar_width * volume / 100)
+    draw.rectangle((position[0], position[1], bar_width - 1, bar_height - 1), outline=0, fill=1)
+    draw.rectangle((position[0] + 4, position[1] + 4, filled_pixels - 4, bar_height - 5), fill=0)
     draw.text((77, 100), icon_home, font=font0w, fill=0)
     draw.text((230, 100), icon_plus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
@@ -120,7 +123,7 @@ def volume_screen(volume):
     bar(img_v, volume)
     print('after bar')
     im2v = img_v.transpose(method=Image.ROTATE_90)
-    img_v.paste(im2v, (0, 0))
+    image.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
 
@@ -221,8 +224,8 @@ def check_touch():
             # print("Channel 0 ...\r\n")
         else:
             for k in range(len(tt)):
-                if tt[k][1]-r < GT_Dev.X[0] < tt[k][1]+r and tt[k][2]-r < GT_Dev.Y[0] < tt[k][2]+r:
-                    print("Channel "+str(k)+" ...\r\n")
+                if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
+                    print("Channel " + str(k) + " ...\r\n")
                     button_pressed(k)
             print("Dev X=" + str(GT_Dev.X[0]), ", Y=" + str(GT_Dev.Y[0]), ", S=" + str(GT_Dev.S[0]))
             print("Old X=" + str(GT_Old.X[0]), ", Y=" + str(GT_Old.Y[0]), ", S=" + str(GT_Old.S[0]))
@@ -249,7 +252,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         flag_t = 0
-#        epd.Clear(0xFF)
+        #        epd.Clear(0xFF)
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
         img.paste(rabbit_icon, (80, 10))
         imge = img.transpose(method=Image.ROTATE_90)
