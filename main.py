@@ -9,7 +9,6 @@ import os
 import threading
 from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
-from six import unichr
 from socketIO_client import SocketIO
 from libz import epd2in13_V2
 from libz import gt1151
