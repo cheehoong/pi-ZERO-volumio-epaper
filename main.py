@@ -118,12 +118,12 @@ def bar(img_b, volume):
 
 
 def volume_screen(volume):
-    img_v = Image.open(baseimage)
+#    img_v = Image.open(baseimage)
     print('before bar')
-    bar(img_v, volume)
+    bar(image, volume)
     print('after bar')
-    im2v = img_v.transpose(method=Image.ROTATE_90)
-    img_v.paste(im2v, (0, 0))
+    im2v = image.transpose(method=Image.ROTATE_90)
+    image.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
 

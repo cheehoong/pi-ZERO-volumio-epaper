@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,82 +209,12 @@
       <option name="presentableId" value="Default" />
       <updated>1639582265248</updated>
     </task>
-    <task id="LOCAL-00202" summary="Initial commit">
-      <created>1640535407947</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1640535407947</updated>
-    </task>
-    <task id="LOCAL-00203" summary="Initial commit">
-      <created>1640535902301</created>
-      <option name="number" value="00203" />
-      <option name="presentableId" value="LOCAL-00203" />
-      <option name="project" value="LOCAL" />
-      <updated>1640535902301</updated>
-    </task>
-    <task id="LOCAL-00204" summary="Initial commit">
-      <created>1640539280195</created>
-      <option name="number" value="00204" />
-      <option name="presentableId" value="LOCAL-00204" />
-      <option name="project" value="LOCAL" />
-      <updated>1640539280195</updated>
-    </task>
-    <task id="LOCAL-00205" summary="Initial commit">
-      <created>1640539301225</created>
-      <option name="number" value="00205" />
-      <option name="presentableId" value="LOCAL-00205" />
-      <option name="project" value="LOCAL" />
-      <updated>1640539301225</updated>
-    </task>
-    <task id="LOCAL-00206" summary="Initial commit">
-      <created>1640539885771</created>
-      <option name="number" value="00206" />
-      <option name="presentableId" value="LOCAL-00206" />
-      <option name="project" value="LOCAL" />
-      <updated>1640539885771</updated>
-    </task>
-    <task id="LOCAL-00207" summary="Initial commit">
-      <created>1640540015394</created>
-      <option name="number" value="00207" />
-      <option name="presentableId" value="LOCAL-00207" />
-      <option name="project" value="LOCAL" />
-      <updated>1640540015394</updated>
-    </task>
-    <task id="LOCAL-00208" summary="Initial commit">
-      <created>1640540330720</created>
-      <option name="number" value="00208" />
-      <option name="presentableId" value="LOCAL-00208" />
-      <option name="project" value="LOCAL" />
-      <updated>1640540330720</updated>
-    </task>
-    <task id="LOCAL-00209" summary="Initial commit">
-      <created>1640540811158</created>
-      <option name="number" value="00209" />
-      <option name="presentableId" value="LOCAL-00209" />
-      <option name="project" value="LOCAL" />
-      <updated>1640540811158</updated>
-    </task>
-    <task id="LOCAL-00210" summary="Initial commit">
-      <created>1640541591631</created>
-      <option name="number" value="00210" />
-      <option name="presentableId" value="LOCAL-00210" />
-      <option name="project" value="LOCAL" />
-      <updated>1640541591631</updated>
-    </task>
     <task id="LOCAL-00211" summary="Initial commit">
       <created>1640588141300</created>
       <option name="number" value="00211" />
       <option name="presentableId" value="LOCAL-00211" />
       <option name="project" value="LOCAL" />
       <updated>1640588141301</updated>
-    </task>
-    <task id="LOCAL-00212" summary="Initial commit">
-      <created>1640562895077</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1640562895077</updated>
     </task>
     <task id="LOCAL-00213" summary="Initial commit">
       <created>1640562997476</created>
@@ -554,7 +482,77 @@
       <option name="project" value="LOCAL" />
       <updated>1640618264905</updated>
     </task>
-    <option name="localTasksCounter" value="251" />
+    <task id="LOCAL-00251" summary="Initial commit">
+      <created>1640618971781</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1640618971781</updated>
+    </task>
+    <task id="LOCAL-00252" summary="Initial commit">
+      <created>1640619038463</created>
+      <option name="number" value="00252" />
+      <option name="presentableId" value="LOCAL-00252" />
+      <option name="project" value="LOCAL" />
+      <updated>1640619038463</updated>
+    </task>
+    <task id="LOCAL-00253" summary="Initial commit">
+      <created>1640619287873</created>
+      <option name="number" value="00253" />
+      <option name="presentableId" value="LOCAL-00253" />
+      <option name="project" value="LOCAL" />
+      <updated>1640619287873</updated>
+    </task>
+    <task id="LOCAL-00254" summary="Initial commit">
+      <created>1640619354285</created>
+      <option name="number" value="00254" />
+      <option name="presentableId" value="LOCAL-00254" />
+      <option name="project" value="LOCAL" />
+      <updated>1640619354285</updated>
+    </task>
+    <task id="LOCAL-00255" summary="Initial commit">
+      <created>1640619574297</created>
+      <option name="number" value="00255" />
+      <option name="presentableId" value="LOCAL-00255" />
+      <option name="project" value="LOCAL" />
+      <updated>1640619574297</updated>
+    </task>
+    <task id="LOCAL-00256" summary="Initial commit">
+      <created>1640619591167</created>
+      <option name="number" value="00256" />
+      <option name="presentableId" value="LOCAL-00256" />
+      <option name="project" value="LOCAL" />
+      <updated>1640619591167</updated>
+    </task>
+    <task id="LOCAL-00257" summary="Initial commit">
+      <created>1640619849935</created>
+      <option name="number" value="00257" />
+      <option name="presentableId" value="LOCAL-00257" />
+      <option name="project" value="LOCAL" />
+      <updated>1640619849935</updated>
+    </task>
+    <task id="LOCAL-00258" summary="Initial commit">
+      <created>1640619887622</created>
+      <option name="number" value="00258" />
+      <option name="presentableId" value="LOCAL-00258" />
+      <option name="project" value="LOCAL" />
+      <updated>1640619887622</updated>
+    </task>
+    <task id="LOCAL-00259" summary="Initial commit">
+      <created>1640620102795</created>
+      <option name="number" value="00259" />
+      <option name="presentableId" value="LOCAL-00259" />
+      <option name="project" value="LOCAL" />
+      <updated>1640620102795</updated>
+    </task>
+    <task id="LOCAL-00260" summary="Initial commit">
+      <created>1640620186999</created>
+      <option name="number" value="00260" />
+      <option name="presentableId" value="LOCAL-00260" />
+      <option name="project" value="LOCAL" />
+      <updated>1640620186999</updated>
+    </task>
+    <option name="localTasksCounter" value="261" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
