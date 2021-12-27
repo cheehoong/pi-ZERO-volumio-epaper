@@ -148,8 +148,7 @@ def main_screen(*args):
         draw.text((8, 10), icon_song, font=font0w, fill=0)
         draw.text((28, 10), lastpass['title'], font=font18, fill=0)
     if vol_x <= 1:
-        logging.info('muted')
-        draw.text((38, 70), 'muted', font=font18, fill=0)
+        draw.text((100, 100), icon_muted, font=font0w, fill=0)
     draw.text((0, 100), icon_previous, font=font0w, fill=0)
     draw.text((77, 100), icon_setting, font=font0w, fill=0)
     draw.text((155, 100), icon_status, font=font0w, fill=0)
