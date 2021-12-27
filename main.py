@@ -154,6 +154,9 @@ def button_pressed(channel):
         else:
             print('play')
             socketIO.emit('play')
+    elif channel == 7:
+        print('previous')
+        socketIO.emit('prev')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
