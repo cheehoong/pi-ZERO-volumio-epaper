@@ -102,15 +102,16 @@ def on_connect():
 def bar(img_b, volume):
     position = (30, 30)
     bar_height = 20
-    bar_width = 200
+    bar_width = 190
     draw = ImageDraw.Draw(img_b)
     filled_pixels = int(bar_width * volume / 100)
-    draw.rectangle((position[0], position[1], position[1] + bar_width, position[0] + bar_height), outline=0, fill=1)
-    draw.rectangle((position[0] + 4, position[1] + 4, position[1] + filled_pixels - 4, position[0] + bar_height - 4), fill=0)
+    draw.rectangle((position[0], position[1], position[1]+bar_width, position[0]+bar_height), outline=0, fill=1)
+    draw.rectangle((position[0]+4, position[1]+4, position[1]+filled_pixels-4, position[0]+bar_height-4), fill=0)
     draw.text((77, 100), icon_home, font=font0w, fill=0)
     draw.text((230, 100), icon_plus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
+    draw.text((position[0], position[1]+bar_width+10), volume + '%', font=font0w, fill=0)
     image.paste(img_b, position)
     print('end bar')
     return
