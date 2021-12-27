@@ -95,6 +95,26 @@ def on_connect():
     return 'connected'
 
 
+def bar(img_b, volume):
+    bar_height = 20
+    bar_width = 200
+    position = (0, 0)
+    draw = ImageDraw.Draw(img_b)
+    filled_pixels = int(bar_width*volume/100)
+    draw.rectangle((0, 0, bar_width-1, bar_height-1), outline="white", fill="#2f2f2f")
+    draw.rectangle((1, 1, filled_pixels-2, bar_height-2), fill="white")
+    image.paste(img_b, position)
+
+
+def volume_screen(volume):
+    img_v = Image.open(baseimage)
+    bar(img_v, volume)
+    im2v = img_v.transpose(method=Image.ROTATE_90)
+    img_v.paste(im2v, (0, 0))
+    epd.displayPartial(epd.getbuffer(im2v))
+    epd.init(epd.PART_UPDATE)
+
+
 def on_push_state(*args):
     global lastpass, status
     icon_status = icon_stop
@@ -131,7 +151,7 @@ def on_push_state(*args):
     draw.text((155, 100), icon_status, font=font0w, fill=0)
     draw.text((230, 100), icon_next, font=font0w, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
-    img_d.paste(im2, (2, 2))
+    img_d.paste(im2, (0, 0))
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
     return
@@ -156,6 +176,9 @@ def button_pressed(channel):
         else:
             print('play')
             socketIO.emit('play')
+    elif channel == 6:
+        print('volume')
+        volume_screen(lastpass['volume'])
     elif channel == 7:
         print('previous')
         socketIO.emit('prev')
@@ -163,15 +186,15 @@ def button_pressed(channel):
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
 t0 = touch_area('touch_nothing', 20, 20)
-t1 = touch_area('touch_next', 105, 10)
+t1 = touch_area('touch_next', 110, 10)
 t2 = touch_area('touch_random', 20, 30)
-t3 = touch_area('touch_play', 105, 85)
+t3 = touch_area('touch_play', 110, 85)
 t4 = touch_area('touch_volume_add', 20, 30)
 t5 = touch_area('touch_volume_minus', 30, 20)
-t6 = touch_area('touch_volume', 115, 165)
-t7 = touch_area('touch_previous', 100, 230)
+t6 = touch_area('touch_volume', 110, 165)
+t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
-t9 = touch_area('touch_home', 20, 30)
+t9 = touch_area('touch_home', 110, 165)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 20
 
