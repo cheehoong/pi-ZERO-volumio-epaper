@@ -205,7 +205,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         flag_t = 0
-        epd.Clear(0xFF)
+#        epd.Clear(0xFF)
         img = Image.open(os.path.join(picdir, 'Empty2.bmp'))
         img.paste(rabbit_icon, (80, 10))
         imge = img.transpose(method=Image.ROTATE_90)
