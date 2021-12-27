@@ -35,8 +35,8 @@ volumio_port = config.getint('volumio', 'volumio_port')
 # Read config and Initialise display
 logging.info('Initializing EPD...')
 # Display resolution
-EPD_WIDTH = 122
-EPD_HEIGHT = 250
+EPD_WIDTH = 250  # rotated WxH screen
+EPD_HEIGHT = 122
 epd = epd2in13_V2.EPD_2IN13_V2()
 gt = gt1151.GT1151()
 GT_Dev = gt1151.GT_Development()
@@ -138,7 +138,7 @@ def on_push_state(*args):
     vol_x = int(float(args[0]['volume']))
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
-    img_d = Image.new('1', (EPD_HEIGHT, EPD_WIDTH), 1)
+    img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
         if status == 'pause':
