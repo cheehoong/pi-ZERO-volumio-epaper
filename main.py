@@ -85,7 +85,8 @@ icon_stop = unichr(0xF000 + 0x3C)
 icon_sound = unichr(0xF000 + 0x58)
 icon_random = unichr(0xF000 + 0x60)
 icon_home = unichr(0xF000 + 0x61)
-
+icon_next = unichr(0xF000 + 0x61)
+icon_previous = unichr(0xF000 + 0x61)
 
 def on_connect():
     logging.info('connect')
@@ -162,7 +163,7 @@ t5 = touch_area('touch_volume_minus', 10, 20)
 t6 = touch_area('touch_volume', 40, 60)
 t7 = touch_area('touch_previous', 30, 40)
 t8 = touch_area('touch_off', 20, 30)
-8 = touch_area('touch_home', 20, 30)
+t9 = touch_area('touch_home', 20, 30)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 20
 
