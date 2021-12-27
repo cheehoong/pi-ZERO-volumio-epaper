@@ -38,17 +38,16 @@ logging.info('Initializing EPD...')
 EPD_WIDTH = 250  # rotated WxH screen
 EPD_HEIGHT = 122
 epd = epd2in13_V2.EPD_2IN13_V2()
-gt = gt1151.GT1151()
-GT_Dev = gt1151.GT_Development()
-GT_Old = gt1151.GT_Development()
-
-logging.info("init and Clear")
 epd.init(epd.FULL_UPDATE)
-gt.GT_Init()
-
 image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
 epd.displayPartBaseImage(epd.getbuffer(image))
 epd.init(epd.PART_UPDATE)
+logging.info("Init touch")
+gt = gt1151.GT1151()
+GT_Dev = gt1151.GT_Development()
+GT_Old = gt1151.GT_Development()
+gt.GT_Init()
+
 flag_t = 1
 
 
@@ -125,19 +124,11 @@ def volume_screen(volume):
     epd.init(epd.PART_UPDATE)
 
 
-# def main_screen():
-
-
-def on_push_state(*args):
+def main_screen(*args):
     global lastpass, status
     icon_status = icon_stop
-    lastpass = args[0]
-    # Only run screen update if the key arguments have changed since the last call. Key arguments are:
-    # status # albumart # artist, album, title # Volume crosses mute threshold
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))
-    logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
-        'artist'] + ' # Status = ' + lastpass['status'])
     img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
@@ -167,6 +158,17 @@ def on_push_state(*args):
     img_d.paste(im2, (0, 0))
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
+
+
+
+def on_push_state(*args):
+    global lastpass, status
+    lastpass = args[0]
+    # Only run screen update if the key arguments have changed since the last call. Key arguments are:
+    # status # albumart # artist, album, title # Volume crosses mute threshold
+    logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
+        'artist'] + ' # Status = ' + lastpass['status'])
+    main_screen(args)
     return
 
 
@@ -232,12 +234,10 @@ def check_touch():
 
 
 def main():
-    #    while True:
     # connecting to socket
     socketIO.on('pushState', on_push_state)
     # get initial state
     socketIO.emit('getState', '', on_push_state)
-    logging.info('Reconnection needed')
 
 
 if __name__ == '__main__':
