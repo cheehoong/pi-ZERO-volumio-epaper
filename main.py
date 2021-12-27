@@ -44,10 +44,10 @@ logging.info("init and Clear")
 epd.init(epd.FULL_UPDATE)
 gt.GT_Init()
 
-image = Image.open(baseimage)
-epd.displayPartBaseImage(epd.getbuffer(image))
-DrawImage = ImageDraw.Draw(image)
-epd.init(epd.PART_UPDATE)
+# image = Image.open(baseimage)
+# epd.displayPartBaseImage(epd.getbuffer(image))
+# DrawImage = ImageDraw.Draw(image)
+# epd.init(epd.PART_UPDATE)
 flag_t = 1
 
 
@@ -104,12 +104,12 @@ def bar(img_b, volume):
     draw = ImageDraw.Draw(img_b)
     filled_pixels = int(bar_width*volume/100)
     draw.rectangle((position[0], position[1], bar_width-1, bar_height-1), outline=0, fill=1)
-    draw.rectangle((position[0]+4, position[1]+4, filled_pixels-4, bar_height-4), fill=0)
+    draw.rectangle((position[0]+4, position[1]+4, filled_pixels-4, bar_height-5), fill=0)
     draw.text((77, 100), icon_home, font=font0w, fill=0)
     draw.text((230, 100), icon_plus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
-    image.paste(img_b, position)
+    img_b.paste(img_b, position)
     print('end bar')
     return
 
@@ -123,6 +123,9 @@ def volume_screen(volume):
     img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
+
+
+# def main_screen():
 
 
 def on_push_state(*args):
