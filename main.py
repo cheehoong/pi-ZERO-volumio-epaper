@@ -104,11 +104,14 @@ def bar(img_b, volume):
     draw.rectangle((0, 0, bar_width-1, bar_height-1), outline="white", fill="#2f2f2f")
     draw.rectangle((1, 1, filled_pixels-2, bar_height-2), fill="white")
     image.paste(img_b, position)
+    print('end bar')
 
 
 def volume_screen(volume):
     img_v = Image.open(baseimage)
+    print('before bar')
     bar(img_v, volume)
+    print('after bar')
     im2v = img_v.transpose(method=Image.ROTATE_90)
     img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
@@ -177,7 +180,7 @@ def button_pressed(channel):
             print('play')
             socketIO.emit('play')
     elif channel == 6:
-        print('volume')
+        print('volume = ' + str(lastpass['volume']))
         volume_screen(lastpass['volume'])
     elif channel == 7:
         print('previous')
