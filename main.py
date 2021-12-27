@@ -47,7 +47,6 @@ logging.info("init and Clear")
 epd.init(epd.FULL_UPDATE)
 gt.GT_Init()
 
-# image = Image.open(baseimage)
 image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
 epd.displayPartBaseImage(epd.getbuffer(image))
 epd.init(epd.PART_UPDATE)
@@ -119,11 +118,12 @@ def bar(img_b, volume):
 
 def volume_screen(volume):
     img_v = Image.open(baseimage)
+    draw = ImageDraw.Draw(img_v)
     print('before bar')
     bar(img_v, volume)
     print('after bar')
     im2v = img_v.transpose(method=Image.ROTATE_90)
-    image.paste(im2v, (0, 0))
+    draw.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
 
