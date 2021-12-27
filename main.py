@@ -148,7 +148,7 @@ def main_screen(*args):
     if 'title' in args[0] and args[0]['title'] is not None:
         draw.text((8, 10), icon_song, font=font0w, fill=0)
         draw.text((28, 10), lastpass['title'], font=font18, fill=0)
-    if vol_x <= 1 or args[0]['mute'] == True:
+    if vol_x <= 1 or args[0]['mute'] is True:
         draw.text((120, 100), icon_muted, font=font0w, fill=0)
     print(vol_x)
     print(args[0]['mute'])
