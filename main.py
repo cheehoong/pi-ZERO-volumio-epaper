@@ -88,6 +88,8 @@ icon_home = u"\uE58C"
 icon_next = u"\uE044"
 icon_previous = u"\uE045"
 icon_setting = u"\uE8B8"
+icon_plus = u"\uE145"
+icon_minus = u"\uE15B"
 
 
 def on_connect():
@@ -98,12 +100,15 @@ def on_connect():
 def bar(img_b, volume):
     bar_height = 20
     bar_width = 200
-    position = (0, 0)
+    position = (30, 30)
     draw = ImageDraw.Draw(img_b)
     filled_pixels = int(bar_width*volume/100)
     draw.rectangle((0, 0, bar_width-1, bar_height-1), outline="white", fill=0)
     draw.rectangle((1, 1, filled_pixels-2, bar_height-2), fill=0)
     draw.text((77, 100), icon_home, font=font0w, fill=0)
+    draw.text((230, 100), icon_plus, font=font0w, fill=0)
+    draw.text((0, 100), icon_minus, font=font0w, fill=0)
+    draw.text((0, 100), icon_minus, font=font0w, fill=0)
     image.paste(img_b, position)
     print('end bar')
     return
