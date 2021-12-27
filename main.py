@@ -98,7 +98,7 @@ def on_connect():
 
 
 def bar(img_b, volume):
-    position = (60, 60)
+    position = (30, 30)
     bar_height = position[0]+20
     bar_width = position[1]+200
     draw = ImageDraw.Draw(img_b)
