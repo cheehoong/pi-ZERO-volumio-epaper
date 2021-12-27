@@ -105,6 +105,7 @@ def bar(img_b, volume):
     draw.rectangle((1, 1, filled_pixels-2, bar_height-2), fill="white")
     image.paste(img_b, position)
     print('end bar')
+    return
 
 
 def volume_screen(volume):
