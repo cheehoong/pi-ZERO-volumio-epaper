@@ -178,7 +178,7 @@ def check_touch():
             # print("Channel 0 ...\r\n")
         else:
             for k in range(len(tt)):
-                if tt[k][1]-r < GT_Dev.X[0] < tt[k][2]+r and tt[k][3]-r < GT_Dev.Y[0] < tt[k][4]+r:
+                if tt[k][1]-r < GT_Dev.X[0] < tt[k][1]+r and tt[k][2]-r < GT_Dev.Y[0] < tt[k][2]+r:
                     print("Channel "+str(k)+" ...\r\n")
                     button_pressed(k)
             print("Dev X=" + str(GT_Dev.X[0]), ", Y=" + str(GT_Dev.Y[0]), ", S=" + str(GT_Dev.S[0]))
