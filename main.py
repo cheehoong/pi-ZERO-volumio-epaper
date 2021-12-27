@@ -44,10 +44,10 @@ logging.info("init and Clear")
 epd.init(epd.FULL_UPDATE)
 gt.GT_Init()
 
-# image = Image.open(baseimage)
-# epd.displayPartBaseImage(epd.getbuffer(image))
+image = Image.open(baseimage)
+epd.displayPartBaseImage(epd.getbuffer(image))
 # DrawImage = ImageDraw.Draw(image)
-# epd.init(epd.PART_UPDATE)
+epd.init(epd.PART_UPDATE)
 flag_t = 1
 
 
