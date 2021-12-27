@@ -76,9 +76,9 @@ lastpass = {
     "volume": 60
 }
 status = 'pause'
-icon_song = u"\uE030"
-icon_artist = u"\uE029"
-icon_album = u"\uE02F"
+icon_song = u"\uE405"
+icon_artist = u"\uE03F"
+icon_album = u"\uE03D"
 icon_play = u"\uE039"
 icon_pause = u"\uE036"
 icon_stop = u"\uE047"
