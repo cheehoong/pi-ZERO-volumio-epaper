@@ -110,8 +110,8 @@ def bar(img_b, volume):
     draw.text((77, 100), icon_home, font=font0w, fill=0)
     draw.text((230, 100), icon_plus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
-    draw.text((0, 100), icon_minus, font=font0w, fill=0)
-    draw.text((position[0], position[1]+bar_width+10), str(volume) + '%', font=font0w, fill=0)
+    draw.text((position[0]-20, position[1]), icon_sound, font=font0w, fill=0)
+    draw.text((position[0]+bar_width+10, position[1]), str(volume)+'%', font=font0w, fill=0)
     image.paste(img_b, position)
     print('end bar')
     return
