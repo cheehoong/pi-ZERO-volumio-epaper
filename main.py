@@ -77,7 +77,7 @@ lastpass = {
 }
 status = 'pause'
 icon_song = u"\uE405"
-icon_artist = u"\uE03F"
+icon_artist = u"\uE416"
 icon_album = u"\uE03D"
 icon_play = u"\uE039"
 icon_pause = u"\uE036"
