@@ -101,8 +101,9 @@ def bar(img_b, volume):
     position = (0, 0)
     draw = ImageDraw.Draw(img_b)
     filled_pixels = int(bar_width*volume/100)
-    draw.rectangle((0, 0, bar_width-1, bar_height-1), outline="white", fill="#2f2f2f")
-    draw.rectangle((1, 1, filled_pixels-2, bar_height-2), fill="white")
+    draw.rectangle((0, 0, bar_width-1, bar_height-1), outline="white", fill=0)
+    draw.rectangle((1, 1, filled_pixels-2, bar_height-2), fill=0)
+    draw.text((77, 100), icon_home, font=font0w, fill=0)
     image.paste(img_b, position)
     print('end bar')
     return
