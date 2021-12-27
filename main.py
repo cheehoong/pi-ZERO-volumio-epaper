@@ -138,7 +138,7 @@ def on_push_state(*args):
     vol_x = int(float(args[0]['volume']))
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
-    img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+    img_d = Image.new('1', (EPD_HEIGHT, EPD_WIDTH), 1)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
         if status == 'pause':
