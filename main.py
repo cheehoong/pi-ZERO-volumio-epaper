@@ -84,6 +84,7 @@ icon_pause = unichr(0xF000 + 0x3B)
 icon_stop = unichr(0xF000 + 0x3C)
 icon_sound = unichr(0xF000 + 0x58)
 icon_random = unichr(0xF000 + 0x60)
+icon_home = unichr(0xF000 + 0x61)
 
 
 def on_connect():
@@ -151,29 +152,30 @@ def button_pressed(channel):
             socketIO.emit('play')
 
 
-touch_area = namedtuple('touch_area', ['name', 'X_min', 'X_max', 'Y_min', 'Y_max'])
-t0 = touch_area('touch_nothing', 0, 0, 0, 0)
-t1 = touch_area('touch_next', 30, 40, 40, 50)
-t2 = touch_area('touch_random', 20, 30, 20, 30)
-t3 = touch_area('touch_play', 80, 120, 100, 140)
-t4 = touch_area('touch_volume_add', 20, 30, 30, 40)
-t5 = touch_area('touch_volume_minus', 10, 20, 20, 30)
-t6 = touch_area('touch_volume', 40, 60, 100, 140)
-t7 = touch_area('touch_previous', 30, 40, 30, 40)
-t8 = touch_area('touch_off', 20, 30, 20, 30)
+touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
+t0 = touch_area('touch_nothing', 0, 0)
+t1 = touch_area('touch_next', 30, 40)
+t2 = touch_area('touch_random', 20, 30)
+t3 = touch_area('touch_play', 80, 120)
+t4 = touch_area('touch_volume_add', 20, 30)
+t5 = touch_area('touch_volume_minus', 10, 20)
+t6 = touch_area('touch_volume', 40, 60)
+t7 = touch_area('touch_previous', 30, 40)
+t8 = touch_area('touch_off', 20, 30)
+8 = touch_area('touch_home', 20, 30)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
-
+r = 20
 
 def check_touch():
     try:
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
-        if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0] and GT_Old.S[0] == GT_Dev.S[0]:
+        if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0]: # and GT_Old.S[0] == GT_Dev.S[0]:
             pass
             # print("Channel 0 ...\r\n")
         else:
             for k in range(len(tt)):
-                if tt[k][1] < GT_Dev.X[0] < tt[k][2] and tt[k][3] < GT_Dev.Y[0] < tt[k][4]:
+                if tt[k][1]-r < GT_Dev.X[0] < tt[k][2]+r and tt[k][3]-r < GT_Dev.Y[0] < tt[k][4]+r:
                     print("Channel "+str(k)+" ...\r\n")
                     button_pressed(k)
             print("Dev X=" + str(GT_Dev.X[0]), ", Y=" + str(GT_Dev.Y[0]), ", S=" + str(GT_Dev.S[0]))
