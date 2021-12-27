@@ -113,7 +113,6 @@ def on_push_state(*args):
             icon_status = icon_stop
     else:
         icon_status = icon_play
-    draw.text((120, 100), icon_status, font=font0w, fill=0)
     if 'artist' in args[0]:
         draw.text((8, 50), icon_artist, font=font0w, fill=0)
         draw.text((28, 50), lastpass['artist'], font=font18, fill=0)
@@ -126,6 +125,10 @@ def on_push_state(*args):
     if vol_x <= 1:
         logging.info('muted')
         draw.text((38, 70), 'muted', font=font18, fill=0)
+    draw.text((10, 100), icon_previous, font=font0w, fill=0)
+    draw.text((60, 100), icon_sound, font=font0w, fill=0)
+    draw.text((160, 100), icon_status, font=font0w, fill=0)
+    draw.text((220, 100), icon_next, font=font0w, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (2, 2))
     epd.displayPartial(epd.getbuffer(im2))
