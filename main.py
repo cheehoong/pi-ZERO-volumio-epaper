@@ -81,11 +81,13 @@ icon_album = u"\uE03D"
 icon_play = u"\uE039"
 icon_pause = u"\uE036"
 icon_stop = u"\uE047"
-icon_sound = u"\uE04d"
+icon_sound = u"\uE050"
+icon_muted = u"\uE04F"
 icon_random = u"\uE043"
 icon_home = u"\uE58C"
 icon_next = u"\uE044"
 icon_previous = u"\uE045"
+icon_setting = u"\uE8B8"
 
 
 def on_connect():
@@ -125,7 +127,7 @@ def on_push_state(*args):
         logging.info('muted')
         draw.text((38, 70), 'muted', font=font18, fill=0)
     draw.text((0, 100), icon_previous, font=font0w, fill=0)
-    draw.text((77, 100), icon_sound, font=font0w, fill=0)
+    draw.text((77, 100), icon_setting, font=font0w, fill=0)
     draw.text((155, 100), icon_status, font=font0w, fill=0)
     draw.text((230, 100), icon_next, font=font0w, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
