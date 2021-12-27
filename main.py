@@ -48,7 +48,7 @@ epd.init(epd.FULL_UPDATE)
 gt.GT_Init()
 
 # image = Image.open(baseimage)
-image = Image.new('0', (EPD_WIDTH, EPD_HEIGHT), 1)
+image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
 epd.displayPartBaseImage(epd.getbuffer(image))
 epd.init(epd.PART_UPDATE)
 flag_t = 1
