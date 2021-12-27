@@ -24,7 +24,6 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 18)
 font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 20)
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert(0)
-baseimage = os.path.join(picdir, 'Empty2.bmp')
 
 # Read config setting
 config = ConfigParser()
@@ -118,12 +117,10 @@ def bar(img_b, volume):
 
 
 def volume_screen(volume):
-#    img_v = Image.open(baseimage)
-    print('before bar')
-    bar(image, volume)
-    print('after bar')
-    im2v = image.transpose(method=Image.ROTATE_90)
-    image.paste(im2v, (0, 0))
+    img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+    bar(img_v, volume)
+    im2v = img_v.transpose(method=Image.ROTATE_90)
+    img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
 
@@ -141,7 +138,7 @@ def on_push_state(*args):
     vol_x = int(float(args[0]['volume']))
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
-    img_d = Image.open(baseimage)
+    img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
         if status == 'pause':
