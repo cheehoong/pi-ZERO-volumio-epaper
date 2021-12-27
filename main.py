@@ -168,7 +168,7 @@ def on_push_state(*args):
     # status # albumart # artist, album, title # Volume crosses mute threshold
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
-    main_screen(args)
+    main_screen(args[0])
     return
 
 
