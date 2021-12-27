@@ -111,19 +111,18 @@ def bar(img_b, volume):
     draw.text((230, 100), icon_plus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
     draw.text((0, 100), icon_minus, font=font0w, fill=0)
-    img_b.paste(img_b, position)
+    image.paste(img_b, position)
     print('end bar')
     return
 
 
 def volume_screen(volume):
     img_v = Image.open(baseimage)
-    draw = ImageDraw.Draw(img_v)
     print('before bar')
     bar(img_v, volume)
     print('after bar')
     im2v = img_v.transpose(method=Image.ROTATE_90)
-    draw.paste(im2v, (0, 0))
+    img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
 
