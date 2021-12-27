@@ -100,7 +100,7 @@ def on_connect():
 def bar(img_b, volume):
     bar_height = 20
     bar_width = 200
-    position = (30, 30)
+    position = (60, 60)
     draw = ImageDraw.Draw(img_b)
     filled_pixels = int(bar_width*volume/100)
     draw.rectangle((0, 0, bar_width-1, bar_height-1), outline="white", fill=0)
