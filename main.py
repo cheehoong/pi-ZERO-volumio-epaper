@@ -186,6 +186,7 @@ def check_touch():
             print("Dev X=" + str(GT_Dev.X[0]), ", Y=" + str(GT_Dev.Y[0]), ", S=" + str(GT_Dev.S[0]))
             print("Old X=" + str(GT_Old.X[0]), ", Y=" + str(GT_Old.Y[0]), ", S=" + str(GT_Old.S[0]))
             GT_Dev.X[0] = GT_Dev.Y[0] = GT_Old.X[0] = GT_Old.Y[0] = 0
+
     except (ValueError, RuntimeError) as e:
         print('ERROR:', e)
 
