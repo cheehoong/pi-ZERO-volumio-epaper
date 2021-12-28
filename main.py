@@ -90,6 +90,7 @@ icon_previous = u"\uE045"
 icon_setting = u"\uE8B8"
 icon_plus = u"\uE145"
 icon_minus = u"\uE15B"
+icon_power = u"\uE8AC"
 
 
 def on_connect():
