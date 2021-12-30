@@ -66,7 +66,7 @@ t.daemon = True
 t.start()
 
 # Derive some constants
-print(volumio_host+':'+str(volumio_port))
+print('http://'+volumio_host+':'+str(volumio_port))
 socketIO = socketio.Client()
 socketIO.connect(volumio_host+':'+str(volumio_port))
 status = 'pause'
