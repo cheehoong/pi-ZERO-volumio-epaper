@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +73,7 @@
       <recent name="C:\Users\lechh\AppData\Roaming\JetBrains\PyCharmCE2021.3\scratches" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.scratch (1)">
+  <component name="RunManager" selected="Python.epeper">
     <configuration name="dd" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pi-ZERO-volumio-epaper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -254,20 +255,6 @@
       <option name="presentableId" value="LOCAL-00211" />
       <option name="project" value="LOCAL" />
       <updated>1640588141301</updated>
-    </task>
-    <task id="LOCAL-00232" summary="Initial commit">
-      <created>1640566960069</created>
-      <option name="number" value="00232" />
-      <option name="presentableId" value="LOCAL-00232" />
-      <option name="project" value="LOCAL" />
-      <updated>1640566960069</updated>
-    </task>
-    <task id="LOCAL-00233" summary="Initial commit">
-      <created>1640569377083</created>
-      <option name="number" value="00233" />
-      <option name="presentableId" value="LOCAL-00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1640569377083</updated>
     </task>
     <task id="LOCAL-00234" summary="Initial commit">
       <created>1640613324422</created>
@@ -591,7 +578,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640880221875</updated>
     </task>
-    <option name="localTasksCounter" value="280" />
+    <task id="LOCAL-00280" summary="Initial commit">
+      <created>1640882472678</created>
+      <option name="number" value="00280" />
+      <option name="presentableId" value="LOCAL-00280" />
+      <option name="project" value="LOCAL" />
+      <updated>1640882472678</updated>
+    </task>
+    <task id="LOCAL-00281" summary="Initial commit">
+      <created>1640882544771</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1640882544771</updated>
+    </task>
+    <option name="localTasksCounter" value="282" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

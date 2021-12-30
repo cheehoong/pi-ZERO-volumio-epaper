@@ -131,6 +131,10 @@ def recv_packet(self):
 
 再次运行代码接收中文消息，代码正常运行.
 
+## Pycharm
+```bash
+pip install -U socketIO-client
+```
 
 ## Overclocking (Optional)
 The Zero 2 can easily be overclocked from 1.0 GHz to 1.3 GHz.
