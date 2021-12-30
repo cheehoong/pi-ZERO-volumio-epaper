@@ -248,8 +248,7 @@ if __name__ == '__main__':
     try:
         while True:
             check_touch()
-            # socketIO.wait(seconds=0.01)
-            socketIO.sleep(0.01)
+            socketIO.wait(seconds=0.01)
     except KeyboardInterrupt:
         socketIO.disconnect()
         flag_t = 0
