@@ -67,7 +67,7 @@ t.start()
 
 # Derive some constants
 socketIO = socketio.Client()
-socketIO.connect(volumio_host+':'+volumio_port)
+socketIO.connect(volumio_host+':'+str(volumio_port))
 status = 'pause'
 lastpass = {
     "artist": "none",

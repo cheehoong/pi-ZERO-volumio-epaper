@@ -55,6 +55,7 @@ Install python3
     sudo apt-get install python3-pil
     sudo apt-get install python3-numpy 
     sudo apt-get install python3-socketio-client
+    sudo pip3 install "python-socketio[client]"
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
     sudo pip3 install -U PyYAML
