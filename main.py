@@ -9,7 +9,7 @@ import os
 import threading
 from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
-import socketio
+from socketIO_client import SocketIO
 from libz import epd2in13_V2
 from libz import gt1151
 
@@ -66,9 +66,7 @@ t.daemon = True
 t.start()
 
 # Derive some constants
-print('http://'+volumio_host+':'+str(volumio_port))
-socketIO = socketio.Client()
-socketIO.connect(volumio_host+':'+str(volumio_port))
+socketIO = SocketIO(volumio_host, volumio_port)
 status = 'pause'
 lastpass = {
     "artist": "none",
