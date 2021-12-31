@@ -4,7 +4,7 @@ Description=Pi Volumio epaper
 [Service]
 Type=simple
 WorkingDirectory=/home/volumio
-ExecStart=/usr/bin/python -u /home/volumio/pi-SREO-volumio-epaper/pi-volumio-epaper.py
+ExecStart=/usr/bin/python -u /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=volumioepaper
