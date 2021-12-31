@@ -235,7 +235,8 @@ def button_pressed(channel):
         volume_screen(lastpass['volume'], 'minus')
     elif channel == 'touch_mute':
         print('volume x')
-        volume_screen(lastpass['volume'], 'mute')
+        if lastpass['mute'] is True:
+            socketIO.emit('umute', '')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
