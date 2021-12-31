@@ -119,17 +119,17 @@ def bar(img_b, volume):
 def volume_screen(volume, op):
     global page
     if volume < 100 and op == 'add':
-        socketIO.emit('volume', '+')
         if volume >= 90:
             volume = 100
         else:
             volume + 10
+        socketIO.emit('volume', volume)
     if volume > 0 and op == 'minus':
-        socketIO.emit('volume', '-')
         if volume <= 10:
             volume = 0
         else:
             volume - 10
+        socketIO.emit('volume', volume)
     lastpass['volume'] = volume
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
