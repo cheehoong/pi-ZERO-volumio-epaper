@@ -249,9 +249,9 @@ t6 = touch_area('touch_volume', 110, 165)
 t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
 t9 = touch_area('touch_home', 110, 165)
-t10 = touch_area('touch_mute', 110, 120)
+t10 = touch_area('touch_mute', 110, 125)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
-r = 20
+r = 10
 page = 'main_page'
 
 
