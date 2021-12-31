@@ -194,9 +194,11 @@ def on_push_state(*args):
 
 def button_pressed(channel):
     global status, page, image
-    if channel == 'touch_nothing':
-        print('nothing')
-        # socketIO.emit('next')
+    if channel == 'touch_setting':
+        if page == 'main_page':
+            page = 'volume_page'
+            print('xx')
+            volume_screen(lastpass['volume'], '')
     elif channel == 'touch_next':
         print('next')
         socketIO.emit('next')
@@ -212,12 +214,7 @@ def button_pressed(channel):
             print('play')
             socketIO.emit('play')
     elif channel == 'touch_home':
-        print('volume = ' + str(lastpass['volume']))
-        if page == 'main_page':
-            page = 'volume_page'
-            print('xx')
-            volume_screen(lastpass['volume'], '')
-        elif page == 'volume_page':
+        if page == 'volume_page':
             page = 'main_page'
             print('yy')
             epd.init(epd.FULL_UPDATE)
@@ -248,7 +245,7 @@ def button_pressed(channel):
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
-t0 = touch_area('touch_nothing', 20, 20)
+t0 = touch_area('touch_setting', 110, 85)
 t1 = touch_area('touch_next', 110, 10)
 t2 = touch_area('touch_random', 20, 30)
 t3 = touch_area('touch_play', 110, 85)
@@ -257,7 +254,7 @@ t5 = touch_area('touch_volume_minus', 40, 240)
 t6 = touch_area('touch_volume', 20, 180)
 t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
-t9 = touch_area('touch_home', 110, 85)
+t9 = touch_area('touch_home', 110, 155)
 t10 = touch_area('touch_mute', 110, 125)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 10
