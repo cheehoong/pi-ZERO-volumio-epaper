@@ -240,8 +240,10 @@ def button_pressed(channel):
         print(lastpass['mute'])
         if lastpass['mute'] is True:
             socketIO.emit('unmute', '')
+            lastpass['mute'] = False
         if lastpass['mute'] is False:
             socketIO.emit('mute', '')
+            lastpass['mute'] = True
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
