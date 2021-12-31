@@ -258,7 +258,7 @@ if __name__ == '__main__':
         imge = img.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
         epd.init(epd.FULL_UPDATE)
-        epd.sleep()
+        # epd.sleep()
         t.join()
-        epd.Dev_exit()
+        # epd.Dev_exit()
         pass
