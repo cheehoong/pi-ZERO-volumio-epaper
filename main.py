@@ -111,7 +111,7 @@ def bar(img_b, volume):
     draw.text((position[0] + bar_width + 10, position[1]), icon_plus, font=font0w, fill=0)
     draw.text((position[0] - 30, position[1]), icon_minus, font=font0w, fill=0)
     draw.text((position[0] + 130, position[1] - 20), str(volume) + ' %', font=font18, fill=0)
-    if volume == 0 and lastpass['mute'] is True:
+    if lastpass['mute'] is True:
         draw.text((position[0] + 30, position[1] - 20), icon_muted, font=font0w, fill=0)
     if lastpass['mute'] is False:
         draw.text((position[0] + 30, position[1] - 20), icon_sound, font=font0w, fill=0)
@@ -121,18 +121,19 @@ def bar(img_b, volume):
 
 def volume_screen(volume, op):
     global page
-    if volume < 100 and op == 'add':
-        if volume >= 90:
-            volume = 100
-        else:
-            volume += 10
-    if volume > 0 and op == 'minus':
-        if volume <= 10:
-            volume = 0
-        else:
-            volume -= 10
-    socketIO.emit('volume', volume)
-    lastpass['volume'] = volume
+    if op == 'add' or 'minus':
+        if volume < 100 and op == 'add':
+            if volume >= 90:
+                volume = 100
+            else:
+                volume += 10
+        if volume > 0 and op == 'minus':
+            if volume <= 10:
+                volume = 0
+            else:
+                volume -= 10
+        socketIO.emit('volume', volume)
+        lastpass['volume'] = volume
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
     im2v = img_v.transpose(method=Image.ROTATE_90)
