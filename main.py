@@ -260,7 +260,7 @@ if __name__ == '__main__':
         epd.Clear(0xFF)
         # epd.init(epd.FULL_UPDATE)
         # epd.init(epd.PART_UPDATE)
-        epd.sleep()
+        epd.sleep(2)
         t.join()
         epd.Dev_exit()
         pass
