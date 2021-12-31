@@ -202,7 +202,7 @@ def button_pressed(channel):
         if page == 'volume_page':
             page = 'main_page'
             print('yy')
-            main_screen()
+            # main_screen()
     elif channel == 'touch_previous':
         print('previous')
         socketIO.emit('prev')
