@@ -236,9 +236,9 @@ def check_touch():
             # print("Channel 0 ...\r\n")
         else:
             if page == 'main_page':
-                tt = [t1, t3, t7, t9, t10]
+                tt = [t1, t3, t7, t9]
             elif page == 'volume_page':
-                tt = [t4, t5, t9, t10]
+                tt = [t4, t5, t9]
             for k in range(len(tt)):
                 if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
                     print("Channel " + tt[k][0] + " ...\r\n")
