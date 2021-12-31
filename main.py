@@ -118,6 +118,8 @@ def bar(img_b, volume):
 
 
 def volume_screen(volume):
+    global page
+    page = 'main_page'
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
     im2v = img_v.transpose(method=Image.ROTATE_90)
@@ -176,17 +178,17 @@ def on_push_state(*args):
 
 
 def button_pressed(channel):
-    global status
-    if channel == 0:
+    global status, page
+    if channel == 'touch_nothing':
         print('nothing')
         # socketIO.emit('next')
-    elif channel == 1:
+    elif channel == 'touch_next':
         print('next')
         socketIO.emit('next')
-    elif channel == 2:
+    elif channel == 'touch_random':
         print('random')
         # socketIO.emit('replaceAndPlay', {"uri":"live_playlists_random_50", "title":"50 random tracks", "service":"live_playlists"})
-    elif channel == 3:
+    elif channel == 'touch_play':
         print('state', status)
         if status == 'play':
             print('pause')
@@ -196,8 +198,12 @@ def button_pressed(channel):
             socketIO.emit('play')
     elif channel == 'touch_home':
         print('volume = ' + str(lastpass['volume']))
-        volume_screen(lastpass['volume'])
-    elif channel == 7:
+        if page == 'main_page':
+            page = 'volume_page'
+            volume_screen(lastpass['volume'])
+        if page == 'volume_page':
+            page = 'main_page'
+    elif channel == 'touch_previous':
         print('previous')
         socketIO.emit('prev')
 
@@ -229,6 +235,8 @@ def check_touch():
         else:
             if page == 'main_page':
                 tt = [t1, t3, t7, t9, t10]
+            elif page == 'volume_page':
+                tt = [t4, t5, t9, t10]
             for k in range(len(tt)):
                 if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
                     print("Channel " + tt[k][0] + " ...\r\n")
