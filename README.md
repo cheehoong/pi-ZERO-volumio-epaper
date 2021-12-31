@@ -66,16 +66,13 @@ Install pi-ZERO-volumio-epapper
 ```bash
 git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 sudo nano /etc/rc.local
-
-
-sudo python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
-
-sudo chmod +x ~/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
-sudo cp ~/pi-ZERO-volumio-epaper/pi-volumio-epaper.service /lib/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable pi-volumio-epaper.service
-reboot
 ````
+Add below to 1 line before "exit 0"
+```bash
+sudo python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
+```
+save and reboot
+
 ## Installation steps (Update)
 ```bash
 sudo rm -r pi-ZERO-volumio-epaper
