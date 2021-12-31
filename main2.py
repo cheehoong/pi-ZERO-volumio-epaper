@@ -131,7 +131,7 @@ def on_push_state(*args):
     global lastpass, status
     icon_status = icon_stop
     lastpass = args[0]
-    # Only run screen update if the key arguments have changed since the last call. Key arguments are:
+    # Only run.sh screen update if the key arguments have changed since the last call. Key arguments are:
     # status # albumart # artist, album, title # Volume crosses mute threshold
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))

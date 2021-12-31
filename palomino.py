@@ -76,7 +76,7 @@ def parse_args():
                         'actual e-paper device (for testing without a '
                         'physical device)')
     p.add_argument('-r', '--rotate', default=None, choices=['CW', 'CCW', 'flip'],
-                   help='run the tests with the display rotated by the specified value')
+                   help='run.sh the tests with the display rotated by the specified value')
     p.add_argument('-e', '--error', action='store_true',
                    help='Brings up the error screen for formatting')
 
@@ -106,7 +106,7 @@ def display_image_8bpp(display, img):
 
 def on_push_state(*args):
     global lastpass
-    # Only run screen update if the key arguments have changed since the last call. Key arguments are:
+    # Only run.sh screen update if the key arguments have changed since the last call. Key arguments are:
     # status
     # albumart
     # artist, album, title

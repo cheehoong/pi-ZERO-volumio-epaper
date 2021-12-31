@@ -93,7 +93,7 @@ def on_connect():
 def on_push_state(*args):
     global lastpass
     icon_status = icon_stop
-    # Only run screen update if the key arguments have changed since the last call. Key arguments are:
+    # Only run.sh screen update if the key arguments have changed since the last call. Key arguments are:
     # status
     # albumart
     # artist, album, title
