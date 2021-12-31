@@ -124,13 +124,12 @@ def volume_screen(volume, op):
             volume = 100
         else:
             volume + 10
-        socketIO.emit('volume', volume)
     if volume > 0 and op == 'minus':
         if volume <= 10:
             volume = 0
         else:
             volume - 10
-        socketIO.emit('volume', volume)
+    socketIO.emit('volume', volume)
     print('2=' + str(volume))
     lastpass['volume'] = volume
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
