@@ -245,7 +245,7 @@ def button_pressed(channel):
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
-t0 = touch_area('touch_setting', 110, 85)
+t0 = touch_area('touch_setting', 110, 165)
 t1 = touch_area('touch_next', 110, 10)
 t2 = touch_area('touch_random', 20, 30)
 t3 = touch_area('touch_play', 110, 85)
@@ -254,7 +254,7 @@ t5 = touch_area('touch_volume_minus', 40, 240)
 t6 = touch_area('touch_volume', 20, 180)
 t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
-t9 = touch_area('touch_home', 110, 155)
+t9 = touch_area('touch_home', 110, 85)
 t10 = touch_area('touch_mute', 110, 125)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 10
