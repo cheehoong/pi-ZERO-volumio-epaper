@@ -273,7 +273,7 @@ def check_touch():
         else:
             if page == 'main_page':
                 print('main tt')
-                tt = [t1, t3, t7, t9, t10]
+                tt = [t0, t1, t3, t7, t10]
             elif page == 'volume_page':
                 print('volume tt')
                 tt = [t4, t5, t6, t9]
