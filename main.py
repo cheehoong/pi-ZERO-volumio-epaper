@@ -203,8 +203,9 @@ def button_pressed(channel):
         elif page == 'volume_page':
             page = 'main_page'
             print('yy')
-            # main_screen()
+            epd.init(epd.FULL_UPDATE)
             socketIO.emit('getState')
+
     elif channel == 'touch_previous':
         print('previous')
         socketIO.emit('prev')
