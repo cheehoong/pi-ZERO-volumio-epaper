@@ -116,7 +116,7 @@ def bar(img_b, volume):
     return
 
 
-def volume_screen(volume):
+def volume_screen(volume, op):
     global page
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
@@ -124,6 +124,18 @@ def volume_screen(volume):
     img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
+    if lastpass['volume'] < 100 and op == 'add':
+        socketIO.emit('volume', '+')
+        if lastpass['volume'] >= 90:
+            lastpass['volume'] = 100
+        else:
+            lastpass['volume'] + 10
+    if lastpass['volume'] > 0 and op == 'minus':
+        socketIO.emit('volume', '-')
+        if lastpass['volume'] <= 10:
+            lastpass['volume'] = 0
+        else:
+            lastpass['volume'] - 10
 
 
 def main_screen(*args):
@@ -213,10 +225,10 @@ def button_pressed(channel):
         socketIO.emit('prev')
     elif channel == 'touch_volume_add':
         print('volume +')
-        socketIO.emit('volume', '+')
+        volume_screen(lastpass['volume'], 'add')
     elif channel == 'touch_volume_minus':
         print('volume -')
-        socketIO.emit('volume', '-')
+        volume_screen(lastpass['volume'], 'minus')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
