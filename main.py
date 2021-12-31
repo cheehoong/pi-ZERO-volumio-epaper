@@ -107,7 +107,7 @@ def bar(img_b, volume):
     draw.rectangle((position[0], position[1], position[1] + bar_width, position[0] + bar_height), outline=0, fill=1)
     draw.rectangle((position[0] + 4, position[1] + 4, position[1] + filled_pixels - 4, position[0] + bar_height - 4),
                    fill=0)
-    draw.text((77, 100), icon_home, font=font0w, fill=0)
+    draw.text((155, 100), icon_home, font=font0w, fill=0)
     draw.text((position[0] + bar_width + 10, position[1]), icon_plus, font=font0w, fill=0)
     draw.text((position[0] - 30, position[1]), icon_minus, font=font0w, fill=0)
     draw.text((position[0] + 130, position[1] - 20), str(volume) + ' %', font=font18, fill=0)
@@ -257,7 +257,7 @@ t5 = touch_area('touch_volume_minus', 40, 240)
 t6 = touch_area('touch_volume', 20, 180)
 t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
-t9 = touch_area('touch_home', 110, 165)
+t9 = touch_area('touch_home', 110, 85)
 t10 = touch_area('touch_mute', 110, 125)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 10
