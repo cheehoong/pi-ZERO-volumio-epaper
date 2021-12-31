@@ -110,8 +110,11 @@ def bar(img_b, volume):
     draw.text((77, 100), icon_home, font=font0w, fill=0)
     draw.text((position[0] + bar_width + 10, position[1]), icon_plus, font=font0w, fill=0)
     draw.text((position[0] - 30, position[1]), icon_minus, font=font0w, fill=0)
-    draw.text((position[0] + 30, position[1] - 20), icon_sound, font=font0w, fill=0)
     draw.text((position[0] + 130, position[1] - 20), str(volume) + ' %', font=font18, fill=0)
+    if volume == 0 and lastpass['mute'] is True:
+        draw.text((position[0] + 30, position[1] - 20), icon_muted, font=font0w, fill=0)
+    if lastpass['mute'] is False:
+        draw.text((position[0] + 30, position[1] - 20), icon_sound, font=font0w, fill=0)
     image.paste(img_b, position)
     return
 
@@ -230,6 +233,9 @@ def button_pressed(channel):
     elif channel == 'touch_volume_minus':
         print('volume -')
         volume_screen(lastpass['volume'], 'minus')
+    elif channel == 'touch_mute':
+        print('volume x')
+        volume_screen(lastpass['volume'], 'mute')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
@@ -243,7 +249,7 @@ t6 = touch_area('touch_volume', 110, 165)
 t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
 t9 = touch_area('touch_home', 110, 165)
-t10 = touch_area('touch_mute', 110, 185)
+t10 = touch_area('touch_mute', 10, 180)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 20
 page = 'main_page'
@@ -263,7 +269,7 @@ def check_touch():
                 tt = [t1, t3, t7, t9]
             elif page == 'volume_page':
                 print('volume tt')
-                tt = [t4, t5, t9]
+                tt = [t4, t5, t9, t10]
             for k in range(len(tt)):
                 if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
                     print("Channel " + tt[k][0] + " ...\r\n")
