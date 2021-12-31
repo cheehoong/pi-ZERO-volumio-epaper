@@ -176,7 +176,7 @@ def on_push_state(*args):
 
 
 def button_pressed(channel):
-    global status, page
+    global status, page, image
     if channel == 'touch_nothing':
         print('nothing')
         # socketIO.emit('next')
@@ -203,7 +203,8 @@ def button_pressed(channel):
         elif page == 'volume_page':
             page = 'main_page'
             print('yy')
-            epd.init(epd.FULL_UPDATE)
+            epd.displayPartBaseImage(epd.getbuffer(image))
+            epd.init(epd.PART_UPDATE)
             socketIO.emit('getState')
 
     elif channel == 'touch_previous':
