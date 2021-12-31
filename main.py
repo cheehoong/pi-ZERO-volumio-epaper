@@ -240,7 +240,7 @@ def button_pressed(channel):
         if lastpass['mute'] is True:
             socketIO.emit('unmute', '')
             lastpass['mute'] = False
-        if lastpass['mute'] is False:
+        elif lastpass['mute'] is False:
             socketIO.emit('mute', '')
             lastpass['mute'] = True
         volume_screen(lastpass['volume'], '')
