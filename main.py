@@ -252,11 +252,12 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         flag_t = 0
-        #        epd.Clear(0xFF)
+
         img = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
         img.paste(rabbit_icon, (80, 10))
         imge = img.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
+        epd.Clear(0xFF)
         # epd.init(epd.FULL_UPDATE)
         # epd.init(epd.PART_UPDATE)
         epd.sleep()
