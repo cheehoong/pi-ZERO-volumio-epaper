@@ -34,7 +34,7 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 ## Config volumio 3
 ### To turn on SPI i/o
 ```bash
-sudo nano /boot/config.txt
+sudo nano /boot/config.ini
 ```
 Then add to last line
 ```bash
