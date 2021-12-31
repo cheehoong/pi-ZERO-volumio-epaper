@@ -166,7 +166,7 @@ def main_screen(*args):
         draw.text((8, 10), icon_song, font=font0w, fill=0)
         draw.text((28, 10), lastpass['title'], font=font18, fill=0)
     if vol_x <= 1 or args[0]['mute'] is True:
-        draw.text((118, 100), icon_muted, font=font0w, fill=0)
+        draw.text((116, 100), icon_muted, font=font0w, fill=0)
     print(vol_x)
     print(args[0]['mute'])
     draw.text((0, 100), icon_previous, font=font0w, fill=0)
@@ -249,7 +249,7 @@ t6 = touch_area('touch_volume', 110, 165)
 t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
 t9 = touch_area('touch_home', 110, 165)
-t10 = touch_area('touch_mute', 10, 180)
+t10 = touch_area('touch_mute', 110, 120)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 20
 page = 'main_page'
