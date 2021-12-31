@@ -26,6 +26,7 @@ font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert('1')
 
 # Read config setting
+print(file)
 config = ConfigParser()
 logging.info(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
