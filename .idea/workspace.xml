@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -65,6 +65,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lechh\PycharmProjects\pi-ZERO-volumio-epaper" />
       <recent name="C:\Users\lechh\OneDrive\Documents\GitHub\pi-ZERO-volumio-epaper" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -247,55 +248,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639582265248</updated>
-    </task>
-    <task id="LOCAL-00238" summary="Initial commit">
-      <created>1640615296088</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1640615296088</updated>
-    </task>
-    <task id="LOCAL-00239" summary="Initial commit">
-      <created>1640615413247</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1640615413247</updated>
-    </task>
-    <task id="LOCAL-00240" summary="Initial commit">
-      <created>1640615901384</created>
-      <option name="number" value="00240" />
-      <option name="presentableId" value="LOCAL-00240" />
-      <option name="project" value="LOCAL" />
-      <updated>1640615901384</updated>
-    </task>
-    <task id="LOCAL-00241" summary="Initial commit">
-      <created>1640615977043</created>
-      <option name="number" value="00241" />
-      <option name="presentableId" value="LOCAL-00241" />
-      <option name="project" value="LOCAL" />
-      <updated>1640615977043</updated>
-    </task>
-    <task id="LOCAL-00242" summary="Initial commit">
-      <created>1640616098928</created>
-      <option name="number" value="00242" />
-      <option name="presentableId" value="LOCAL-00242" />
-      <option name="project" value="LOCAL" />
-      <updated>1640616098928</updated>
-    </task>
-    <task id="LOCAL-00243" summary="Initial commit">
-      <created>1640616355470</created>
-      <option name="number" value="00243" />
-      <option name="presentableId" value="LOCAL-00243" />
-      <option name="project" value="LOCAL" />
-      <updated>1640616355470</updated>
-    </task>
-    <task id="LOCAL-00244" summary="Initial commit">
-      <created>1640617119693</created>
-      <option name="number" value="00244" />
-      <option name="presentableId" value="LOCAL-00244" />
-      <option name="project" value="LOCAL" />
-      <updated>1640617119693</updated>
     </task>
     <task id="LOCAL-00245" summary="Initial commit">
       <created>1640617401350</created>
@@ -591,7 +543,56 @@
       <option name="project" value="LOCAL" />
       <updated>1640923734342</updated>
     </task>
-    <option name="localTasksCounter" value="287" />
+    <task id="LOCAL-00287" summary="Initial commit">
+      <created>1640947445527</created>
+      <option name="number" value="00287" />
+      <option name="presentableId" value="LOCAL-00287" />
+      <option name="project" value="LOCAL" />
+      <updated>1640947445527</updated>
+    </task>
+    <task id="LOCAL-00288" summary="Initial commit">
+      <created>1640947590770</created>
+      <option name="number" value="00288" />
+      <option name="presentableId" value="LOCAL-00288" />
+      <option name="project" value="LOCAL" />
+      <updated>1640947590770</updated>
+    </task>
+    <task id="LOCAL-00289" summary="Initial commit">
+      <created>1640947678470</created>
+      <option name="number" value="00289" />
+      <option name="presentableId" value="LOCAL-00289" />
+      <option name="project" value="LOCAL" />
+      <updated>1640947678470</updated>
+    </task>
+    <task id="LOCAL-00290" summary="Initial commit">
+      <created>1640947695869</created>
+      <option name="number" value="00290" />
+      <option name="presentableId" value="LOCAL-00290" />
+      <option name="project" value="LOCAL" />
+      <updated>1640947695869</updated>
+    </task>
+    <task id="LOCAL-00291" summary="Initial commit">
+      <created>1640947760924</created>
+      <option name="number" value="00291" />
+      <option name="presentableId" value="LOCAL-00291" />
+      <option name="project" value="LOCAL" />
+      <updated>1640947760924</updated>
+    </task>
+    <task id="LOCAL-00292" summary="Initial commit">
+      <created>1640948848330</created>
+      <option name="number" value="00292" />
+      <option name="presentableId" value="LOCAL-00292" />
+      <option name="project" value="LOCAL" />
+      <updated>1640948848330</updated>
+    </task>
+    <task id="LOCAL-00293" summary="Initial commit">
+      <created>1640949364737</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1640949364737</updated>
+    </task>
+    <option name="localTasksCounter" value="294" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -27,7 +27,6 @@ rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)
 
 # Read config setting
 config = ConfigParser()
-config.read(file)
 logging.info(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
 volumio_port = config.getint('volumio', 'volumio_port')
@@ -169,7 +168,7 @@ def on_push_state(*args):
     # status # albumart # artist, album, title # Volume crosses mute threshold
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
-    main_screen(args[0])
+    # main_screen(args[0])
     return
 
 
@@ -214,16 +213,20 @@ t9 = touch_area('touch_home', 110, 165)
 t10 = touch_area('touch_mute', 110, 165)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 20
-
+page = 'main_page'
 
 def check_touch():
     try:
+        global lastpass, status
         # Read the touch input
         gt.GT_Scan(GT_Dev, GT_Old)
         if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0]:  # and GT_Old.S[0] == GT_Dev.S[0]:
             pass
             # print("Channel 0 ...\r\n")
         else:
+            if page == 'main_page':
+                main_screen(lastpass)
+                tt = [t1, t3, t7, t9, t10]
             for k in range(len(tt)):
                 if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
                     print("Channel " + str(k) + " ...\r\n")
