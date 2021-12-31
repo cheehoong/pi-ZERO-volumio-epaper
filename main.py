@@ -170,7 +170,7 @@ def main_screen(*args):
     print(vol_x)
     print(args[0]['mute'])
     draw.text((0, 100), icon_previous, font=font0w, fill=0)
-    draw.text((77, 100), icon_setting, font=font0w, fill=0)
+    draw.text((75, 100), icon_setting, font=font0w, fill=0)
     draw.text((155, 100), icon_status, font=font0w, fill=0)
     draw.text((230, 100), icon_next, font=font0w, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
