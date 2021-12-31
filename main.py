@@ -236,9 +236,15 @@ def button_pressed(channel):
         volume_screen(lastpass['volume'], 'minus')
     elif channel == 'touch_mute':
         print('volume x')
+        if lastpass['mute'] is True:
+            socketIO.emit('unmute', '')
+    elif channel == 'touch_volume':
+        print('volume x')
         print(lastpass['mute'])
         if lastpass['mute'] is True:
             socketIO.emit('unmute', '')
+        if lastpass['mute'] is False:
+            socketIO.emit('mute', '')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
@@ -248,7 +254,7 @@ t2 = touch_area('touch_random', 20, 30)
 t3 = touch_area('touch_play', 110, 85)
 t4 = touch_area('touch_volume_add', 40, 10)
 t5 = touch_area('touch_volume_minus', 40, 240)
-t6 = touch_area('touch_volume', 110, 165)
+t6 = touch_area('touch_volume', 20, 180)
 t7 = touch_area('touch_previous', 110, 230)
 t8 = touch_area('touch_off', 20, 30)
 t9 = touch_area('touch_home', 110, 165)
@@ -273,7 +279,7 @@ def check_touch():
                 tt = [t1, t3, t7, t9, t10]
             elif page == 'volume_page':
                 print('volume tt')
-                tt = [t4, t5, t9]
+                tt = [t4, t5, t6, t9]
             for k in range(len(tt)):
                 if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
                     print("Channel " + tt[k][0] + " ...\r\n")
