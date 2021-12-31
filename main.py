@@ -112,7 +112,7 @@ def bar(img_b, volume):
     draw.text((position[0] - 30, position[1]), icon_minus, font=font0w, fill=0)
     draw.text((position[0] + 30, position[1] - 20), icon_sound, font=font0w, fill=0)
     draw.text((position[0] + 130, position[1] - 20), str(volume) + ' %', font=font18, fill=0)
-    image.paste(img_b, position)
+    img_b.paste(img_b, position)
     return
 
 
@@ -204,8 +204,8 @@ def button_pressed(channel):
             page = 'main_page'
             print('yy')
             epd.init(epd.FULL_UPDATE)
-            # image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
-            # epd.displayPartBaseImage(epd.getbuffer(image))
+            image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+            epd.displayPartBaseImage(epd.getbuffer(image))
             epd.init(epd.PART_UPDATE)
             socketIO.emit('getState')
 
