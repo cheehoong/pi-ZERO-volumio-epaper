@@ -256,6 +256,7 @@ page = 'main_page'
 
 
 def check_touch():
+    global tt
     try:
         global lastpass, status, page
         # Read the touch input
