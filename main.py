@@ -31,17 +31,16 @@ config.read(file)
 logging.info(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
 volumio_port = config.getint('volumio', 'volumio_port')
+EPD_WIDTH = 250   # Display resolution
+EPD_HEIGHT = 122  # rotated WxH screen
 
-# Read config and Initialise display
 logging.info('Initializing EPD...')
-# Display resolution
-EPD_WIDTH = 250  # rotated WxH screen
-EPD_HEIGHT = 122
 epd = epd2in13_V2.EPD_2IN13_V2()
 epd.init(epd.FULL_UPDATE)
 image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
 epd.displayPartBaseImage(epd.getbuffer(image))
 epd.init(epd.PART_UPDATE)
+
 logging.info("Init touch")
 gt = gt1151.GT1151()
 GT_Dev = gt1151.GT_Development()

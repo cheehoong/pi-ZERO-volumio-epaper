@@ -48,7 +48,7 @@ dtparam=i2c=on,spi=on
 ## Installation library
 
 ### Step 1
-Install python3
+Install python3 and packages
 ```bash
     sudo apt-get update
     sudo apt-get install python3-pip
@@ -64,19 +64,19 @@ Install python3
 Install pi-ZERO-volumio-epapper
 
 ```bash
-git clone https://github.com/cheehoong/pi-ZERO-volumio-epapper.git
-chmod +x ~/pi-ZERO-volumio-epapper/pi-volumio-epapper.py
-sudo cp ~/pi-ZERO-volumio-epapper/pi-volumio-epapper.service /lib/systemd/system/
+git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
+chmod +x ~/pi-ZERO-volumio-epapper/pi-volumio-epaper.py
+sudo cp ~/pi-ZERO-volumio-epapper/pi-volumio-epaper.service /lib/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable pi-volumio-epapper.service
+sudo systemctl enable pi-volumio-epaper.service
 reboot
 ````
 ## Installation steps (Update)
 ```bash
-sudo systemctl disable oledui.service
-sudo rm -r pi-volumio-epapper:
+sudo systemctl disable pi-volumio-epaper.service
+sudo rm -r pi-ZERO-volumio-epaper
 ```
-Then do Step 2:
+Then redo Step 2:
 
 ## Run
 
