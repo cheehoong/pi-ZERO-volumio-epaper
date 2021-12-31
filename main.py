@@ -28,6 +28,7 @@ rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)
 # Read config setting
 print(file)
 config = ConfigParser()
+config.read(file)
 logging.info(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
 volumio_port = config.getint('volumio', 'volumio_port')
