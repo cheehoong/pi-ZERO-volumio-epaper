@@ -166,7 +166,7 @@ def main_screen(*args):
         draw.text((8, 10), icon_song, font=font0w, fill=0)
         draw.text((28, 10), lastpass['title'], font=font18, fill=0)
     if vol_x <= 1 or args[0]['mute'] is True:
-        draw.text((116, 100), icon_muted, font=font0w, fill=0)
+        draw.text((115, 100), icon_muted, font=font0w, fill=0)
     print(vol_x)
     print(args[0]['mute'])
     draw.text((0, 100), icon_previous, font=font0w, fill=0)
