@@ -32,7 +32,7 @@ config.read(file)
 logging.info(config.sections())
 volumio_host = config.get('volumio', 'volumio_host')
 volumio_port = config.getint('volumio', 'volumio_port')
-EPD_WIDTH = 250   # Display resolution
+EPD_WIDTH = 250  # Display resolution
 EPD_HEIGHT = 122  # rotated WxH screen
 
 logging.info('Initializing EPD...')
@@ -118,17 +118,17 @@ def bar(img_b, volume):
 
 def volume_screen(volume, op):
     global page
-    print('1='+str(volume))
+    print('1=' + str(volume))
     if volume < 100 and op == 'add':
         if volume >= 90:
             volume = 100
         else:
-            volume + 10
+            volume += 10
     if volume > 0 and op == 'minus':
         if volume <= 10:
             volume = 0
         else:
-            volume - 10
+            volume -= 10
     socketIO.emit('volume', volume)
     print('2=' + str(volume))
     lastpass['volume'] = volume
@@ -249,6 +249,7 @@ t10 = touch_area('touch_mute', 110, 185)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 20
 page = 'main_page'
+
 
 def check_touch():
     try:
