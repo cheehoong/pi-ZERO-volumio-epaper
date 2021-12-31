@@ -5,7 +5,6 @@
 <img src="https://www.waveshare.com/img/devkit/LCD/2.13inch-Touch-e-Paper-HAT-with-case/2.13inch-Touch-e-Paper-HAT-with-case-details-1.jpg"
 </p>
 
-# STILL IN WORKS .... far away from running ...
     
 ## Basic information:
 This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT module.
@@ -14,6 +13,19 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 - [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w)
 - [ABS Case](https://www.waveshare.com/2.13inch-Touch-e-Paper-HAT-with-case.htm)
 - [Get yourself a nice USB speaker](https://www.aliexpress.com/i/1005001710457608.html)
+
+# ToDo
+- [x] Display title, artist, album
+- [x] Display volume, + / - volume
+- [x] Next song, previous song
+- [x] icons
+- [x] mute / unmute
+- [ ] Shutdown
+- [ ] Playlist
+- [ ] Weather page
+- [ ] Album image
+- [ ] Warp line
+
 
 ## Install Volumio 3
 - [volumio](https://volumio.com/en/get-started) <-- Download and install volumio 3
@@ -64,28 +76,27 @@ Install python3 and packages
 Install pi-ZERO-volumio-epapper
 
 ```bash
-git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
+sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 sudo nano /etc/rc.local
 ````
 Add below to 1 line before "exit 0"
 ```bash
-sudo python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
+sleep 30 && python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
 ```
 save and reboot
 
 ## Installation steps (Update)
 ```bash
 sudo rm -r pi-ZERO-volumio-epaper
-git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
+sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 reboot
 ```
 
 ## Run
 
 ```bash
-sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper
+sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 sudo python3 pi-volumio-epapper.py
-sudo python3 main.py
 ```
 
 ## Chinese Character display
