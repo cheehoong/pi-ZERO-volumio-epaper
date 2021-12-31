@@ -118,12 +118,6 @@ def bar(img_b, volume):
 
 def volume_screen(volume, op):
     global page
-    img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
-    bar(img_v, volume)
-    im2v = img_v.transpose(method=Image.ROTATE_90)
-    img_v.paste(im2v, (0, 0))
-    epd.displayPartial(epd.getbuffer(im2v))
-    epd.init(epd.PART_UPDATE)
     if lastpass['volume'] < 100 and op == 'add':
         socketIO.emit('volume', '+')
         if lastpass['volume'] >= 90:
@@ -136,6 +130,12 @@ def volume_screen(volume, op):
             lastpass['volume'] = 0
         else:
             lastpass['volume'] - 10
+    img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+    bar(img_v, volume)
+    im2v = img_v.transpose(method=Image.ROTATE_90)
+    img_v.paste(im2v, (0, 0))
+    epd.displayPartial(epd.getbuffer(im2v))
+    epd.init(epd.PART_UPDATE)
 
 
 def main_screen(*args):
