@@ -204,8 +204,8 @@ def button_pressed(channel):
             page = 'main_page'
             print('yy')
             epd.init(epd.FULL_UPDATE)
-            image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
-            epd.displayPartBaseImage(epd.getbuffer(image))
+            # image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+            # epd.displayPartBaseImage(epd.getbuffer(image))
             epd.init(epd.PART_UPDATE)
             socketIO.emit('getState')
 
