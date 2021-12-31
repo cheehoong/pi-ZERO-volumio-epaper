@@ -204,6 +204,7 @@ def button_pressed(channel):
             page = 'main_page'
             print('yy')
             # main_screen()
+            socketIO.emit('getState')
     elif channel == 'touch_previous':
         print('previous')
         socketIO.emit('prev')
