@@ -200,7 +200,7 @@ def button_pressed(channel):
             page = 'volume_page'
             print('xx')
             volume_screen(lastpass['volume'])
-        if page == 'volume_page':
+        elif page == 'volume_page':
             page = 'main_page'
             print('yy')
             # main_screen()
