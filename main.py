@@ -176,6 +176,7 @@ def main_screen(*args):
     draw.text((230, 100), icon_next, font=font0w, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (0, 0))
+    epd.init(epd.FULL_UPDATE)
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
 
