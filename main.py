@@ -194,7 +194,7 @@ def button_pressed(channel):
         else:
             print('play')
             socketIO.emit('play')
-    elif channel == 6:
+    elif channel == 'touch_home':
         print('volume = ' + str(lastpass['volume']))
         volume_screen(lastpass['volume'])
     elif channel == 7:
