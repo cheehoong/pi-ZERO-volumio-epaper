@@ -113,13 +113,11 @@ def bar(img_b, volume):
     draw.text((position[0] + 30, position[1] - 20), icon_sound, font=font0w, fill=0)
     draw.text((position[0] + 130, position[1] - 20), str(volume) + ' %', font=font18, fill=0)
     image.paste(img_b, position)
-    print('end bar')
     return
 
 
 def volume_screen(volume):
     global page
-    page = 'main_page'
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
     im2v = img_v.transpose(method=Image.ROTATE_90)
