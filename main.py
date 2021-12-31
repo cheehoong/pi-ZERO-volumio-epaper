@@ -130,13 +130,15 @@ def volume_screen(volume, op):
             volume = 0
         else:
             volume - 10
+    lastpass['volume'] = volume
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
     im2v = img_v.transpose(method=Image.ROTATE_90)
     img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
     epd.init(epd.PART_UPDATE)
-    lastpass['volume'] = volume
+    return
+
 
 def main_screen(*args):
     global lastpass, status
