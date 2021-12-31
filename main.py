@@ -208,10 +208,15 @@ def button_pressed(channel):
             epd.displayPartBaseImage(epd.getbuffer(image))
             epd.init(epd.PART_UPDATE)
             socketIO.emit('getState')
-
     elif channel == 'touch_previous':
         print('previous')
         socketIO.emit('prev')
+    elif channel == 'touch_volume_add':
+        print('volume +')
+        socketIO.emit('volume', '+')
+    elif channel == 'touch_volume_minus':
+        print('volume -')
+        socketIO.emit('volume', '-')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
