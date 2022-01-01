@@ -250,6 +250,7 @@ def button_pressed(channel):
     elif channel == 'touch_off':
         print('Power Off')
         socketIO.disconnect()
+        image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
         image.paste(power_icon, (80, 10))
         imge = image.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
