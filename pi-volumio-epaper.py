@@ -257,6 +257,7 @@ def button_pressed(channel):
         t.join()
         epd.Dev_exit()
         os.system("sudo shutdown -h now")
+        print('Power End')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
