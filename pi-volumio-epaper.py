@@ -92,7 +92,7 @@ icon_power = u"\uE8AC"
 
 def text_warp(value):
     # Wrap this text.
-    wrapper = textwrap.TextWrapper(width=50)
+    wrapper = textwrap.TextWrapper(width=10)
     word_list = wrapper.wrap(text=value)
     # Print each line.
     for element in word_list:
