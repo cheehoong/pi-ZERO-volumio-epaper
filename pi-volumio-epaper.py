@@ -251,7 +251,7 @@ def button_pressed(channel):
         socketIO.disconnect()
         image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
         draw = ImageDraw.Draw(image)
-        draw.text((110, 45), icon_power, font=font0w, fill=0)
+        draw.text((120, 55), icon_power, font=font0w, fill=0)
         imge = image.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
         t.join()
