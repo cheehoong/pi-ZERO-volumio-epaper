@@ -34,6 +34,7 @@ EPD_HEIGHT = 122  # rotated WxH screen
 flag_t = 1
 status = 'pause'
 page = 'main_page'
+refresh = 0
 
 logging.info('Initializing EPD...')
 epd = epd2in13_V2.EPD_2IN13_V2()
@@ -190,17 +191,19 @@ def main_screen(*args):
 
 
 def on_push_state(*args):
-    global lastpass, status, page
+    global lastpass, status, page, refresh
     lastpass = args[0]
     # Only run.sh screen update if the key arguments have changed since the last call. Key arguments are:
     # status # albumart # artist, album, title # Volume crosses mute threshold
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
     if page == 'main_page':
-        epd.init(epd.FULL_UPDATE)
-        image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
-        epd.displayPartBaseImage(epd.getbuffer(image))
-        epd.init(epd.PART_UPDATE)
+        if refresh >= 1000:
+            epd.init(epd.FULL_UPDATE)
+            image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+            epd.displayPartBaseImage(epd.getbuffer(image))
+            epd.init(epd.PART_UPDATE)
+            refresh = 0
         main_screen(args[0])
     return
 
@@ -320,6 +323,8 @@ if __name__ == '__main__':
     main()
     try:
         while True:
+            refresh += 1
+            print(refresh)
             check_touch()
             socketIO.wait(seconds=0.01)
     except KeyboardInterrupt:
