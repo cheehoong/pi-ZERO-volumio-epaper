@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/pi-volumio-epaper.py" beforeDir="false" afterPath="$PROJECT_DIR$/pi-volumio-epaper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/power-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/pic/power-icon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,13 +248,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639582265248</updated>
-    </task>
-    <task id="LOCAL-00330" summary="Initial commit">
-      <created>1640959263481</created>
-      <option name="number" value="00330" />
-      <option name="presentableId" value="LOCAL-00330" />
-      <option name="project" value="LOCAL" />
-      <updated>1640959263481</updated>
     </task>
     <task id="LOCAL-00331" summary="Initial commit">
       <created>1640959373179</created>
@@ -592,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641024316309</updated>
     </task>
-    <option name="localTasksCounter" value="379" />
+    <task id="LOCAL-00379" summary="Initial commit">
+      <created>1641024849025</created>
+      <option name="number" value="00379" />
+      <option name="presentableId" value="LOCAL-00379" />
+      <option name="project" value="LOCAL" />
+      <updated>1641024849025</updated>
+    </task>
+    <option name="localTasksCounter" value="380" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
