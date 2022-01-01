@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit" />
+    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -246,13 +248,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639582265248</updated>
-    </task>
-    <task id="LOCAL-00343" summary="Initial commit">
-      <created>1640962025929</created>
-      <option name="number" value="00343" />
-      <option name="presentableId" value="LOCAL-00343" />
-      <option name="project" value="LOCAL" />
-      <updated>1640962025929</updated>
     </task>
     <task id="LOCAL-00344" summary="Initial commit">
       <created>1640962215264</created>
@@ -590,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641041865762</updated>
     </task>
-    <option name="localTasksCounter" value="392" />
+    <task id="LOCAL-00392" summary="Initial commit">
+      <created>1641042563480</created>
+      <option name="number" value="00392" />
+      <option name="presentableId" value="LOCAL-00392" />
+      <option name="project" value="LOCAL" />
+      <updated>1641042563480</updated>
+    </task>
+    <option name="localTasksCounter" value="393" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

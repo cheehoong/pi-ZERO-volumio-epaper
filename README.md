@@ -25,7 +25,6 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 - [ ] Album image
 - [ ] Warp line
 
-
 ## Install Volumio 3
 - [volumio](https://volumio.com/en/get-started) <-- Download and install volumio 3
 - Connect via WIFI (volumio-XXXX), wifi password = volimuo2
@@ -45,7 +44,7 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 </details>
 
 ## Config volumio 3
-### To turn on SPI i/o
+To turn on SPI i/o
 ```bash
 sudo nano /boot/config.ini
 ```
@@ -97,7 +96,8 @@ reboot
 
 ## Chinese Character display
 
-问题
+To fix UnicodeEncodeError: 'latin-1'
+
 当接收到中文消息时出现下方错误，简单说就是编码问题。
 ```bash
 Traceback (most recent call last):
