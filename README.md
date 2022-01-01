@@ -50,10 +50,6 @@ sudo nano /boot/config.ini
 ```
 Then add to last line
 ```bash
-dtparam=spi=on
-```
-or
-```bash
 dtparam=i2c=on,spi=on
 ```
 
@@ -69,21 +65,24 @@ Install python3 and packages
     sudo apt-get install python3-socketio-client
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
-    sudo pip3 install -U PyYAML
-
 ```
+
 ### Step 2
 Install pi-ZERO-volumio-epapper
 
 ```bash
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
+```
+
+Add autostart (Edit /etc/rc.local) 
+```bash
 sudo nano /etc/rc.local
 ````
 Add below to 1 line before "exit 0"
 ```bash
 sleep 30 && python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
 ```
-save and reboot
+save (Ctrl + x) and reboot 
 
 ## Installation steps (Update)
 ```bash
