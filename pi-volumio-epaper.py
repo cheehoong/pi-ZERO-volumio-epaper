@@ -136,6 +136,8 @@ def volume_screen(volume, op):
         lastpass['volume'] = volume
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
+    draw = ImageDraw.Draw(img_v)
+    draw.text((230, 100), icon_power, font=font0w, fill=0)
     im2v = img_v.transpose(method=Image.ROTATE_90)
     img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
@@ -236,7 +238,7 @@ def button_pressed(channel):
         if lastpass['mute'] is True:
             socketIO.emit('unmute', '')
     elif channel == 'touch_volume':
-        print('volume x'), print(lastpass['mute'])
+        # print('volume x'), print(lastpass['mute'])
         if lastpass['mute'] is True:
             socketIO.emit('unmute', '')
             lastpass['mute'] = False
@@ -255,7 +257,7 @@ t4 = touch_area('touch_volume_add', 40, 10)
 t5 = touch_area('touch_volume_minus', 40, 240)
 t6 = touch_area('touch_volume', 20, 180)
 t7 = touch_area('touch_previous', 110, 230)
-t8 = touch_area('touch_off', 20, 30)
+t8 = touch_area('touch_off', 110, 10)
 t9 = touch_area('touch_home', 110, 85)
 t10 = touch_area('touch_mute', 110, 125)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
@@ -270,7 +272,6 @@ def check_touch():
         gt.GT_Scan(GT_Dev, GT_Old)
         if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0]:  # and GT_Old.S[0] == GT_Dev.S[0]:
             pass
-            # print("Channel 0 ...\r\n")
         else:
             if page == 'main_page':
                 print('main tt')
