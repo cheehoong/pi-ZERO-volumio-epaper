@@ -246,6 +246,16 @@ def button_pressed(channel):
             socketIO.emit('mute', '')
             lastpass['mute'] = True
         volume_screen(lastpass['volume'], '')
+    elif channel == 'touch_off':
+        print('Power Off')
+        image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+        draw = ImageDraw.Draw(image)
+        draw.text((80, 50), icon_power, font=font0w, fill=0)
+        imge = image.transpose(method=Image.ROTATE_90)
+        epd.displayPartial(epd.getbuffer(imge))
+        t.join()
+        epd.Dev_exit()
+        socketIO.emit('shutdown')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
@@ -278,7 +288,7 @@ def check_touch():
                 tt = [t0, t1, t3, t7, t10]
             elif page == 'volume_page':
                 print('volume tt')
-                tt = [t4, t5, t6, t9]
+                tt = [t4, t5, t6, t8, t9]
             for k in range(len(tt)):
                 if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
                     print("Channel " + tt[k][0] + " ...\r\n")
