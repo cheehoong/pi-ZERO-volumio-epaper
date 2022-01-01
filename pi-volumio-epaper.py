@@ -24,6 +24,7 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 18)
 font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 20)
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert('1')
+power_icon = Image.open(os.path.join(picdir, 'power-icon.png')).resize((100, 100)).convert('1')
 
 # Read config setting
 config = ConfigParser()
@@ -249,9 +250,7 @@ def button_pressed(channel):
     elif channel == 'touch_off':
         print('Power Off')
         socketIO.disconnect()
-        image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
-        draw = ImageDraw.Draw(image)
-        draw.text((120, 55), icon_power, font=font0w, fill=0)
+        image.paste(power_icon, (80, 10))
         imge = image.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
         os.system("sudo shutdown -h now")
