@@ -3,10 +3,11 @@
 # https://volumio.org/forum/gpio-pins-control-volume-t2219.html
 # https://pypi.python.org/pypi/socketIO-client
 # https://volumio.github.io/docs/API/WebSocket_APIs.html
-from collections import namedtuple
 import logging
 import os
 import threading
+import textwrap
+from collections import namedtuple
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 from libz import epd2in13_V2
@@ -89,6 +90,16 @@ icon_minus = u"\uE15B"
 icon_power = u"\uE8AC"
 
 
+def text_warp(value):
+    # Wrap this text.
+    wrapper = textwrap.TextWrapper(width=50)
+    word_list = wrapper.wrap(text=value)
+    # Print each line.
+    for element in word_list:
+        print(element)
+    return word_list
+
+
 def on_connect():
     logging.info('connect')
     return 'connected'
@@ -162,6 +173,7 @@ def main_screen(*args):
         draw.text((8, 30), icon_album, font=font0w, fill=0)
         draw.text((28, 30), lastpass['album'], font=font18, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
+        text_warp(lastpass['title'])
         draw.text((8, 10), icon_song, font=font0w, fill=0)
         draw.text((28, 10), lastpass['title'], font=font18, fill=0)
     if vol_x <= 1 or args[0]['mute'] is True:
