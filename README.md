@@ -65,6 +65,7 @@ Install python3 and packages
     sudo apt-get install python3-socketio-client
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
+    sudo pip3 install smbus
 ```
 
 ### Step 2
@@ -117,8 +118,10 @@ Traceback (most recent call last):
 UnicodeEncodeError: 'latin-1' codec can't encode characters in position 21-27: ordinal not in range(256)
 ```
 解决方法
-找到socketIO_client的安装路径，例中跟six.py在同一目录下，路径是/usr/local/lib/python3.5/site-packages/socketIO_client/.
-或者是(/usr/local/lib/python3/dist-packages/socketIO_client/)
+找到socketIO_client的安装路径，例中跟six.py在同一目录下，路径是
+```bash
+cd /usr/lib/python3/dist-packages/socketIO_client/
+```
 找到socketIO_client文件夹下的transports.py文件
 
 用编辑器打开transports.py，在144行左右的位置找到recv_packet函数
