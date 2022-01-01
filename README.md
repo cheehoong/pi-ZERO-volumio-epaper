@@ -1,5 +1,4 @@
 # pi-ZERO-volumio-epaper
-###
 
 <p align="center">
 <img src="https://www.waveshare.com/img/devkit/LCD/2.13inch-Touch-e-Paper-HAT-with-case/2.13inch-Touch-e-Paper-HAT-with-case-details-1.jpg"
@@ -14,7 +13,7 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 - [ABS Case](https://www.waveshare.com/2.13inch-Touch-e-Paper-HAT-with-case.htm)
 - [Get yourself a nice USB speaker](https://www.aliexpress.com/i/1005001710457608.html)
 
-# ToDo
+## ToDo
 - [x] Display title, artist, album
 - [x] Display volume, + / - volume
 - [x] Next song, previous song
@@ -75,20 +74,16 @@ Install pi-ZERO-volumio-epapper
 ```bash
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 ```
-Edit config.ini
-- change your volumio host name or to ip address
-```bash
-sudo nano /home/volumio/pi-ZERO-volumio-epaper/config.ini
-````
+
 ### Step 3
 Add autostart (by using crontab) 
 ```bash
 sudo apt install cron
+sudo crontab -e
 ````
-Add below to 1 line before "exit 0"
+Add below to last line
 ```bash
 @reboot python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
-sleep 30 && python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
 ```
 save (Ctrl + x) and reboot 
 
@@ -99,12 +94,6 @@ sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 reboot
 ```
 
-## Run
-
-```bash
-sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
-sudo python3 pi-volumio-epaper.py
-```
 
 ## Chinese Character display
 
