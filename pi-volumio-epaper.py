@@ -254,8 +254,6 @@ def button_pressed(channel):
         draw.text((120, 55), icon_power, font=font0w, fill=0)
         imge = image.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
-        t.join()
-        epd.Dev_exit()
         os.system("sudo shutdown -h now")
         print('Power End')
 
