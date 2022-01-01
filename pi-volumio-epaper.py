@@ -301,6 +301,7 @@ def check_touch():
 
 
 def main():
+    print('run main')
     # connecting to socket
     socketIO.on('pushState', on_push_state)
     # get initial state
