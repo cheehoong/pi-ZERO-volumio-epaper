@@ -161,6 +161,7 @@ def main_screen(*args):
     epd.init(epd.FULL_UPDATE)
     img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     epd.displayPartBaseImage(epd.getbuffer(img_d))
+    img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
         if status == 'pause':
