@@ -198,7 +198,7 @@ def on_push_state(*args):
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
     if page == 'main_page':
-        if refresh >= 1000:
+        if refresh >= 500:
             epd.init(epd.FULL_UPDATE)
             image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
             epd.displayPartBaseImage(epd.getbuffer(image))
@@ -324,7 +324,6 @@ if __name__ == '__main__':
     try:
         while True:
             refresh += 1
-            print(refresh)
             check_touch()
             socketIO.wait(seconds=0.01)
     except KeyboardInterrupt:
