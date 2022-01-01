@@ -27,7 +27,7 @@ power_icon = Image.open(os.path.join(picdir, 'power-icon.png')).resize((100, 100
 
 # Read config setting
 volumio_host = '127.0.0.1'
-volumio_port = '3000'
+volumio_port = 3000
 EPD_WIDTH = 250  # Display resolution
 EPD_HEIGHT = 122  # rotated WxH screen
 flag_t = 1
