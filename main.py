@@ -7,16 +7,15 @@ from collections import namedtuple
 import logging
 import os
 import threading
-from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 from libz import epd2in13_V2
 from libz import gt1151
 
+# logging.basicConfig(filename='/home/volumio/pi-ZERO-volumio-epaper/example.log', filemode='w', level=logging.DEBUG)
 logging.basicConfig(level=logging.INFO)
 
 # get the path of the script
-file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.ini')
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
@@ -24,16 +23,16 @@ fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 font18 = ImageFont.truetype(os.path.join(fontdir, 'Dengl.ttf'), 18)
 font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 20)
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert('1')
+power_icon = Image.open(os.path.join(picdir, 'power-icon.png')).resize((100, 100)).convert('1')
 
 # Read config setting
-print(file)
-config = ConfigParser()
-config.read(file)
-logging.info(config.sections())
-volumio_host = config.get('volumio', 'volumio_host')
-volumio_port = config.getint('volumio', 'volumio_port')
+volumio_host = '127.0.0.1'
+volumio_port = 3000
 EPD_WIDTH = 250  # Display resolution
 EPD_HEIGHT = 122  # rotated WxH screen
+flag_t = 1
+status = 'pause'
+page = 'main_page'
 
 logging.info('Initializing EPD...')
 epd = epd2in13_V2.EPD_2IN13_V2()
@@ -47,8 +46,6 @@ gt = gt1151.GT1151()
 GT_Dev = gt1151.GT_Development()
 GT_Old = gt1151.GT_Development()
 gt.GT_Init()
-
-flag_t = 1
 
 
 def pthread_irq():
@@ -67,7 +64,6 @@ t.start()
 
 # Derive some constants
 socketIO = SocketIO(volumio_host, volumio_port)
-status = 'pause'
 lastpass = {
     "artist": "none",
     "title": "none",
@@ -136,6 +132,8 @@ def volume_screen(volume, op):
         lastpass['volume'] = volume
     img_v = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     bar(img_v, volume)
+    draw = ImageDraw.Draw(img_v)
+    draw.text((230, 100), icon_power, font=font0w, fill=0)
     im2v = img_v.transpose(method=Image.ROTATE_90)
     img_v.paste(im2v, (0, 0))
     epd.displayPartial(epd.getbuffer(im2v))
@@ -176,7 +174,6 @@ def main_screen(*args):
     draw.text((230, 100), icon_next, font=font0w, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (0, 0))
-    epd.init(epd.FULL_UPDATE)
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
 
@@ -237,7 +234,7 @@ def button_pressed(channel):
         if lastpass['mute'] is True:
             socketIO.emit('unmute', '')
     elif channel == 'touch_volume':
-        print('volume x'), print(lastpass['mute'])
+        # print('volume x'), print(lastpass['mute'])
         if lastpass['mute'] is True:
             socketIO.emit('unmute', '')
             lastpass['mute'] = False
@@ -245,6 +242,15 @@ def button_pressed(channel):
             socketIO.emit('mute', '')
             lastpass['mute'] = True
         volume_screen(lastpass['volume'], '')
+    elif channel == 'touch_off':
+        print('Power Off')
+        socketIO.disconnect()
+        image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+        image.paste(power_icon, (80, 10))
+        imgp = image.transpose(method=Image.ROTATE_90)
+        epd.displayPartial(epd.getbuffer(imgp))
+        os.system("sudo shutdown -h now")
+        print('Power End')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
@@ -256,12 +262,11 @@ t4 = touch_area('touch_volume_add', 40, 10)
 t5 = touch_area('touch_volume_minus', 40, 240)
 t6 = touch_area('touch_volume', 20, 180)
 t7 = touch_area('touch_previous', 110, 230)
-t8 = touch_area('touch_off', 20, 30)
+t8 = touch_area('touch_off', 110, 10)
 t9 = touch_area('touch_home', 110, 85)
 t10 = touch_area('touch_mute', 110, 125)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 10
-page = 'main_page'
 
 
 def check_touch():
@@ -272,14 +277,13 @@ def check_touch():
         gt.GT_Scan(GT_Dev, GT_Old)
         if GT_Old.X[0] == GT_Dev.X[0] and GT_Old.Y[0] == GT_Dev.Y[0]:  # and GT_Old.S[0] == GT_Dev.S[0]:
             pass
-            # print("Channel 0 ...\r\n")
         else:
             if page == 'main_page':
                 print('main tt')
                 tt = [t0, t1, t3, t7, t10]
             elif page == 'volume_page':
                 print('volume tt')
-                tt = [t4, t5, t6, t9]
+                tt = [t4, t5, t6, t8, t9]
             for k in range(len(tt)):
                 if tt[k][1] - r < GT_Dev.X[0] < tt[k][1] + r and tt[k][2] - r < GT_Dev.Y[0] < tt[k][2] + r:
                     print("Channel " + tt[k][0] + " ...\r\n")
@@ -292,6 +296,7 @@ def check_touch():
 
 
 def main():
+    print('run main')
     # connecting to socket
     socketIO.on('pushState', on_push_state)
     # get initial state
@@ -307,14 +312,10 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         flag_t = 0
-
         img = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
         img.paste(rabbit_icon, (80, 10))
         imge = img.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
-        # epd.Clear(0xFF)
-        # epd.init(epd.FULL_UPDATE)
-        # epd.init(epd.PART_UPDATE)
         t.join()
         epd.Dev_exit()
         pass
