@@ -158,10 +158,8 @@ def main_screen(*args):
     icon_status = icon_stop
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))
-    epd.init(epd.FULL_UPDATE)
     img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     epd.displayPartBaseImage(epd.getbuffer(img_d))
-    img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
         if status == 'pause':
