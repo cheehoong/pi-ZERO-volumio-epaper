@@ -20,7 +20,7 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 - [x] Next song, previous song
 - [x] icons
 - [x] mute / unmute
-- [ ] Shutdown
+- [X] Shutdown
 - [ ] Playlist
 - [ ] Weather page
 - [ ] Album image
@@ -61,7 +61,6 @@ Install python3 and packages
     sudo apt-get update
     sudo apt-get install python3-pip
     sudo apt-get install python3-pil
-    sudo apt-get install python3-numpy 
     sudo apt-get install python3-socketio-client
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
