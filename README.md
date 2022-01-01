@@ -96,7 +96,7 @@ reboot
 
 ```bash
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
-sudo python3 pi-volumio-epapper.py
+sudo python3 pi-volumio-epaper.py
 ```
 
 ## Chinese Character display

@@ -26,7 +26,6 @@ font0w = ImageFont.truetype(os.path.join(fontdir, 'MaterialIcons-Regular.ttf'), 
 rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)).convert('1')
 
 # Read config setting
-print(file)
 config = ConfigParser()
 config.read(file)
 logging.info(config.sections())
@@ -68,6 +67,7 @@ t.start()
 # Derive some constants
 socketIO = SocketIO(volumio_host, volumio_port)
 status = 'pause'
+page = 'main_page'
 lastpass = {
     "artist": "none",
     "title": "none",
@@ -261,7 +261,6 @@ t9 = touch_area('touch_home', 110, 85)
 t10 = touch_area('touch_mute', 110, 125)
 tt = [t0, t1, t2, t3, t4, t5, t6, t7, t8]
 r = 10
-page = 'main_page'
 
 
 def check_touch():
@@ -307,14 +306,10 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         socketIO.disconnect()
         flag_t = 0
-
         img = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
         img.paste(rabbit_icon, (80, 10))
         imge = img.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
-        # epd.Clear(0xFF)
-        # epd.init(epd.FULL_UPDATE)
-        # epd.init(epd.PART_UPDATE)
         t.join()
         epd.Dev_exit()
         pass
