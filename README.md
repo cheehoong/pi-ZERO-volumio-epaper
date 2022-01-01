@@ -29,9 +29,11 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 
 ## Install Volumio 3
 - [volumio](https://volumio.com/en/get-started) <-- Download and install volumio 3
+- Connect via WIFI (volumio-XXXX), wifi password = volimuo2
+- Run volumio setup wizard.
 
 
-<details><summary>If you not able to boot volumio 3 on Raspberry pi ZERO 2 W, Try this..</summary>
+<details><summary>If you not able to boot volumio 3 on Raspberry pi ZERO 2 W, Try this ...  (click to expend on left triangle)</summary>
 <p>
 
 </p>
@@ -73,7 +75,11 @@ Install pi-ZERO-volumio-epapper
 ```bash
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 ```
-
+Edit config.ini
+- change your volumio host name or to ip address
+```bash
+sudo nano /home/volumio/pi-ZERO-volumio-epaper/config.ini
+````
 Add autostart (Edit /etc/rc.local) 
 ```bash
 sudo nano /etc/rc.local
