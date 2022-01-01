@@ -148,6 +148,7 @@ def main_screen(*args):
     icon_status = icon_stop
     status = str(args[0]['status'])
     vol_x = int(float(args[0]['volume']))
+    epd.init(epd.FULL_UPDATE)
     img_d = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
     draw = ImageDraw.Draw(img_d)
     if args[0]['status'] in ['pause', 'stop']:
@@ -174,7 +175,6 @@ def main_screen(*args):
     draw.text((75, 100), icon_setting, font=font0w, fill=0)
     draw.text((155, 100), icon_status, font=font0w, fill=0)
     draw.text((230, 100), icon_next, font=font0w, fill=0)
-    epd.init(epd.FULL_UPDATE)
     im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (0, 0))
     epd.displayPartial(epd.getbuffer(im2))
