@@ -80,12 +80,14 @@ Edit config.ini
 ```bash
 sudo nano /home/volumio/pi-ZERO-volumio-epaper/config.ini
 ````
-Add autostart (Edit /etc/rc.local) 
+### Step 3
+Add autostart (by using crontab) 
 ```bash
-sudo nano /etc/rc.local
+sudo apt install cron
 ````
 Add below to 1 line before "exit 0"
 ```bash
+@reboot python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
 sleep 30 && python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
 ```
 save (Ctrl + x) and reboot 
