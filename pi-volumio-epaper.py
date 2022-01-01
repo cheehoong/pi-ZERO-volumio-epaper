@@ -153,6 +153,7 @@ def volume_screen(volume, op):
 
 
 def main_screen(*args):
+    print('Main_screen')
     global lastpass, status
     icon_status = icon_stop
     status = str(args[0]['status'])
@@ -173,13 +174,11 @@ def main_screen(*args):
         draw.text((8, 30), icon_album, font=font0w, fill=0)
         draw.text((28, 30), lastpass['album'], font=font18, fill=0)
     if 'title' in args[0] and args[0]['title'] is not None:
-        text_warp(lastpass['title'])
+        print(text_warp(lastpass['title']))
         draw.text((8, 10), icon_song, font=font0w, fill=0)
         draw.text((28, 10), lastpass['title'], font=font18, fill=0)
     if vol_x <= 1 or args[0]['mute'] is True:
         draw.text((115, 100), icon_muted, font=font0w, fill=0)
-    print(vol_x)
-    print(args[0]['mute'])
     draw.text((0, 100), icon_previous, font=font0w, fill=0)
     draw.text((75, 100), icon_setting, font=font0w, fill=0)
     draw.text((155, 100), icon_status, font=font0w, fill=0)
@@ -262,7 +261,6 @@ def button_pressed(channel):
         imgp = image.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imgp))
         os.system("sudo shutdown -h now")
-        print('Power End')
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
@@ -301,7 +299,6 @@ def check_touch():
                     print("Channel " + tt[k][0] + " ...\r\n")
                     button_pressed(tt[k][0])
             print("Dev X=" + str(GT_Dev.X[0]), ", Y=" + str(GT_Dev.Y[0]), ", S=" + str(GT_Dev.S[0]))
-            print("Old X=" + str(GT_Old.X[0]), ", Y=" + str(GT_Old.Y[0]), ", S=" + str(GT_Old.S[0]))
             GT_Dev.X[0] = GT_Dev.Y[0] = GT_Old.X[0] = GT_Old.Y[0] = 0
     except (ValueError, RuntimeError) as e:
         print('ERROR:', e)
