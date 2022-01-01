@@ -197,6 +197,10 @@ def on_push_state(*args):
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
     if page == 'main_page':
+        epd.init(epd.FULL_UPDATE)
+        image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
+        epd.displayPartBaseImage(epd.getbuffer(image))
+        epd.init(epd.PART_UPDATE)
         main_screen(args[0])
     return
 
