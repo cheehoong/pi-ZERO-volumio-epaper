@@ -13,7 +13,7 @@ from socketIO_client import SocketIO
 from libz import epd2in13_V2
 from libz import gt1151
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 # get the path of the script
 file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.ini')
@@ -174,9 +174,9 @@ def main_screen(*args):
     draw.text((75, 100), icon_setting, font=font0w, fill=0)
     draw.text((155, 100), icon_status, font=font0w, fill=0)
     draw.text((230, 100), icon_next, font=font0w, fill=0)
+    epd.init(epd.FULL_UPDATE)
     im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (0, 0))
-    #epd.init(epd.FULL_UPDATE)
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
 
