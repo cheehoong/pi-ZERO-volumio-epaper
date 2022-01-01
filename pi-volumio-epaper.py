@@ -176,20 +176,18 @@ def main_screen(*args):
     draw.text((230, 100), icon_next, font=font0w, fill=0)
     im2 = img_d.transpose(method=Image.ROTATE_90)
     img_d.paste(im2, (0, 0))
-    epd.init(epd.FULL_UPDATE)
+    #epd.init(epd.FULL_UPDATE)
     epd.displayPartial(epd.getbuffer(im2))
     epd.init(epd.PART_UPDATE)
 
 
 def on_push_state(*args):
-    print('-on_push_state')
     global lastpass, status, page
     lastpass = args[0]
     # Only run.sh screen update if the key arguments have changed since the last call. Key arguments are:
     # status # albumart # artist, album, title # Volume crosses mute threshold
     logging.info('Title = ' + lastpass['title'] + ' # Album = ' + lastpass['album'] + ' # Artist = ' + lastpass[
         'artist'] + ' # Status = ' + lastpass['status'])
-    print(page)
     if page == 'main_page':
         main_screen(args[0])
     return
