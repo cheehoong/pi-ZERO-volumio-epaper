@@ -7,7 +7,6 @@ from collections import namedtuple
 import logging
 import os
 import threading
-from configparser import ConfigParser
 from PIL import Image, ImageDraw, ImageFont
 from socketIO_client import SocketIO
 from libz import epd2in13_V2
@@ -17,7 +16,6 @@ from libz import gt1151
 logging.basicConfig(level=logging.INFO)
 
 # get the path of the script
-file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'config.ini')
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')  # Points to pic directory
 fontdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts')
 
@@ -28,13 +26,13 @@ rabbit_icon = Image.open(os.path.join(picdir, 'rabbitsq.png')).resize((100, 100)
 power_icon = Image.open(os.path.join(picdir, 'power-icon.png')).resize((100, 100)).convert('1')
 
 # Read config setting
-config = ConfigParser()
-config.read(file)
-logging.info(config.sections())
-volumio_host = config.get('volumio', 'volumio_host')
-volumio_port = config.getint('volumio', 'volumio_port')
+volumio_host = '127.0.0.1'
+volumio_port = '3000'
 EPD_WIDTH = 250  # Display resolution
 EPD_HEIGHT = 122  # rotated WxH screen
+flag_t = 1
+status = 'pause'
+page = 'main_page'
 
 logging.info('Initializing EPD...')
 epd = epd2in13_V2.EPD_2IN13_V2()
@@ -48,8 +46,6 @@ gt = gt1151.GT1151()
 GT_Dev = gt1151.GT_Development()
 GT_Old = gt1151.GT_Development()
 gt.GT_Init()
-
-flag_t = 1
 
 
 def pthread_irq():
@@ -68,8 +64,6 @@ t.start()
 
 # Derive some constants
 socketIO = SocketIO(volumio_host, volumio_port)
-status = 'pause'
-page = 'main_page'
 lastpass = {
     "artist": "none",
     "title": "none",
@@ -253,8 +247,8 @@ def button_pressed(channel):
         socketIO.disconnect()
         image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
         image.paste(power_icon, (80, 10))
-        imge = image.transpose(method=Image.ROTATE_90)
-        epd.displayPartial(epd.getbuffer(imge))
+        imgp = image.transpose(method=Image.ROTATE_90)
+        epd.displayPartial(epd.getbuffer(imgp))
         os.system("sudo shutdown -h now")
         print('Power End')
 
