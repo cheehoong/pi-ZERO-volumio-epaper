@@ -248,14 +248,15 @@ def button_pressed(channel):
         volume_screen(lastpass['volume'], '')
     elif channel == 'touch_off':
         print('Power Off')
+        socketIO.disconnect()
         image = Image.new('1', (EPD_WIDTH, EPD_HEIGHT), 1)
         draw = ImageDraw.Draw(image)
-        draw.text((80, 50), icon_power, font=font0w, fill=0)
+        draw.text((110, 45), icon_power, font=font0w, fill=0)
         imge = image.transpose(method=Image.ROTATE_90)
         epd.displayPartial(epd.getbuffer(imge))
         t.join()
         epd.Dev_exit()
-        socketIO.emit('shutdown')
+        os.system("sudo shutdown -h now")
 
 
 touch_area = namedtuple('touch_area', ['name', 'X', 'Y'])
