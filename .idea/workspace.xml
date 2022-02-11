@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit" />
+    <list default="true" id="69ac31ea-f889-41a1-abb0-6576a29d9edd" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_12_2021_7_32_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_12_2021_7_32_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,13 +225,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.pi-ZERO-volumio-epaper" />
       <item itemvalue="Python.epeper" />
+      <item itemvalue="Python.pi-ZERO-volumio-epaper" />
+      <item itemvalue="Python.dd" />
       <item itemvalue="Python.main2" />
       <item itemvalue="Python.oledui" />
-      <item itemvalue="Python.scratch_1" />
-      <item itemvalue="Python.dd" />
       <item itemvalue="Python.scratch (1)" />
+      <item itemvalue="Python.scratch_1" />
     </list>
     <recent_temporary>
       <list>
@@ -246,13 +251,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639582265248</updated>
-    </task>
-    <task id="LOCAL-00359" summary="Initial commit">
-      <created>1641004835719</created>
-      <option name="number" value="00359" />
-      <option name="presentableId" value="LOCAL-00359" />
-      <option name="project" value="LOCAL" />
-      <updated>1641004835719</updated>
     </task>
     <task id="LOCAL-00360" summary="Initial commit">
       <created>1641006045862</created>
@@ -590,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641047482468</updated>
     </task>
-    <option name="localTasksCounter" value="408" />
+    <task id="LOCAL-00408" summary="Initial commit">
+      <created>1641086612532</created>
+      <option name="number" value="00408" />
+      <option name="presentableId" value="LOCAL-00408" />
+      <option name="project" value="LOCAL" />
+      <updated>1641086612532</updated>
+    </task>
+    <option name="localTasksCounter" value="409" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

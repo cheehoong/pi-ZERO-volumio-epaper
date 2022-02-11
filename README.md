@@ -31,7 +31,7 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 
 ## Install Volumio 3
 - [volumio](https://volumio.com/en/get-started) <-- Download and install volumio 3
-- Connect via WIFI (volumio-XXXX), wifi password = volimuo2
+- Connect via WIFI (volumio-XXXX), wifi password = volumio2
 - Run volumio setup wizard.
 
 
@@ -79,6 +79,7 @@ sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
 ```
 
 ### Step 3
+#### Option 1
 Add autostart (by using crontab) 
 ```bash
 sudo apt install cron
@@ -88,7 +89,51 @@ Add below to last line
 ```bash
 @reboot python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
 ```
-save (Ctrl + x) and reboot 
+save (Ctrl + x) and sudo reboot 
+
+#### Option 2
+How to run a python script on Raspberry Pi Boot (4-STEP PROCESS)
+```bash
+sudo raspi-config
+```
+Select “Boot Options” then “Desktop/CLI” then “Console Autologin”
+In the command prompt or in a terminal window type:
+```bash
+sudo nano /etc/profile
+```
+Scroll to the bottom and add the following line
+```bash
+sudo python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
+```
+save (Ctrl + x) and 
+```bash
+sudo reboot
+```
+#### Option 3
+```bash
+sudo systemctl edit --force --full pi-volumio-epaper.service
+ 
+# Add the following to spi_server.service..
+ [Unit]
+   Description=pi-ZERO-volumio-epaper
+   Wants=network-online.target
+   After=network-online.target
+ [Service]
+   Type=simple
+   User=volumio
+   WorkingDirectory=/home/volumio/pi-ZERO-volumio-epaper
+   ExecStart=/home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
+ [Install]
+   WantedBy=multi-user.target
+ 
+# Enable the service using:
+sudo systemctl enable pi-volumio-epaper.service
+sudo systemctl start pi-volumio-epaper.service  # ..or 'stop' to stop it
+ 
+# To check if service is running..
+systemctl status pi-volumio-epaper
+```
+
 
 ## Installation steps (Update)
 ```bash
