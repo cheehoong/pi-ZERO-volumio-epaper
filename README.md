@@ -103,24 +103,6 @@ Add below to last line
 save (Ctrl + x) and sudo reboot 
 
 #### Option 2
-How to run a python script on Raspberry Pi Boot (4-STEP PROCESS)
-```bash
-sudo raspi-config
-```
-Select “Boot Options” then “Desktop/CLI” then “Console Autologin”
-In the command prompt or in a terminal window type:
-```bash
-sudo nano /etc/rc.local
-```
-Scroll to the bottom and add the following line
-```bash
-sudo python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
-```
-save (Ctrl + x) and 
-```bash
-sudo reboot
-```
-#### Option 3
 ```bash
 sudo systemctl edit --force --full pi-volumio-epaper.service
  
@@ -133,7 +115,7 @@ sudo systemctl edit --force --full pi-volumio-epaper.service
    Type=simple
    User=volumio
    WorkingDirectory=/home/volumio/pi-ZERO-volumio-epaper
-   ExecStart=/home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
+   ExecStart=/usr/bin/python /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
  [Install]
    WantedBy=multi-user.target
  
@@ -150,7 +132,7 @@ systemctl status pi-volumio-epaper
 ```bash
 sudo rm -r pi-ZERO-volumio-epaper
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
-sudo chmod -x sudo chmod +x /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py 
+sudo chmod +x /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py 
 sudo reboot
 ```
 
