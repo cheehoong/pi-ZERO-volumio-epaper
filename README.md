@@ -16,6 +16,7 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 - [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w)
 - [ABS Case](https://www.waveshare.com/2.13inch-Touch-e-Paper-HAT-with-case.htm)
 - [Get yourself a nice USB speaker](https://www.aliexpress.com/i/1005001710457608.html)
+- USB SD card reader
 
 ## ToDo
 - [x] Display title, artist, album
@@ -31,6 +32,8 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 
 ## Install Volumio 3
 - [volumio](https://volumio.com/en/get-started) <-- Download and install volumio 3
+- [BalenaEtcher](https://www.balena.io/etcher/) <-- You can brun volumio image using BalenaEtcher via USB SD card reader
+(Do not use Raspberry Pi Imager)
 - Connect via WIFI (volumio-XXXX), wifi password = volumio2
 - Run volumio setup wizard.
 
@@ -48,6 +51,10 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 </details>
 
 ## Config volumio 3
+SSH to volumio.local (password = volumio)
+```bash
+ssh volumio@volumio.local
+```
 To turn on SPI i/o
 ```bash
 sudo nano /boot/config.ini
@@ -63,9 +70,9 @@ dtparam=i2c=on,spi=on
 Install python3 and packages
 ```bash
     sudo apt-get update
-    sudo apt-get install python3-pip
-    sudo apt-get install python3-pil
-    sudo apt-get install python3-socketio-client
+    sudo apt-get -y install python3-pip
+    sudo apt-get -y install python3-pil
+    sudo apt-get -y install python3-socketio-client
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
     sudo pip3 install smbus
