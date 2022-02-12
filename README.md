@@ -150,7 +150,8 @@ systemctl status pi-volumio-epaper
 ```bash
 sudo rm -r pi-ZERO-volumio-epaper
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
-reboot
+sudo chmod -x sudo chmod +x /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py 
+sudo reboot
 ```
 
 
