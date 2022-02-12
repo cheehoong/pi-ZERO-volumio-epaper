@@ -59,7 +59,7 @@ ssh volumio@volumio.local
 ```
 To turn on SPI i/o
 ```bash
-sudo nano /boot/config.ini
+sudo nano /boot/config.txt
 ```
 Then add to last line
 ```bash
