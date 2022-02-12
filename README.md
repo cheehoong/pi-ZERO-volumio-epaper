@@ -51,6 +51,8 @@ This project build using Raspberry Pi ZERO 2 W using the 2.13inch e-paper HAT mo
 </details>
 
 ## Config volumio 3
+enable SSH using http://volumio0.local/dev/
+
 SSH to volumio.local (password = volumio)
 ```bash
 ssh volumio@volumio.local
@@ -76,6 +78,7 @@ Install python3 and packages
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
     sudo pip3 install smbus
+    sudo reboot
 ```
 
 ### Step 2
