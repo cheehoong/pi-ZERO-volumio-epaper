@@ -86,6 +86,7 @@ Install pi-ZERO-volumio-epapper
 
 ```bash
 sudo git clone https://github.com/cheehoong/pi-ZERO-volumio-epaper.git
+sudo chmod -x sudo chmod +x /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py 
 ```
 
 ### Step 3
