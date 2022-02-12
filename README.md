@@ -97,7 +97,7 @@ sudo crontab -e
 ````
 Add below to last line
 ```bash
-@reboot python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
+@reboot python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
 ```
 save (Ctrl + x) and sudo reboot 
 
@@ -113,7 +113,7 @@ sudo nano /etc/profile
 ```
 Scroll to the bottom and add the following line
 ```bash
-sudo python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py
+sudo python3 /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epaper.py &
 ```
 save (Ctrl + x) and 
 ```bash
