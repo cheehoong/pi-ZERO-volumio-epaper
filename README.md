@@ -109,7 +109,7 @@ sudo raspi-config
 Select “Boot Options” then “Desktop/CLI” then “Console Autologin”
 In the command prompt or in a terminal window type:
 ```bash
-sudo nano /etc/profile
+sudo nano /etc/rc.local
 ```
 Scroll to the bottom and add the following line
 ```bash
@@ -178,7 +178,9 @@ UnicodeEncodeError: 'latin-1' codec can't encode characters in position 21-27: o
 cd /usr/lib/python3/dist-packages/socketIO_client/
 ```
 找到socketIO_client文件夹下的transports.py文件
-
+```bash
+sudo nano transports.py
+```
 用编辑器打开transports.py，在144行左右的位置找到recv_packet函数
 ```bash
 
