@@ -90,8 +90,9 @@ sudo chmod -x sudo chmod +x /home/volumio/pi-ZERO-volumio-epaper/pi-volumio-epap
 ```
 
 ### Step 3
+Add autostart (by using crontab)
+
 #### Option 1
-Add autostart (by using crontab) 
 ```bash
 sudo apt install cron
 sudo crontab -e
