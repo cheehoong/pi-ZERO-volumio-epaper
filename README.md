@@ -222,3 +222,7 @@ If, for example, you want to tease out a little more battery life in timelapse p
 To do this , you edit them /boot/cmdline.txt and insert them maxcpus=1after console=tty1. After a restart, only one of the 4 CPU cores is available. This means that in the event of a CPU spike, less power is used. Depending on how long the timelapse intervals are, that could be relevant.
 
 In general, the Zero 2 W, like the Zero 1 W, can be operated on a USB (2.0 or 3.0) port, e.g. on a laptop, since it does not consume more than 500 mA at 5V = 2.5 W.
+
+<p align="center">
+<img src="pic\20220226_115436.jpg"/>
+</p>
